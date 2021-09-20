@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Banco Bradesil 1.0</string>
+    <string name="qualSenha">Qual é a sua senha?</string>
+    <string name="acessarConta">Acessar conta</string>
+    <string name="bradesil">Bradesil</string>
+    <string name="acessoAconta">Acesso à conta</string>
+    <string name="continuar">Continuar</string>
+    <string name="informeDados">Informe seus dados</string>
+    <string name="nomeCompleto">Nome completo</string>
+    <string name="criarConta">Criar conta</string>
+    <string name="repitaSenha">Repita a senha</string>
+    <string name="crieSenha">Crie sua senha</string>
+    <string name="nomeClienteContasCadastradas">Nome do cliente:</string>
+    <string name="contaContasCadastradas">Conta:</string>
+    <string name="nomeClienteMain">Nome do cliente:</string>
+    <string name="contaMain">Conta:</string>
+    <string name="criarCOntaBotaoMain">Criar conta</string>
+    <string name="situacaoErroSenhaMais">Situação: Erro! Senha tem mais de 5 dígitos.</string>
+    <string name="SituacaoErroSenhaMaiorCinco"> Situação: Erro! Senha tem mais de 5 dígitos.</string>
+    <string name="situacaoErroSenhasDiferentes">Situação: Erro! Senhas incompatíveis.</string>
+    <string name="situacaoErroRepitaSenhas">Situação: Erro! Repita a senha.</string>
+    <string name="situacaoErroPreenchaSenha">Situação: Erro! Preencha a senha.</string>
+    <string name="situacaoErroPreenchaNome">Situação: Erro! Preencha seu nome.</string>
+    <string name="situacaoErroSenhaMenos">Situação: Erro! Senha tem menos de 5 dígitos.</string>
+    <string name="SituacaoContacriadacomsucesso">Situação: Conta criada com sucesso!</string>
+    <string name="situacaoCadastro">Situação:</string>
+    <string name="nomeCliente">Nome:</string>
+    <string name="numeroContaActivityCriarConta">Conta:</string>
+    <string name="numeroContaActivityMain">Conta:</string>
+    <string name="nome">Nome:</string>
+    <string name="conta">Conta:</string>
+</resources>
