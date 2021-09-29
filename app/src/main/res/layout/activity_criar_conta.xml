@@ -67,8 +67,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="15dp"
             android:hint="@string/nomeCompleto"
-            android:inputType="text"
-            android:textColorHint="@color/black"
+            android:inputType="textCapWords|textImeMultiLine"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
             app:hintTextColor="#0363D8"
@@ -81,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="abcdefghijklmnopqrstuvwxykzABCDEFGHIJKLMNOPQRSTUVWXYK Z"
-                android:inputType="text" />
+                android:inputType="textCapWords|textImeMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -147,6 +146,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white01"
             android:textSize="21sp"
+
             app:backgroundTint="@color/corSecundaria"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toBottomOf="@+id/linerLayoutContasId" />

@@ -3,50 +3,56 @@ package com.example.bancobradesil10
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.bancobradesil10.criar_conta.CriarConta
 import android.text.TextUtils
 import android.widget.*
+import androidx.annotation.RequiresApi
 import java.util.*
 import java.text.NumberFormat
+import android.preference.PreferenceManager
+
+import android.content.SharedPreferences
+import android.preference.PreferenceManager.getDefaultSharedPreferences
 
 
 class ActivityCriarConta : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.S)
     @SuppressLint("SetTextI18n", "SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_criar_conta)
 
         /*
-        BLOQUEAR FUNÇÃO DE ORIENTAÇÃO DA TELA:
+        Bloquear função de orientação de tela:
          */
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         /*
-       CRIAR FUNÇÃO CRIAR CONTA():
+       Criar função Criar Conta:
          */
         val botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
         botaoCriarConta.setOnClickListener { criarConta() }
 
-
         /*
-       CRIAR FUNÇÃO IMAGEVIEWVOLTARAPARAMAINCTIVITY():
+      Criar função imageViewVoltarParaMainActivity():
          */
         val imageViewVoltarParaMainActivity =
             findViewById<ImageView>(R.id.imageViewVoltarActivityCriarContaId)
         imageViewVoltarParaMainActivity.setOnClickListener { imageViewVoltarParaMainActivity() }
 
         /*
-   CRIAR FUNÇÃO IMAGEVIEWVOLTARPARAMAINACTIVITY():
-     */
+        Criar função textViewVoltarParaMainActivity()():
+        */
         val texViewVoltarParaTelaPrincipal =
             findViewById<TextView>(R.id.texTeViewVoltarActivityCriarContaId)
         texViewVoltarParaTelaPrincipal.setOnClickListener { textViewVoltarParaMainActivity() }
 
         /*
-LISTA PARA CONTAS CRIADAS NO SISTEMA:
- */
+       Lista para contas criadas:
+       */
         val listaContasAbertas: MutableList<CriarConta> = mutableListOf()
         val clienteGilmarcos = CriarConta(
             "Gilmarcos Santos",
@@ -58,46 +64,55 @@ LISTA PARA CONTAS CRIADAS NO SISTEMA:
     /*
     Função imageViewVoltarParaMainActivity():
      */
-    fun imageViewVoltarParaMainActivity() {
+    private fun imageViewVoltarParaMainActivity() {
+        //VARIÁVEIS USADAS NA FUNÇÃO:
         val informeSeuNome =
             findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
         val informeNome = informeSeuNome.text.toString()
         val situacaoConta =
             findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarContaId)
         val numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
+        val suaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
 
+        // Fechar ActivityCriarConta e voltar para MainActivity caso a connta não tenha sido criada.
+        finish()
 
-        val intentVoltarParaMainActivity = Intent(this, MainActivity::class.java)
-        startActivity(intentVoltarParaMainActivity)
-
-        val intent = Intent(this, MainActivity::class.java).apply {
-            putExtra("chaveNomeConta", informeNome)
-            putExtra("chaveNumeroConta", numeroConta.text.toString())
+        // Intent para envio de todos os dados para a MainActivity:
+        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra("chaveNomeConta", informeNome)
+                putExtra("chaveNumeroConta", numeroConta.text.toString())
+                putExtra("chaveSenha", suaSenha.text.toString())
+            }
+            startActivity(intent)
         }
-        startActivity(intent)
-
 
     }
 
+
     /*
-    Função textViewVoltarParaMainActivity():
-     */
+   Função textViewVoltarParaMainActivity():
+    */
     private fun textViewVoltarParaMainActivity() {
+        //VARIÁVEIS USADAS NA FUNÇÃO:
         val informeSeuNome =
             findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
         val informeNome = informeSeuNome.text.toString()
         val situacaoConta =
             findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarContaId)
         val numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
+        val suaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
 
-        val intentVoltarParaMainActivity = Intent(this, MainActivity::class.java)
-        startActivity(intentVoltarParaMainActivity)
+        // Fechar ActivityCriarConta e voltar para MainActivity caso a connta não tenha sido criada.
+        finish()
 
-        val intent = Intent(this, MainActivity::class.java).apply {
-            putExtra("chaveNomeConta", informeNome)
-            putExtra("chaveNumeroConta", numeroConta.text)
-        }
-        if (situacaoConta.text == getString(R.string.SituacaoContacriadacomsucesso)) {
+        // Intent para envio de todos os dados para a MainActivity:
+        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra("chaveNomeConta", informeNome)
+                putExtra("chaveNumeroConta", numeroConta.text.toString())
+                putExtra("chaveSenha", suaSenha.text.toString())
+            }
             startActivity(intent)
         }
     }
@@ -105,11 +120,12 @@ LISTA PARA CONTAS CRIADAS NO SISTEMA:
     /*
     Função criarConta():
      */
+    @RequiresApi(Build.VERSION_CODES.S)
     private fun criarConta() {
-
+        //Variáveis usadas na função.
         val informeSeuNome =
             findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
-        val suaConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
+        val numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
         val digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
         val repitaSuaSenha =
             findViewById<EditText>(R.id.editTextRepitaSenhaActivityCriarContaId)
@@ -123,7 +139,10 @@ LISTA PARA CONTAS CRIADAS NO SISTEMA:
         val formatarValorConta =
             "Conta: " + NumberFormat.getNumberInstance(ptBr)
                 .format(contaAbertasRandom.toDouble())
+        val botaoNaoClicavel =
+            findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
 
+        //Condicional
         when {
             TextUtils.isEmpty(informeNome) -> {
                 Toast.makeText(this, "INFORME SEU NOME.", Toast.LENGTH_LONG).show()
@@ -150,22 +169,24 @@ LISTA PARA CONTAS CRIADAS NO SISTEMA:
                 Toast.makeText(this, "A SENHA DEVE TER 5 DÍGITOS.", Toast.LENGTH_LONG).show()
                 situacaoConta.text = getString(R.string.situacaoErroSenhaMenos)
             }
+            situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso) -> {
+                Toast.makeText(this, "A SUA CONTA JÁ FOI CRIADA.", Toast.LENGTH_LONG).show()
+                botaoNaoClicavel.isEnabled = false
+            }
             informeSeuNome.length() != 0 &&
                     suaSenha == repitaSenha &&
                     repitaSenha == suaSenha &&
                     suaSenha.length == 5 -> {
-                situacaoConta.text = getString(R.string.SituacaoContacriadacomsucesso)
-                suaConta.text = formatarValorConta
+                situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
+                numeroConta.text = formatarValorConta
 
             }
-
         }
-
-
     }
-
-
 }
+
+
+
 
 
 

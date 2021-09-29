@@ -4,8 +4,7 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 
 
 class ActivityLogin : AppCompatActivity() {
@@ -13,27 +12,79 @@ class ActivityLogin : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+        /*
+        Bloquear a função de orientação de tela:
+         */
+        requestedOrientation = (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
-        val imageViewVoltar01 = findViewById<ImageView>(R.id.imageViewVoltarId01)
-        imageViewVoltar01.setOnClickListener {
-            val intent = Intent (this, MainActivity::class.java).apply {
+        /*
+        Recepção dos dados (NOME E CONTA) enviados por MainActivity:
+         */
+        val nomeActivityActivityLogin =
+            findViewById<TextView>(R.id.textViewNomeClienteActivityLoginId)
+        val numeroContaActivityLogin =
+            findViewById<TextView>(R.id.textViewNumeroContaLoginActivityId)
 
-            }
-            startActivity(intent)
+        val mensagemNomeActivityLogin = intent.getStringExtra("chaveNomeConta")
+        val mensagemContaActivityLogin = intent.getStringExtra("chaveNumeroConta")
 
+        nomeActivityActivityLogin.apply {
+            text = mensagemNomeActivityLogin
+        }
+        numeroContaActivityLogin.apply {
+            text = mensagemContaActivityLogin
         }
 
-        val textViewVoltar01 = findViewById<TextView>(R.id.textViewVoltarId01)
-        textViewVoltar01.setOnClickListener {
-            val intent = Intent (this, MainActivity::class.java).apply {
+        /*
+        Criar Função imageViewVoltarActivityLogin():
+         */
+        val imageViewVoltar01 = findViewById<ImageView>(R.id.imageViewVoltarLoginId)
+        imageViewVoltar01.setOnClickListener { imageViewVoltarActivityLogin() }
 
-            }
-            startActivity(intent)
+        /*
+        Criar função textViewVoltarActivityLogin():
+         */
+        val textViewVoltar01 = findViewById<TextView>(R.id.textViewVoltarLoginId)
+        textViewVoltar01.setOnClickListener { textViewVoltarActivityLogin() }
 
+        val botaoContinuarActivityLogin = findViewById<Button>(R.id.botaoAContinuarActivityLoginId)
+        botaoContinuarActivityLogin.setOnClickListener { botaoContinuar() }
+    }
+
+    /*
+    Função botaoContinuar():
+     */
+    private fun botaoContinuar() {
+        //Declaração das variáveis:
+        val qualSenha = findViewById<EditText>(R.id.editTextQualSenhaLoginId)
+        val mensagemConta = intent.getStringExtra("chaveSenha")
+
+       qualSenha.apply {
         }
+        if (qualSenha.text.toString() == mensagemConta.toString()){
+            Toast.makeText(this, "Senha Correta.", Toast.LENGTH_LONG).show()
+        } else{
+            Toast.makeText(this, "Senha Errada!", Toast.LENGTH_LONG).show()
+        }
+    }
 
+    /*
+    Função imageViewVoltarActivityLogin():
+     */
+    private fun imageViewVoltarActivityLogin() {
+        val intent = Intent(this, MainActivity::class.java).apply {
+        }
+       // startActivity(intent)
+        finish()
+    }
 
-
+    /*
+    Função textViewVoltarActivityLogin():
+    */
+    private fun textViewVoltarActivityLogin() {
+        val intent = Intent(this, MainActivity::class.java).apply {
+        }
+       // startActivity(intent)
+        finish()
     }
 }

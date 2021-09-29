@@ -16,26 +16,47 @@ class ActivityContasCadastradas : AppCompatActivity() {
         /*
         FUNÇÃO BLOQUEAR ORIENTAÇÃO DE TELA:
          */
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+        requestedOrientation = (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
         /*
-        IMAGEBUTTON VOLTAR À TELA INICIAL:
+        Criar Função imageViewVoltarActivityContasCadastradas():
          */
-        val imageButtonVoltar02 = findViewById<ImageView>(R.id.imageViewVoltarId02)
-        imageButtonVoltar02.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java).apply {
-            }
-            startActivity(intent)
-        }
+        val imageButtonVoltar02 =
+            findViewById<ImageView>(R.id.imageButtonVoltarContasCadastradasId)
+        imageButtonVoltar02.setOnClickListener { imageButtonVoltarContasCadastradasId() }
+
         /*
-        TEXTVIEW VOLTAR À TELA INICIAL:
+       Criar Função textViewVoltarActivityContasCadastradas():
          */
-        val textViewVoltar02 = findViewById<TextView>(R.id.textViewVoltarId02)
-        textViewVoltar02.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java).apply {
-            }
-            startActivity(intent)
-        }
+        val textViewVoltar02 = findViewById<TextView>(R.id.textViewVoltarContasCadastradasId)
+        textViewVoltar02.setOnClickListener { textViewVoltarActivityContasCadastradas() }
+    }
+
+    /* override fun onSaveInstanceState(outState: Bundle) {
+         super.onSaveInstanceState(outState)
+         outState.putStringArrayList("nomes", nomes)
+     }*/
+
+    /*
+   Função textViewVoltarActivityContasCadastradas():
+  */
+    private fun textViewVoltarActivityContasCadastradas() {
+        // val intent = Intent(this, MainActivity::class.java).apply {
+        // }
+        // startActivity(intent)
+        finish()
+
+    }
+
+    /*
+        Função imageViewVoltarActivityContasCadastradas():
+     */
+
+    private fun imageButtonVoltarContasCadastradasId() {
+        // val intent = Intent(this, MainActivity::class.java).apply {
+        //  }
+        //  startActivity(intent)
+        finish()
 
     }
 }

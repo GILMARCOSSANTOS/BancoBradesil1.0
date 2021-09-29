@@ -12,7 +12,6 @@
     <string name="crieSenha">Crie sua senha</string>
     <string name="nomeClienteContasCadastradas">Nome do cliente:</string>
     <string name="contaContasCadastradas">Conta:</string>
-    <string name="nomeClienteMain">Nome do cliente:</string>
     <string name="contaMain">Conta:</string>
     <string name="criarCOntaBotaoMain">Criar conta</string>
     <string name="situacaoErroSenhaMais">Situação: Erro! Senha tem mais de 5 dígitos.</string>
@@ -22,7 +21,7 @@
     <string name="situacaoErroPreenchaSenha">Situação: Erro! Preencha a senha.</string>
     <string name="situacaoErroPreenchaNome">Situação: Erro! Preencha seu nome.</string>
     <string name="situacaoErroSenhaMenos">Situação: Erro! Senha tem menos de 5 dígitos.</string>
-    <string name="SituacaoContacriadacomsucesso">Situação: Conta criada com sucesso!</string>
+    <string name="situacaoContaCriadaComSucesso">Situação: Conta criada com sucesso!</string>
     <string name="situacaoCadastro">Situação:</string>
     <string name="nomeCliente">Nome:</string>
     <string name="numeroContaActivityCriarConta">Conta:</string>

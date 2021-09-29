@@ -1,14 +1,9 @@
 package com.example.bancobradesil10
 
 import android.annotation.SuppressLint
-import android.content.ContentValues
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
-import android.util.Log
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.google.android.material.button.MaterialButton
 import android.content.Intent as Intent1
 import android.os.Bundle as Bundle1
@@ -20,69 +15,61 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         /*
-        BLOQUEAR ORIENTAÇÃO DE TELA:
+        Bloquear Orientação de tela:
          */
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         /*
-        Teste:
+       Recepção dos dados da Activity CriarConta:
          */
-
+        //Declaração das variáveis:
         val textViewNomeConta = findViewById<TextView>(R.id.textViewNomeClienteMainActivityId)
         val textViewNumeroConta = findViewById<TextView>(R.id.textViewNumeroContaMainActivityId)
 
+        //Intente = Recebimento dos valores da Chave da ActivityCriarConta:
         val mensagemNome = intent.getStringExtra("chaveNomeConta")
-       val mensagemConta = intent.getStringExtra("chaveNumeroConta")
+        val mensagemConta = intent.getStringExtra("chaveNumeroConta")
 
-
-       textViewNomeConta.apply {
-
-           text = mensagemNome
-       }
-
+        // Valores das Views da MainActivity = valores da ActivityCriarConta:
+        textViewNomeConta.apply {
+            text = mensagemNome
+        }
         textViewNumeroConta.apply {
             text = mensagemConta
         }
 
 
-
-
-
-
-
-
         /*
-        CRIAR FUNÇÃO FUNCAOACESSARCONTA():
+        Criar função Acessar Conta:
          */
         val botaoAcessarConta = findViewById<MaterialButton>(R.id.acessarContaBotaoMainActivityId)
         botaoAcessarConta.setOnClickListener { acessarConta() }
 
         /*
-        CRIAR FUNÇÃO CRIARCONTA():
+       Criar função Criar Conta:
          */
         val botaoCriarconta = findViewById<MaterialButton>(R.id.botaoCriarContaMainActivityId)
         botaoCriarconta.setOnClickListener { criarConta() }
 
-
         /*
-        CRIAR FUNÇÃO CADASTRARCONTAS:
+        Criar função Entrar em Contas Cadastradas:
          */
         val imageButtonContasCadastradas =
             findViewById<ImageButton>(R.id.imageButtonContasCadastradasMainActivityId)
-        imageButtonContasCadastradas.setOnClickListener { cadastrarContas() }
+        imageButtonContasCadastradas.setOnClickListener { entrarEmContasCadastradas() }
     }
 
     /*
-    FUNÇÃO CADASTRARCONTAS ():
+    Função EntrarEmContasCadastradas():
      */
-    private fun cadastrarContas() {
+    private fun entrarEmContasCadastradas() {
         val intent = Intent1(this, ActivityContasCadastradas::class.java).apply {
         }
         startActivity(intent)
     }
 
     /*
-    FUNÇÃO CRIARCONTA():
+   Função CriarConta():
      */
     private fun criarConta() {
         val intent = Intent1(this, ActivityCriarConta::class.java).apply {
@@ -91,13 +78,35 @@ class MainActivity : AppCompatActivity() {
     }
 
     /*
-    FUNÇÃO ACESSAR CONTA():
+    Função AcessarConta():
      */
     private fun acessarConta() {
+        //Variáveis:
+        val nomeMainActivity = findViewById<TextView>(R.id.textViewNomeClienteMainActivityId)
+        val numeroContaMainActivity = findViewById<TextView>(R.id.textViewNumeroContaMainActivityId)
+        val nome = nomeMainActivity.text.toString()
+        val conta = numeroContaMainActivity.text.toString()
+        val recebeSenha = intent.getStringExtra("chaveSenha")
+
+        // Enviar dados para a ActivityLogin:
+        if (nome.isEmpty() && conta.isEmpty()) {
+            Toast.makeText(
+                this,
+                "Cadastre a sua conta.",
+                Toast.LENGTH_LONG
+            ).show()
+        } else {
+            val intent = Intent1(this, ActivityLogin::class.java).apply {
+                putExtra("chaveNomeConta", nomeMainActivity.text.toString())
+                putExtra("chaveNumeroConta", numeroContaMainActivity.text.toString())
+                putExtra("chaveSenha", recebeSenha)
+            }
+            startActivity(intent)
+
+        }
 
 
     }
-
 }
 
 

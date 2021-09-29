@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BancoBradesil10">
         <activity
+            android:name=".ActivityConta"
+            android:exported="true" />
+        <activity
             android:name=".ActivityContasCadastradas"
             android:exported="true" />
         <activity
