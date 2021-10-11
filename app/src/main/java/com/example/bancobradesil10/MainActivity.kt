@@ -19,14 +19,19 @@ class MainActivity : AppCompatActivity() {
          */
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
+        /**
+         * Declaração de variáveis:
+         */
+        val textViewNomeConta = findViewById<TextView>(R.id.textViewNomeClienteMainActivityId)
+        val textViewNumeroConta = findViewById<TextView>(R.id.textViewNumeroContaMainActivityId)
+        val botaoAcessarConta = findViewById<MaterialButton>(R.id.acessarContaBotaoMainActivityId)
+        val botaoCriarconta = findViewById<MaterialButton>(R.id.botaoCriarContaMainActivityId)
+        val imageButtonContasCadastradas =
+            findViewById<ImageButton>(R.id.imageButtonContasCadastradasMainActivityId)
+
         /*
        Recepção dos dados da Activity CriarConta:
          */
-        //Declaração das variáveis:
-        val textViewNomeConta = findViewById<TextView>(R.id.textViewNomeClienteMainActivityId)
-        val textViewNumeroConta = findViewById<TextView>(R.id.textViewNumeroContaMainActivityId)
-
-        //Intente = Recebimento dos valores da Chave da ActivityCriarConta:
         val mensagemNome = intent.getStringExtra("chaveNomeConta")
         val mensagemConta = intent.getStringExtra("chaveNumeroConta")
 
@@ -38,24 +43,11 @@ class MainActivity : AppCompatActivity() {
             text = mensagemConta
         }
 
-
         /*
-        Criar função Acessar Conta:
+        Criar Funções:
          */
-        val botaoAcessarConta = findViewById<MaterialButton>(R.id.acessarContaBotaoMainActivityId)
         botaoAcessarConta.setOnClickListener { acessarConta() }
-
-        /*
-       Criar função Criar Conta:
-         */
-        val botaoCriarconta = findViewById<MaterialButton>(R.id.botaoCriarContaMainActivityId)
         botaoCriarconta.setOnClickListener { criarConta() }
-
-        /*
-        Criar função Entrar em Contas Cadastradas:
-         */
-        val imageButtonContasCadastradas =
-            findViewById<ImageButton>(R.id.imageButtonContasCadastradasMainActivityId)
         imageButtonContasCadastradas.setOnClickListener { entrarEmContasCadastradas() }
     }
 
@@ -102,14 +94,6 @@ class MainActivity : AppCompatActivity() {
                 putExtra("chaveSenha", recebeSenha)
             }
             startActivity(intent)
-
         }
-
-
     }
 }
-
-
-
-
-

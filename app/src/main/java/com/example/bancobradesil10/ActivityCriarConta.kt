@@ -30,24 +30,20 @@ class ActivityCriarConta : AppCompatActivity() {
          */
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
-        /*
-       Criar função Criar Conta:
+        /**
+         * Declaração de variáveis:
          */
         val botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
-        botaoCriarConta.setOnClickListener { criarConta() }
-
-        /*
-      Criar função imageViewVoltarParaMainActivity():
-         */
         val imageViewVoltarParaMainActivity =
             findViewById<ImageView>(R.id.imageViewVoltarActivityCriarContaId)
-        imageViewVoltarParaMainActivity.setOnClickListener { imageViewVoltarParaMainActivity() }
-
-        /*
-        Criar função textViewVoltarParaMainActivity()():
-        */
         val texViewVoltarParaTelaPrincipal =
             findViewById<TextView>(R.id.texTeViewVoltarActivityCriarContaId)
+
+        /*
+       Criar Funções
+         */
+        botaoCriarConta.setOnClickListener { criarConta() }
+        imageViewVoltarParaMainActivity.setOnClickListener { imageViewVoltarParaMainActivity() }
         texViewVoltarParaTelaPrincipal.setOnClickListener { textViewVoltarParaMainActivity() }
 
         /*
@@ -86,9 +82,7 @@ class ActivityCriarConta : AppCompatActivity() {
             }
             startActivity(intent)
         }
-
     }
-
 
     /*
    Função textViewVoltarParaMainActivity():
@@ -145,7 +139,8 @@ class ActivityCriarConta : AppCompatActivity() {
         //Condicional
         when {
             TextUtils.isEmpty(informeNome) -> {
-                Toast.makeText(this, "INFORME SEU NOME.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "INFORME SEU NOME.",  Toast.LENGTH_LONG).show()
+
                 situacaoConta.text = getString(R.string.situacaoErroPreenchaNome)
             }
             suaSenha.isEmpty() -> {

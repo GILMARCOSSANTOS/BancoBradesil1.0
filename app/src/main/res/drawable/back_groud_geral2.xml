@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <gradient
+        android:angle="90"
+        android:centerX="@integer/material_motion_duration_long_2"
+        android:centerY="@integer/material_motion_duration_long_2"
+        android:endColor="@color/corSecundariaVariante"
+        android:gradientRadius="@dimen/cardview_default_radius"
+        android:startColor="@color/corPrimaria2"
+        android:type="linear"
+        android:useLevel="true"
+        
+        />
+</shape>

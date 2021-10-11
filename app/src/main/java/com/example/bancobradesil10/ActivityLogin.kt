@@ -58,11 +58,16 @@ class ActivityLogin : AppCompatActivity() {
         //Declaração das variáveis:
         val qualSenha = findViewById<EditText>(R.id.editTextQualSenhaLoginId)
         val mensagemConta = intent.getStringExtra("chaveSenha")
+        val nomeActivityLogin = findViewById<TextView>(R.id.textViewNomeClienteActivityLoginId)
 
        qualSenha.apply {
         }
         if (qualSenha.text.toString() == mensagemConta.toString()){
-            Toast.makeText(this, "Senha Correta.", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, ActivityConta::class.java).apply {
+                putExtra("chaveNomeConta", nomeActivityLogin.text.toString())
+            }
+            startActivity(intent)
+
         } else{
             Toast.makeText(this, "Senha Errada!", Toast.LENGTH_LONG).show()
         }

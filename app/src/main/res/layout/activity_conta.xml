@@ -4,6 +4,238 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back_groud_geral2"
     tools:context=".ActivityConta">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewOpcoesActivityContaId"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/menuopcoes01"
+        android:tint="@color/white01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/texViewNomeBradesilActivityContaId"
+        android:layout_width="wrap_content"
+        android:layout_height="63dp"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        android:scaleType="centerCrop"
+        android:text="@string/bradesil"
+        android:textColor="@color/white01"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewOpcoesActivityContaId"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewNotificacoesActivityContaId"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sino_notificacao"
+        android:tint="@color/white01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewNomeClienteActivityContaId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="7dp"
+        android:hint="@string/olaCliente"
+        android:textColor="@color/white01"
+        android:textColorHint="@color/white01"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewPessoaActivityContaId"
+        app:layout_constraintTop_toBottomOf="@+id/texViewNomeBradesilActivityContaId" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewSairActivityContaId"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/exit_activity_conta"
+        android:tint="@color/white01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewNotificacoesActivityContaId" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewPessoaActivityContaId"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="17dp"
+        android:src="@drawable/pessoa"
+        android:tint="@color/white01"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewOpcoesActivityContaId" />
+
+    <View
+        android:id="@+id/linhaDivisoria01Id"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/corSecundaria"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomeClienteActivityContaId" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewReaisActivityContaId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="3dp"
+        android:text="@string/rsReais"
+        android:textColor="@color/white01"
+        android:textColorHint="@color/white01"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSaldoContaActivityId" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewSaldoReaisContaActivityId"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/botao_redondo03"
+        android:text="0,00"
+        android:textColor="@color/cinzaOcultarSaldo"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewReaisActivityContaId"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSaldoContaActivityId" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewSaldoContaActivityId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/saldoDisponivelActivityConta"
+        android:textColor="@color/white01"
+        android:textColorHint="@color/white01"
+        android:textSize="19sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linhaDivisoria01Id" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewExtratoContaActivityId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/verExtrato"
+        android:textColor="@color/white01"
+        android:textColorHint="@color/white01"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewVerExtratoActivityContaId"
+        app:layout_constraintTop_toBottomOf="@+id/linhaDivisoria01Id" />
+
+    <View
+        android:id="@+id/linhaDivisoria02Id"
+        android:layout_width="107dp"
+        android:layout_height="1dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/corSecundaria"
+        android:backgroundTint="@color/white01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewExtratoContaActivityId" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewVerExtratoActivityContaId"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="15dp"
+        android:rotation="180"
+        android:src="@drawable/botao_baixo2"
+        android:tint="@color/white01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewExtratoContaActivityId" />
+
+    <!-- Esta ImageView Está em sobrescrevento a outra ImageView -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewVisivelActivityContaId"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/visivel"
+        android:tint="@color/white01"
+        app:layout_constraintStart_toEndOf="@+id/textViewSaldoReaisContaActivityId"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSaldoContaActivityId" />
+
+    <!-- Esta ImageView Está em sobrescrevento a outra ImageView -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewNaoVisivelActivityContaId"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/nao_visivel"
+        android:tint="@color/white01"
+        app:layout_constraintStart_toEndOf="@+id/textViewSaldoReaisContaActivityId"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSaldoContaActivityId" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutCompat2"
+        android:layout_width="match_parent"
+        android:layout_height="429dp"
+        android:background="#D9D4D4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+   <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextFaleBiaContaActivityId"
+        android:layout_width="275dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="410dp"
+        android:background="@drawable/botao_redondo01"
+        android:drawableEnd="@drawable/lupa"
+        android:padding="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="35dp"
+        android:hint="@string/faleBia"
+       android:textColorHint="@color/black"
+        android:textSize="21sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline7" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeableImageView"
+        android:layout_width="85dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="410dp"
+        android:background="@drawable/microfone_botao_redondo"
+        android:src="@drawable/microfone"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayoutCompat2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="15dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

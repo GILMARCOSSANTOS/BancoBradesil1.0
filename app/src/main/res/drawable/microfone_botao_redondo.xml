@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <gradient
+        android:angle="90"
+        android:centerY="@android:integer/config_mediumAnimTime"
+        android:endColor="@color/corSecundaria"
+        android:startColor="@color/corPrimaria2"
+        android:type="linear" />
+
+    <corners
+      android:bottomRightRadius="@android:dimen/app_icon_size"
+       android:topRightRadius="@android:dimen/app_icon_size"
+        />
+
+
+
+
+
+
+</shape>

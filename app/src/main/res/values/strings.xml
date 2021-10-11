@@ -28,4 +28,13 @@
     <string name="numeroContaActivityMain">Conta:</string>
     <string name="nome">Nome:</string>
     <string name="conta">Conta:</string>
+    <string name="ol_cliente">Olá Cliente</string>
+    <string name="saldoDisponivelActivityConta">Meu saldo disponível</string>
+    <string name="olaCliente">Olá, Cliente</string>
+    <string name="saldo">Saldo</string>
+    <string name="verExtrato">Ver extrato</string>
+    <string name="rsReais">R$</string>
+    <string name="faleBia">Fale com a <font color="#d50000">BIA </font> </string>
+
+
 </resources>

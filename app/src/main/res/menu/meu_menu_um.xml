@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/red"
+        android:title="Quero meu informe de rendimentos"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/yellow"
+        android:title="Quero pagar uma conta"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/green"
+        android:title="Preciso transferir dinheiro"
+        app:showAsAction="never"/>
+
+    <group
+        android:menuCategory="alternative"
+        android:checkableBehavior="all"
+        android:orderInCategory="@integer/material_motion_duration_long_1"
+
+        />
+
+
+
+
+
+
+
+
+
+
+
+
+</menu>
