@@ -9,8 +9,8 @@
         android:type="linear" />
 
     <corners
-      android:bottomRightRadius="@android:dimen/app_icon_size"
-       android:topRightRadius="@android:dimen/app_icon_size"
+      android:bottomRightRadius="15dp"
+       android:topRightRadius="15dp"
         />
 
 

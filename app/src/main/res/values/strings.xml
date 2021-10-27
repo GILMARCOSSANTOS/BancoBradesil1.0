@@ -35,6 +35,10 @@
     <string name="verExtrato">Ver extrato</string>
     <string name="rsReais">R$</string>
     <string name="faleBia">Fale com a <font color="#d50000">BIA </font> </string>
+    <string name="_0_00">0,00</string>
+    <string name="QueroRendimentos">Quero meu informe de rendimentos</string>
+    <string name="QueroPagarConta">Quero pagar uma conta</string>
+    <string name="precisTransferir">Preciso transferir dinheiro</string>
 
 
 </resources>
