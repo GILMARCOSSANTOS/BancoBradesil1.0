@@ -15,7 +15,7 @@
     <string name="contaMain">Conta:</string>
     <string name="criarCOntaBotaoMain">Criar conta</string>
     <string name="situacaoErroSenhaMais">Situação: Erro! Senha tem mais de 5 dígitos.</string>
-    <string name="SituacaoErroSenhaMaiorCinco"> Situação: Erro! Senha tem mais de 5 dígitos.</string>
+    <string name="SituacaoErroSenhaMaiorCinco">Situação: Erro! Senha tem mais de 5 dígitos.</string>
     <string name="situacaoErroSenhasDiferentes">Situação: Erro! Senhas incompatíveis.</string>
     <string name="situacaoErroRepitaSenhas">Situação: Erro! Repita a senha.</string>
     <string name="situacaoErroPreenchaSenha">Situação: Erro! Preencha a senha.</string>
@@ -39,6 +39,7 @@
     <string name="QueroRendimentos">Quero meu informe de rendimentos</string>
     <string name="QueroPagarConta">Quero pagar uma conta</string>
     <string name="precisTransferir">Preciso transferir dinheiro</string>
+    <string name="lembrarUsuario">Lembrar usuário</string>
 
 
 </resources>

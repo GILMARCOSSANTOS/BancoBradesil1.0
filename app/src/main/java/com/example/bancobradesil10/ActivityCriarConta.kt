@@ -4,18 +4,18 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.bancobradesil10.criar_conta.CriarConta
 import android.text.TextUtils
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.RequiresApi
-import java.util.*
+import androidx.appcompat.app.AppCompatActivity
+import com.example.bancobradesil10.criar_conta.CriarConta
+import com.google.android.material.snackbar.Snackbar
 import java.text.NumberFormat
-import android.preference.PreferenceManager
-
-import android.content.SharedPreferences
-import android.preference.PreferenceManager.getDefaultSharedPreferences
+import java.util.*
 
 
 class ActivityCriarConta : AppCompatActivity() {
@@ -117,6 +117,7 @@ class ActivityCriarConta : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.S)
     private fun criarConta() {
         //Variáveis usadas na função.
+        val botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
         val informeSeuNome =
             findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
         val numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
@@ -139,33 +140,39 @@ class ActivityCriarConta : AppCompatActivity() {
         //Condicional
         when {
             TextUtils.isEmpty(informeNome) -> {
-                Toast.makeText(this, "INFORME SEU NOME.",  Toast.LENGTH_LONG).show()
+                val snackBar = Snackbar.make(botaoCriarConta, "Situação: Erro! Preencha seu nome.", Snackbar.LENGTH_LONG)
+                snackBar.show()
 
                 situacaoConta.text = getString(R.string.situacaoErroPreenchaNome)
             }
             suaSenha.isEmpty() -> {
-                Toast.makeText(this, "INFORME A SUA SENHA.", Toast.LENGTH_LONG).show()
+                val snackBar = Snackbar.make(botaoCriarConta, "Situação: Erro! Preencha a senha.", Snackbar.LENGTH_LONG)
+                snackBar.show()
                 situacaoConta.text = getString(R.string.situacaoErroPreenchaSenha)
             }
             repitaSenha.isEmpty() -> {
-                Toast.makeText(this, "REPITA A SENHA", Toast.LENGTH_SHORT).show()
+                val snackBar = Snackbar.make(botaoCriarConta, "Situação: Erro! Repita a senha.", Snackbar.LENGTH_LONG)
+                snackBar.show()
                 situacaoConta.text = getString(R.string.situacaoErroRepitaSenhas)
             }
             repitaSenha != suaSenha -> {
-                Toast.makeText(this, "AS SENHAS SÃO DIFERENTES.", Toast.LENGTH_LONG).show()
+                val snackBar = Snackbar.make(botaoCriarConta, "Situação: Erro! Senhas incompatíveis.", Snackbar.LENGTH_LONG)
+                snackBar.show()
                 situacaoConta.text = getString(R.string.situacaoErroSenhasDiferentes)
             }
             suaSenha.length > 5 -> {
-                Toast.makeText(this, "A SENHA DEVE TER NO MÁXIMO 5 DÍGITOS.", Toast.LENGTH_LONG)
-                    .show()
+                val snackBar = Snackbar.make(botaoCriarConta, "Situação: Erro! Senha tem mais de 5 dígitos.", Snackbar.LENGTH_LONG)
+                snackBar.show()
                 situacaoConta.text = getString(R.string.SituacaoErroSenhaMaiorCinco)
             }
             suaSenha.length < 5 -> {
-                Toast.makeText(this, "A SENHA DEVE TER 5 DÍGITOS.", Toast.LENGTH_LONG).show()
+                val snackBar = Snackbar.make(botaoCriarConta, "Situação: Erro! Senha tem menos de 5 dígitos.", Snackbar.LENGTH_LONG)
+                snackBar.show()
                 situacaoConta.text = getString(R.string.situacaoErroSenhaMenos)
             }
             situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso) -> {
-                Toast.makeText(this, "A SUA CONTA JÁ FOI CRIADA.", Toast.LENGTH_LONG).show()
+                val snackBar = Snackbar.make(botaoCriarConta, "Situação: Conta criada com sucesso!", Snackbar.LENGTH_LONG)
+                snackBar.show()
                 botaoNaoClicavel.isEnabled = false
             }
             informeSeuNome.length() != 0 &&

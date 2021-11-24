@@ -2,9 +2,13 @@ package com.example.bancobradesil10
 
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 
 
 class ActivityLogin : AppCompatActivity() {
@@ -56,20 +60,27 @@ class ActivityLogin : AppCompatActivity() {
      */
     private fun botaoContinuar() {
         //Declaração das variáveis:
+        val botaoContinuarActivityLogin = findViewById<Button>(R.id.botaoAContinuarActivityLoginId)
         val qualSenha = findViewById<EditText>(R.id.editTextQualSenhaLoginId)
         val mensagemConta = intent.getStringExtra("chaveSenha")
         val nomeActivityLogin = findViewById<TextView>(R.id.textViewNomeClienteActivityLoginId)
 
-       qualSenha.apply {
+        qualSenha.apply {
         }
-        if (qualSenha.text.toString() == mensagemConta.toString()){
+
+        if (qualSenha.text.toString().isEmpty()) {
+            val snackBar = Snackbar.make(botaoContinuarActivityLogin, "Digite a sua senha.", Snackbar.LENGTH_LONG)
+            snackBar.show()
+        }
+        if (qualSenha.text.toString() != mensagemConta.toString()) {
+            val snackBar = Snackbar.make(botaoContinuarActivityLogin, "Senha Errada!", Snackbar.LENGTH_LONG)
+            snackBar.show()
+        }
+        if (qualSenha.text.toString() == mensagemConta.toString()) {
             val intent = Intent(this, ActivityConta::class.java).apply {
                 putExtra("chaveNomeConta", nomeActivityLogin.text.toString())
             }
             startActivity(intent)
-
-        } else{
-            Toast.makeText(this, "Senha Errada!", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -79,7 +90,7 @@ class ActivityLogin : AppCompatActivity() {
     private fun imageViewVoltarActivityLogin() {
         val intent = Intent(this, MainActivity::class.java).apply {
         }
-       // startActivity(intent)
+        // startActivity(intent)
         finish()
     }
 
@@ -89,7 +100,7 @@ class ActivityLogin : AppCompatActivity() {
     private fun textViewVoltarActivityLogin() {
         val intent = Intent(this, MainActivity::class.java).apply {
         }
-       // startActivity(intent)
+        // startActivity(intent)
         finish()
     }
 }

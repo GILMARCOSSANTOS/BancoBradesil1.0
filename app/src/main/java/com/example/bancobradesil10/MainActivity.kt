@@ -2,11 +2,14 @@ package com.example.bancobradesil10
 
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
+import android.widget.ImageButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.*
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.snackbar.Snackbar
 import android.content.Intent as Intent1
 import android.os.Bundle as Bundle1
+
 
 class MainActivity : AppCompatActivity() {
     @SuppressLint("SourceLockedOrientationActivity", "SetTextI18n")
@@ -79,14 +82,13 @@ class MainActivity : AppCompatActivity() {
         val nome = nomeMainActivity.text.toString()
         val conta = numeroContaMainActivity.text.toString()
         val recebeSenha = intent.getStringExtra("chaveSenha")
+        val botaoAcessarConta = findViewById<MaterialButton>(R.id.acessarContaBotaoMainActivityId)
 
         // Enviar dados para a ActivityLogin:
         if (nome.isEmpty() && conta.isEmpty()) {
-            Toast.makeText(
-                this,
-                "Cadastre a sua conta.",
-                Toast.LENGTH_LONG
-            ).show()
+         val snackBar = Snackbar.make(botaoAcessarConta, "Cadastre a sua conta.", Snackbar.LENGTH_LONG)
+            snackBar.show()
+
         } else {
             val intent = Intent1(this, ActivityLogin::class.java).apply {
                 putExtra("chaveNomeConta", nomeMainActivity.text.toString())
@@ -97,3 +99,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
