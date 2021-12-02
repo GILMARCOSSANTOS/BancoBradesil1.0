@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
-import android.text.TextUtils
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -13,14 +12,15 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.text.NumberFormat
 import java.util.*
 
 class ActivityCriarConta : AppCompatActivity() {
 
     lateinit var authFireBase: FirebaseAuth
-    // lateinit var userFirebase: FirebaseUser
+    val db = Firebase.firestore
 
     @RequiresApi(Build.VERSION_CODES.S)
     @SuppressLint("SetTextI18n", "SourceLockedOrientationActivity")
@@ -57,7 +57,10 @@ class ActivityCriarConta : AppCompatActivity() {
     Função imageViewVoltarParaMainActivity():
      */
     private fun imageViewVoltarParaMainActivity() {
-        //VARIÁVEIS USADAS NA FUNÇÃO:
+        finish()
+    }
+
+    private fun handleBackLogin() {
         val informeSeuNome =
             findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
         val informeNome = informeSeuNome.text.toString()
@@ -66,20 +69,15 @@ class ActivityCriarConta : AppCompatActivity() {
         val numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
         val suaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
         val digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
-
-        // Fechar ActivityCriarConta e voltar para MainActivity caso a connta não tenha sido criada.
         finish()
-
-        // Intent para envio de todos os dados para a MainActivity:
-        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
-            val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra("chaveNomeConta", informeNome)
-                putExtra("chaveNumeroConta", numeroConta.text.toString())
-                putExtra("chaveSenha", suaSenha.text.toString())
-                putExtra("chaveEmail", digiteEmail.text.toString())
-            }
-            startActivity(intent)
+        val intent = Intent(this, MainActivity::class.java).apply {
+            putExtra("chaveNomeConta", informeNome)
+            putExtra("chaveNumeroConta", numeroConta.text.toString())
+            putExtra("chaveSenha", suaSenha.text.toString())
+            putExtra("chaveEmail", digiteEmail.text.toString())
         }
+        startActivity(intent)
+
     }
 
     /*
@@ -94,32 +92,34 @@ class ActivityCriarConta : AppCompatActivity() {
     Função criarConta():
      */
     @RequiresApi(Build.VERSION_CODES.S)
+
     private fun criarConta() {
         //Variáveis usadas na função.
-        val digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
-        val email = digiteEmail.text.toString()
+        val email = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId).text.toString()
+
         val botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
-        val informeSeuNome =
-            findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
+        val nome = findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId).text.toString()
         val numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
         val repitaSuaSenha =
-            findViewById<EditText>(R.id.editTextRepitaSenhaActivityCriarContaId)
-        val digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
-        val suaSenha = digiteSuaSenha.text.toString()
-        val informeNome = informeSeuNome.text.toString()
-        val repitaSenha = repitaSuaSenha.text.toString()
+            findViewById<EditText>(R.id.editTextRepitaSenhaActivityCriarContaId).text.toString()
+        val digiteSuaSenha =
+            findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId).text.toString()
+//        val suaSenha = digiteSuaSenha.text.toString()
+//        val informeNome = informeSeuNome.text.toString()
+//        val repitaSenha = repitaSuaSenha.text.toString()
         val contaAbertasRandom = (10000..99999).random()
         val situacaoConta =
             findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarContaId)
         //  userFirebase = authFireBase.getCurrentUser()!!
         val ptBr = Locale("pt", "BR")
+
         val formatarValorConta =
-            "Conta: " + NumberFormat.getNumberInstance(ptBr)
+            NumberFormat.getNumberInstance(ptBr)
                 .format(contaAbertasRandom.toDouble())
 
         //Condicional
         when {
-            TextUtils.isEmpty(informeNome) -> {
+            nome.isEmpty() -> {
                 val snackBar = Snackbar.make(
                     botaoCriarConta,
                     "Situação: Erro! Preencha o seu nome.",
@@ -137,7 +137,7 @@ class ActivityCriarConta : AppCompatActivity() {
                 snackBar.show()
                 situacaoConta.text = getString(R.string.situacaoErroPreenchaEmail)
             }
-            suaSenha.isEmpty() -> {
+            digiteSuaSenha.isEmpty() -> {
                 val snackBar = Snackbar.make(
                     botaoCriarConta,
                     "Situação: Erro! Preencha a senha.",
@@ -146,7 +146,7 @@ class ActivityCriarConta : AppCompatActivity() {
                 snackBar.show()
                 situacaoConta.text = getString(R.string.situacaoErroPreenchaSenha)
             }
-            repitaSenha.isEmpty() -> {
+            repitaSuaSenha.isEmpty() -> {
                 val snackBar = Snackbar.make(
                     botaoCriarConta,
                     "Situação: Erro! Repita a senha.",
@@ -155,7 +155,9 @@ class ActivityCriarConta : AppCompatActivity() {
                 snackBar.show()
                 situacaoConta.text = getString(R.string.situacaoErroRepitaSenhas)
             }
-            repitaSenha != suaSenha -> {
+
+            repitaSuaSenha != digiteSuaSenha -> {
+                println(repitaSuaSenha)
                 val snackBar = Snackbar.make(
                     botaoCriarConta,
                     "Situação: Erro! Senhas incompatíveis.",
@@ -164,7 +166,8 @@ class ActivityCriarConta : AppCompatActivity() {
                 snackBar.show()
                 situacaoConta.text = getString(R.string.situacaoErroSenhasDiferentes)
             }
-            suaSenha.length < 6 -> {
+
+            digiteSuaSenha.length < 6 -> {
                 val snackBar = Snackbar.make(
                     botaoCriarConta,
                     "Situação: Erro! A senha tem menos de 6 dígitos.",
@@ -173,76 +176,64 @@ class ActivityCriarConta : AppCompatActivity() {
                 snackBar.show()
                 situacaoConta.text = getString(R.string.situacaoErroSenhaMenos)
             }
-            informeSeuNome.length() != 0 &&
+
                     email.isNotEmpty() &&
-                    suaSenha == repitaSenha &&
-                    repitaSenha == suaSenha &&
-                    suaSenha.length >= 6 -> {
-                situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
+                    digiteSuaSenha == repitaSuaSenha &&
+                    digiteSuaSenha.length >= 6 -> {
                 botaoCriarConta.isEnabled = false
                 numeroConta.text = formatarValorConta
             }
         }
-        emailLogadoComSucesso()
+
+        emailLogadoComSucesso(
+            nome,
+            digiteSuaSenha,
+            repitaSuaSenha,
+            email,
+            situacaoConta,
+            formatarValorConta
+        )
     }
 
     /**
      * Função emailLogadoComSucesso()
      *OBJETIVO: ENVIAR DADOS para o Firebase:
      */
-    private fun emailLogadoComSucesso() {
+    private fun emailLogadoComSucesso(
+        nome: String,
+        senha: String,
+        repitaSenha: String,
+        email: String,
+        situacaoConta: TextView,
+        formatarValorConta: String
+    ) {
         //Declaração de variáveis:
-        val situacaoConta =
-            findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarContaId)
-        val digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
-        val email = digiteEmail.text.toString()
-        val digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
-        val suaSenha = digiteSuaSenha.text.toString()
+
+        Toast.makeText(this, "AQUIIII PASSARRR $email" + repitaSenha, Toast.LENGTH_SHORT).show()
+
         val numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
         //  userFirebase = authFireBase.getCurrentUser()!!
         val contaAbertasRandom = (10000..99999).random()
         val ptBr = Locale("pt", "BR")
-        val formatarValorConta =
-            "Conta: " + NumberFormat.getNumberInstance(ptBr)
-                .format(contaAbertasRandom.toDouble())
+
 
         //Condicional If():
-        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
+
             numeroConta.text = formatarValorConta
-            authFireBase.createUserWithEmailAndPassword(email, suaSenha)
+            authFireBase.createUserWithEmailAndPassword(email, senha)
                 .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
 
-                    //Condicional If():
-                    if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
-                        numeroConta.text = formatarValorConta
-                        authFireBase.createUserWithEmailAndPassword(email, suaSenha)
-                            .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
+                    val uid = authFireBase.currentUser?.uid
+                    val user = hashMapOf(
+                        "name" to nome,
+                        "email" to email,
+                        "senha" to senha
+                    )
+                    db.collection("users").document(uid!!).set(user)
+                    //Condicional
+                    handleBackLogin()
+                }) .addOnFailureListener { e ->Toast.makeText(this, "AQUIIII PASSARRR $email" + e, Toast.LENGTH_LONG).show() }
 
-                                if (task.isSuccessful) {
-                                    val firebaseUser: FirebaseUser = task.result!!.user!!
-                                    Toast.makeText(
-                                        this,
-                                        "Cadastro realizado com sucesso!",
-                                        Toast.LENGTH_LONG
-                                    ).show()
-
-                                } else {
-                                    Toast.makeText(
-                                        this,
-                                        "E-mail incorreto ou já cadastrado.",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            }
-
-                            )
-
-                        // .addOnCompleteListener { }
-                    } else {
-                        Toast.makeText(this, "erro", Toast.LENGTH_SHORT).show()
-                    }
-                })
-        }
     }
 }
 
