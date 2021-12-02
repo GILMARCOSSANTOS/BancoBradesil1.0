@@ -74,12 +74,36 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialTextView">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextInformeNomeActivityCriarContaId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="abcdefghijklmnopqrstuvwxykzABCDEFGHIJKLMNOPQRSTUVWXYK Z"
-                android:inputType="textCapWords|textImeMultiLine" />
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:hint="@string/eMail"
+            android:inputType="textCapWords|textImeMultiLine"
+            android:textSize="20sp"
+            app:colorControlActivated="?attr/colorOnPrimary"
+            app:hintTextColor="#0363D8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextInformeNomeActivityCriarContaId">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextInformeEmailActivityCriarContaId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="abcdefghijklmnopqrstuvwxykzABCDEFGHIJKLMNOPQRSTUVWXYK Z"
+                android:inputType="textWebEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -93,8 +117,6 @@
             android:textColorHint="@color/black"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
-            app:counterEnabled="true"
-            app:counterMaxLength="5"
             app:hintTextColor="#0363D8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -119,8 +141,6 @@
             android:textColorHint="@color/black"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
-            app:counterEnabled="true"
-            app:counterMaxLength="5"
             app:hintTextColor="#0363D8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -145,7 +165,6 @@
             android:textAllCaps="false"
             android:textColor="@color/white01"
             android:textSize="21sp"
-
             app:backgroundTint="@color/corSecundaria"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toBottomOf="@+id/linerLayoutContasId" />
@@ -154,26 +173,43 @@
             android:id="@+id/textViewSituacaoContaActivityCriarContaId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
             android:text="@string/situacaoCadastro"
-            android:textSize="20sp"
+            android:textSize="17sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="@id/botaoCriarContaActivityCriarContaId" />
+
+        <View
+            android:id="@+id/viewId02"
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/cinzaEscuroMenu" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewNumeroContaActivityCriarContaId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="25dp"
-            android:text="@string/numeroContaActivityCriarConta"
-            android:textSize="20sp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/conta"
+            android:textSize="17sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Conta:" />
+
+        <View
+            android:id="@+id/viewId03"
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/cinzaEscuroMenu" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
