@@ -208,6 +208,7 @@ class ActivityCriarConta : AppCompatActivity() {
                 .format(contaAbertasRandom.toDouble())
 
         //Condicional If():
+        //
         if (informeSeuNome.length() > 0 &&
             email.isNotEmpty() &&
             repitaSenha == suaSenha &&
