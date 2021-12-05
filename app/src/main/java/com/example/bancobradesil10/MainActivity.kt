@@ -73,11 +73,11 @@ class MainActivity : AppCompatActivity() {
         val textViewNumeroConta = findViewById<TextView>(R.id.textViewNumeroContaMainActivityId)
         val texViewEmail = findViewById<TextView>(R.id.textViewEmailMainActivityId)
         val nomeConta = textViewNomeConta.text.toString()
-        val numeroConta =  textViewNumeroConta.text.toString()
+        val numeroConta = textViewNumeroConta.text.toString()
         val eMail = texViewEmail.text.toString()
 
-        if (textViewNomeConta.length() != 0 || textViewNumeroConta.length() !=0 || texViewEmail.length() != 0 ){
-          // authFirebase.createUserWithEmailAndPassword(eMail)
+        if (textViewNomeConta.length() != 0 || textViewNumeroConta.length() != 0 || texViewEmail.length() != 0) {
+            // authFirebase.createUserWithEmailAndPassword(eMail)
 
         }
 
@@ -117,6 +117,7 @@ class MainActivity : AppCompatActivity() {
         val recebeSenha = intent.getStringExtra("chaveSenha")
         val botaoAcessarConta = findViewById<MaterialButton>(R.id.acessarContaBotaoMainActivityId)
 
+
         // Enviar dados para a ActivityLogin:
         if (nome.isEmpty() && conta.isEmpty()) {
             val snackBar =
@@ -133,4 +134,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
 

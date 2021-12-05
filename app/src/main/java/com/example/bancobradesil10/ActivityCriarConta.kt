@@ -1,5 +1,7 @@
 package com.example.bancobradesil10
 
+// Jonh Lima salvou os dasos em Firestore Database.
+
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -43,20 +45,33 @@ class ActivityCriarConta : AppCompatActivity() {
             findViewById<TextView>(R.id.texTeViewVoltarActivityCriarContaId)
         authFireBase = FirebaseAuth.getInstance()
 
-
         /*
        Criar Funções
          */
         botaoCriarConta.setOnClickListener { criarConta() }
         imageViewVoltarParaMainActivity.setOnClickListener { imageViewVoltarParaMainActivity() }
         texViewVoltarParaTelaPrincipal.setOnClickListener { textViewVoltarParaMainActivity() }
-
     }
 
     /*
     Função imageViewVoltarParaMainActivity():
      */
     private fun imageViewVoltarParaMainActivity() {
+        // Invocar função():
+        voltarParaMainActivity()
+        finish()
+    }
+
+    /*
+  Função textViewVoltarParaMainActivity():
+   */
+    private fun textViewVoltarParaMainActivity() {
+        // Invocar função():
+        voltarParaMainActivity()
+        finish()
+    }
+
+    private fun voltarParaMainActivity() {
         //VARIÁVEIS USADAS NA FUNÇÃO:
         val informeSeuNome =
             findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
@@ -67,8 +82,8 @@ class ActivityCriarConta : AppCompatActivity() {
         val suaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
         val digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
 
-        // Fechar ActivityCriarConta e voltar para MainActivity caso a connta não tenha sido criada.
-        finish()
+        // Fechar ActivityCriarConta e voltar para MainActivity caso a conta não tenha sido criada.
+        // finish()
 
         // Intent para envio de todos os dados para a MainActivity:
         if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
@@ -83,14 +98,6 @@ class ActivityCriarConta : AppCompatActivity() {
     }
 
     /*
-   Função textViewVoltarParaMainActivity():
-    */
-    private fun textViewVoltarParaMainActivity() {
-        // Invocar função():
-        imageViewVoltarParaMainActivity()
-    }
-
-    /*
     Função criarConta():
      */
     @RequiresApi(Build.VERSION_CODES.S)
@@ -101,21 +108,14 @@ class ActivityCriarConta : AppCompatActivity() {
         val botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
         val informeSeuNome =
             findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
-        val numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
+        val informeNome = informeSeuNome.text.toString()
         val repitaSuaSenha =
             findViewById<EditText>(R.id.editTextRepitaSenhaActivityCriarContaId)
+        val repitaSenha = repitaSuaSenha.text.toString()
         val digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
         val suaSenha = digiteSuaSenha.text.toString()
-        val informeNome = informeSeuNome.text.toString()
-        val repitaSenha = repitaSuaSenha.text.toString()
-        val contaAbertasRandom = (10000..99999).random()
         val situacaoConta =
             findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarContaId)
-        //  userFirebase = authFireBase.getCurrentUser()!!
-        val ptBr = Locale("pt", "BR")
-        val formatarValorConta =
-            "Conta: " + NumberFormat.getNumberInstance(ptBr)
-                .format(contaAbertasRandom.toDouble())
 
         //Condicional
         when {
@@ -173,15 +173,10 @@ class ActivityCriarConta : AppCompatActivity() {
                 snackBar.show()
                 situacaoConta.text = getString(R.string.situacaoErroSenhaMenos)
             }
-            informeSeuNome.length() != 0 &&
-                    email.isNotEmpty() &&
-                    suaSenha == repitaSenha &&
-                    repitaSenha == suaSenha &&
-                    suaSenha.length >= 6 -> {
-                situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
-                botaoCriarConta.isEnabled = false
-                numeroConta.text = formatarValorConta
+           situacaoConta.text == "" ->{
+               Toast.makeText(this, "sdsds", Toast.LENGTH_SHORT).show()
             }
+
         }
         emailLogadoComSucesso()
     }
@@ -192,6 +187,13 @@ class ActivityCriarConta : AppCompatActivity() {
      */
     private fun emailLogadoComSucesso() {
         //Declaração de variáveis:
+        val botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
+        val repitaSuaSenha =
+            findViewById<EditText>(R.id.editTextRepitaSenhaActivityCriarContaId)
+        val repitaSenha = repitaSuaSenha.text.toString()
+        //  userFirebase = authFireBase.getCurrentUser()!!
+        val informeSeuNome =
+            findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
         val situacaoConta =
             findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarContaId)
         val digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
@@ -199,7 +201,6 @@ class ActivityCriarConta : AppCompatActivity() {
         val digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
         val suaSenha = digiteSuaSenha.text.toString()
         val numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
-        //  userFirebase = authFireBase.getCurrentUser()!!
         val contaAbertasRandom = (10000..99999).random()
         val ptBr = Locale("pt", "BR")
         val formatarValorConta =
@@ -207,44 +208,56 @@ class ActivityCriarConta : AppCompatActivity() {
                 .format(contaAbertasRandom.toDouble())
 
         //Condicional If():
-        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
-            numeroConta.text = formatarValorConta
+        if (informeSeuNome.length() > 0 &&
+            email.isNotEmpty() &&
+            repitaSenha == suaSenha &&
+            suaSenha.length >= 6
+        ) {
+
             authFireBase.createUserWithEmailAndPassword(email, suaSenha)
                 .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
-
-                    //Condicional If():
-                    if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
+                    if (task.isSuccessful) {
+                        val firebaseUser: FirebaseUser = task.result!!.user!!
+                        situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
                         numeroConta.text = formatarValorConta
-                        authFireBase.createUserWithEmailAndPassword(email, suaSenha)
-                            .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
+                        botaoCriarConta.isEnabled = false
 
-                                if (task.isSuccessful) {
-                                    val firebaseUser: FirebaseUser = task.result!!.user!!
-                                    Toast.makeText(
-                                        this,
-                                        "Cadastro realizado com sucesso!",
-                                        Toast.LENGTH_LONG
-                                    ).show()
+                        Toast.makeText(
+                            this,
+                            "Cadastro realizado com sucesso!",
+                            Toast.LENGTH_LONG
+                        ).show()
 
-                                } else {
-                                    Toast.makeText(
-                                        this,
-                                        "E-mail incorreto ou já cadastrado.",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            }
-
-                            )
-
-                        // .addOnCompleteListener { }
                     } else {
-                        Toast.makeText(this, "erro", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Este e - mail já está cadastrado.", Toast.LENGTH_LONG).show()
+                        situacaoConta.text = getString(R.string.situacaoErroEmailJaCadastrado)
+
                     }
                 })
+            // .addOnCompleteListener { }
+        } else {
+            Toast.makeText(this, "erro", Toast.LENGTH_SHORT).show()
         }
+
+//        authFireBase.createUserWithEmailAndPassword(email, repitaSenha)
+//            .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
+//                if (task.isSuccessful ) {
+//                    situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
+//
+//                    Toast.makeText(this, "Conta cadastrado com sucesso", Toast.LENGTH_LONG).show()
+//
+//                }
+//                if (situacaoConta.text == ""){
+//                    Toast.makeText(this, "Este E - mail já está cadastrado.", Toast.LENGTH_LONG).show()
+//                }
+//            })
+
+
     }
 }
+
+
+
 
 
 
