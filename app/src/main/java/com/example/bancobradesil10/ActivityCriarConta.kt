@@ -24,7 +24,6 @@ const val TAG = "FIRESTORE"
 
 class ActivityCriarConta : AppCompatActivity() {
 
-
     lateinit var authFireBase: FirebaseAuth
     // var database = Firebase.firestore
     // lateinit var userFirebase: FirebaseUser
@@ -89,7 +88,7 @@ class ActivityCriarConta : AppCompatActivity() {
    */
     private fun textViewVoltarParaMainActivity() {
         // Invocar função():
-       imageViewVoltarParaMainActivity()
+        imageViewVoltarParaMainActivity()
     }
 
     /*
@@ -197,7 +196,6 @@ class ActivityCriarConta : AppCompatActivity() {
         val digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
         val suaSenha = digiteSuaSenha.text.toString()
         val numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
-
         val contaAbertasRandom = (10000..99999).random()
         val ptBr = Locale("pt", "BR")
         val formatarValorConta =
@@ -214,7 +212,7 @@ class ActivityCriarConta : AppCompatActivity() {
                 .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
                     if (task.isSuccessful) {
                         //Salva usuário E-mail do usuário no Firebase Authentication:
-                       // val firebaseUser: FirebaseUser = task.result!!.user!!
+                        // val firebaseUser: FirebaseUser = task.result!!.user!!
 
                         //Savar as informações do usuário no Firebase Cloud Firestore :
                         val hashMap = hashMapOf<String, Any>(
@@ -226,10 +224,6 @@ class ActivityCriarConta : AppCompatActivity() {
                             .add(hashMap)
                             .addOnSuccessListener {
                                 Log.d(TAG, "Added document with ID ${it.id}")
-                            }
-                            .addOnFailureListener {
-                               val a = Log.w(TAG, "Erro ao fazer cadastro de e - mail.")
-                                Toast.makeText(this, "$a", Toast.LENGTH_SHORT).show()
                             }
 
                         situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
@@ -243,14 +237,15 @@ class ActivityCriarConta : AppCompatActivity() {
                         ).show()
 
                     } else {
-                        Toast.makeText(this, "Erro! E-mail já está cadastrado ou inválido.", Toast.LENGTH_LONG)
+                        Toast.makeText(
+                            this,
+                            "Erro! E-mail já está cadastrado ou inválido.",
+                            Toast.LENGTH_LONG
+                        )
                             .show()
                         situacaoConta.text = getString(R.string.situacaoErroEmailJaCadastrado)
                     }
                 })
-            // .addOnCompleteListener { }
-        } else {
-            Toast.makeText(this, "erro", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -258,6 +253,7 @@ class ActivityCriarConta : AppCompatActivity() {
         val fireStoreDatabase = FirebaseFirestore.getInstance()
     }
 }
+
 
 
 
