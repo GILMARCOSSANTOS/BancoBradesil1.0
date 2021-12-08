@@ -1,6 +1,7 @@
 package com.example.bancobradesil10
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.widget.CheckBox
 import android.widget.ImageButton
@@ -12,6 +13,11 @@ import android.content.Intent as Intent1
 import android.os.Bundle as Bundle1
 
 class MainActivity : AppCompatActivity() {
+
+    /**
+     * Shared Preferences:
+     */
+    lateinit var sharedPreferences: SharedPreferences
 
     @SuppressLint("SourceLockedOrientationActivity", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle1?) {
@@ -77,7 +83,6 @@ class MainActivity : AppCompatActivity() {
         val eMail = texViewEmail.text.toString()
 
         if (textViewNomeConta.length() != 0 || textViewNumeroConta.length() != 0 || texViewEmail.length() != 0) {
-            // authFirebase.createUserWithEmailAndPassword(eMail)
 
         }
 

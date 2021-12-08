@@ -69,7 +69,6 @@ class ActivityConta : AppCompatActivity() {
         imageViewVisivel.setOnClickListener { olhoVisivel() }
         imageViewNaoVisivel.setOnClickListener { olhoNaoVisivel() }
         faleBia.setOnClickListener { faleComBia() }
-
     }
 
 

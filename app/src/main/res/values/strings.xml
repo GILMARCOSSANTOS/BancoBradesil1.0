@@ -39,7 +39,7 @@
     <string name="lembrarUsuario">Lembrar usuário</string>
     <string name="eMail">E-mail:</string>
     <string name="acessarContas">Acessar outras contas</string>
-    <string name="situacaoErroEmailJaCadastrado">Situação: Este e - mail já está cadastrado. </string>
+    <string name="situacaoErroEmailJaCadastrado">Situação: E-mail já cadastrado ou inválido. </string>
     <string name="situacaoEmailErroPreenchaOsDados">Situação: Preencha os seus dados. </string>
 
 </resources>
