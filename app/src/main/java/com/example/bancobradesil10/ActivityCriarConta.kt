@@ -4,6 +4,7 @@ package com.example.bancobradesil10
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
@@ -16,14 +17,26 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.NumberFormat
 import java.util.*
 
+// Tag para usar no LOG:
 const val TAG = "FIRESTORE"
+
+var bancoDadosFirestore1: FirebaseFirestore? = null
 
 class ActivityCriarConta : AppCompatActivity() {
 
+    //Tutorial:
+    private lateinit var database: DatabaseReference
+
+    // 01 - Shared Preferences:
+    lateinit var sharedPreferences: SharedPreferences
+
+    //Dados para serem usados no Firebase:
+    var usuarioFirerbaseId = String
     lateinit var authFireBase: FirebaseAuth
     // var database = Firebase.firestore
     // lateinit var userFirebase: FirebaseUser
@@ -48,6 +61,8 @@ class ActivityCriarConta : AppCompatActivity() {
         val texViewVoltarParaTelaPrincipal =
             findViewById<TextView>(R.id.texTeViewVoltarActivityCriarContaId)
         authFireBase = FirebaseAuth.getInstance()
+        // 02: SharedPreferences:
+        sharedPreferences = getSharedPreferences("chaveGeral", MODE_PRIVATE)
 
         /*
        Criar Funções
@@ -78,9 +93,11 @@ class ActivityCriarConta : AppCompatActivity() {
                 putExtra("chaveNumeroConta", numeroConta.text.toString())
                 putExtra("chaveSenha", suaSenha.text.toString())
                 putExtra("chaveEmail", digiteEmail.text.toString())
+
             }
             startActivity(intent)
         }
+        finish()
     }
 
     /*
@@ -170,7 +187,6 @@ class ActivityCriarConta : AppCompatActivity() {
             situacaoConta.text == "" -> {
                 Toast.makeText(this, "sdsds", Toast.LENGTH_SHORT).show()
             }
-
         }
         emailLogadoComSucesso()
     }
@@ -185,7 +201,6 @@ class ActivityCriarConta : AppCompatActivity() {
         val repitaSuaSenha =
             findViewById<EditText>(R.id.editTextRepitaSenhaActivityCriarContaId)
         val repitaSenha = repitaSuaSenha.text.toString()
-        //  userFirebase = authFireBase.getCurrentUser()!!
         val informeSeuNome =
             findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
         val informeNome = informeSeuNome.text.toString()
@@ -214,21 +229,33 @@ class ActivityCriarConta : AppCompatActivity() {
                         //Salva usuário E-mail do usuário no Firebase Authentication:
                         // val firebaseUser: FirebaseUser = task.result!!.user!!
 
-                        //Savar as informações do usuário no Firebase Cloud Firestore :
                         val hashMap = hashMapOf<String, Any>(
                             "Nome do usuário" to informeNome,
                             "Conta do usuário" to formatarValorConta,
                             "E - mail do usuário" to email
+
                         )
                         FirebaseUtils().fireStoreDatabase.collection("Usuários Banco Bradesil 1.0")
+                          //?.document("Informações Gerais")
+                            //.set(hashMap)
                             .add(hashMap)
+
                             .addOnSuccessListener {
-                                Log.d(TAG, "Added document with ID ${it.id}")
+                                 Log.d(TAG, "Added document with ID ${it.id}")
+                            }
+                            .addOnFailureListener {
+                                val a = Log.w(TAG, "Erro ao fazer cadastro de e - mail.")
+                                Toast.makeText(this, "$a", Toast.LENGTH_SHORT).show()
                             }
 
-                        situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
+                        situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso )
                         numeroConta.text = formatarValorConta
                         botaoCriarConta.isEnabled = false
+
+                        //03: SharedPreferences:
+                        val salvarDadosSharedPreferences = sharedPreferences.edit()
+                        salvarDadosSharedPreferences.putString("chaveNome", informeNome)
+                        salvarDadosSharedPreferences.apply()
 
                         Toast.makeText(
                             this,
@@ -246,20 +273,17 @@ class ActivityCriarConta : AppCompatActivity() {
                         situacaoConta.text = getString(R.string.situacaoErroEmailJaCadastrado)
                     }
                 })
+
+        } else {
+            Toast.makeText(this, "erro", Toast.LENGTH_SHORT).show()
         }
-    }
+        }
 
     class FirebaseUtils {
         val fireStoreDatabase = FirebaseFirestore.getInstance()
     }
+
 }
-
-
-
-
-
-
-
 
 
 
