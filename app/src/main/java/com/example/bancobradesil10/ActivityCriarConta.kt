@@ -4,7 +4,6 @@ package com.example.bancobradesil10
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
@@ -255,9 +254,9 @@ class ActivityCriarConta : AppCompatActivity() {
                         botaoCriarConta.isEnabled = false
 
                         //03: SharedPreferences:
-                        val salvarDadosSharedPreferences = sharedPreferences.edit()
-                        salvarDadosSharedPreferences.putString("chaveNome", informeNome)
-                        salvarDadosSharedPreferences.apply()
+                       // val salvarDadosSharedPreferences = sharedPreferences.edit()
+                       // salvarDadosSharedPreferences.putString("chaveNome", informeNome)
+                       // salvarDadosSharedPreferences.apply()
 
                         Toast.makeText(
                             this,
