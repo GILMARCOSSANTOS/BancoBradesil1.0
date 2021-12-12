@@ -257,6 +257,7 @@ class ActivityCriarConta : AppCompatActivity() {
                        // val salvarDadosSharedPreferences = sharedPreferences.edit()
                        // salvarDadosSharedPreferences.putString("chaveNome", informeNome)
                        // salvarDadosSharedPreferences.apply()
+                        //
 
                         Toast.makeText(
                             this,
