@@ -85,15 +85,17 @@ class ActivityCriarConta : AppCompatActivity() {
         val suaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
         val digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
 
-        // Intent para envio de todos os dados para a MainActivity:
-        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
-            val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra("chaveNomeConta", informeNome)
-                putExtra("chaveNumeroConta", numeroConta.text.toString())
-                putExtra("chaveSenha", suaSenha.text.toString())
-                putExtra("chaveEmail", digiteEmail.text.toString())
+        val intent = Intent(this, MainActivity::class.java).apply {
 
-            }
+        // Intent para envio de todos os dados para a MainActivity:
+//        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
+//            val intent = Intent(this, MainActivity::class.java).apply {
+//                putExtra("chaveNomeConta", informeNome)
+//                putExtra("chaveNumeroConta", numeroConta.text.toString())
+//                putExtra("chaveSenha", suaSenha.text.toString())
+//                putExtra("chaveEmail", digiteEmail.text.toString())
+//
+//            }
             startActivity(intent)
         }
         finish()
@@ -234,7 +236,6 @@ class ActivityCriarConta : AppCompatActivity() {
                             "Nome do usuário" to informeNome,
                             "Conta do usuário" to formatarValorConta,
                             "E - mail do usuário" to email
-
                         )
                         FirebaseUtils().fireStoreDatabase.collection("Usuários Banco Bradesil 1.0")
                           //?.document("Informações Gerais")
@@ -257,8 +258,6 @@ class ActivityCriarConta : AppCompatActivity() {
                        // val salvarDadosSharedPreferences = sharedPreferences.edit()
                        // salvarDadosSharedPreferences.putString("chaveNome", informeNome)
                        // salvarDadosSharedPreferences.apply()
-                        //
-                        //
 
                         Toast.makeText(
                             this,

@@ -1,8 +1,6 @@
 package com.example.bancobradesil10
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.widget.CheckBox
 import android.widget.ImageButton
@@ -24,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Shared Preferences:
      */
-    lateinit var sharedPreferences: SharedPreferences
+    //lateinit var sharedPreferences: SharedPreferences
 
     @SuppressLint("SourceLockedOrientationActivity", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle1?) {
@@ -56,32 +54,31 @@ class MainActivity : AppCompatActivity() {
          * Shared Preference
          */
         //Atualiza Nomes:
-        sharedPreferences = getSharedPreferences("chaveGeral", Context.MODE_PRIVATE)
+        //  sharedPreferences = getSharedPreferences("chaveGeral", Context.MODE_PRIVATE)
         //Atualiza CheckBox
-     // checkBoxLembrar.setChecked(update("ChaveCheckBoxMainActivity"))
-
+        // checkBoxLembrar.setChecked(update("ChaveCheckBoxMainActivity"))
 
 
         /*
        Recepção dos dados da Activity CriarConta:
          */
-        val mensagemNome = intent.getStringExtra("chaveNomeConta")
-        val mensagemConta = intent.getStringExtra("chaveNumeroConta")
-        val mensagemEmail = intent.getStringExtra("chaveEmail")
+//        val mensagemNome = intent.getStringExtra("chaveNomeConta")
+//        val mensagemConta = intent.getStringExtra("chaveNumeroConta")
+//        val mensagemEmail = intent.getStringExtra("chaveEmail")
 
         // Valores das Views da MainActivity = valores da ActivityCriarConta:
-        textViewNomeConta.apply {
-            text = mensagemNome
-        }
-        textViewNumeroConta.apply {
-            text = mensagemConta
-        }
-        texViewEmail.apply {
-            text = mensagemEmail
-        }
+//        textViewNomeConta.apply {
+//            text = mensagemNome
+//        }
+//        textViewNumeroConta.apply {
+//            text = mensagemConta
+//        }
+//        texViewEmail.apply {
+//            text = mensagemEmail
+//        }
 
-        textViewNumeroConta.text = sharedPreferences.getString("txt", "${textViewNumeroConta.text}")
-        textViewNomeConta.text = sharedPreferences.getString("txt", "${textViewNomeConta.text}")
+//        textViewNumeroConta.text = sharedPreferences.getString("txt", "${textViewNumeroConta.text}")
+//        textViewNomeConta.text = sharedPreferences.getString("txt", "${textViewNomeConta.text}")
 
         //shared 04:
         val resultado = getSharedPreferences("chaveGeral", MODE_PRIVATE)
@@ -162,7 +159,6 @@ class MainActivity : AppCompatActivity() {
         val nomeMainActivity = findViewById<TextView>(R.id.textViewNomeClienteMainActivityId)
         val nome = nomeMainActivity.text.toString()
         val numeroContaMainActivity = findViewById<TextView>(R.id.textViewNumeroContaMainActivityId)
-
         val conta = numeroContaMainActivity.text.toString()
         val recebeSenha = intent.getStringExtra("chaveSenha")
         val botaoAcessarConta = findViewById<MaterialButton>(R.id.acessarContaBotaoMainActivityId)
@@ -183,6 +179,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    val nomeMainActivity = findViewById<TextView>(R.id.textViewNomeClienteMainActivityId)
+    var nome01 = nomeMainActivity.text.toString()
+
     override fun onStart() {
         super.onStart()
 
@@ -192,9 +191,9 @@ class MainActivity : AppCompatActivity() {
         bancoDadosFirestore?.collection("Usuários Banco Bradesil 1.0")
             ?.document("fdsfs")?.get()?.addOnCompleteListener { task ->
 
-                if (task.isSuccessful){
+                if (task.isSuccessful) {
                     val documentoFirebase = task.result
-                    if (documentoFirebase != null && documentoFirebase.exists()){
+                    if (documentoFirebase != null && documentoFirebase.exists()) {
                         val dados = documentoFirebase.data
 
                         var nome02 = dados?.get("Nome do usuário").toString()
