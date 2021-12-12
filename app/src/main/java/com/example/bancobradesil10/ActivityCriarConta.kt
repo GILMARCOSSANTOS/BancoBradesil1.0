@@ -33,7 +33,7 @@ class ActivityCriarConta : AppCompatActivity() {
     private lateinit var database: DatabaseReference
 
     // 01 - Shared Preferences:
-    lateinit var sharedPreferences: SharedPreferences
+   // lateinit var sharedPreferences: SharedPreferences
 
     //Dados para serem usados no Firebase:
     var usuarioFirerbaseId = String
@@ -62,7 +62,7 @@ class ActivityCriarConta : AppCompatActivity() {
             findViewById<TextView>(R.id.texTeViewVoltarActivityCriarContaId)
         authFireBase = FirebaseAuth.getInstance()
         // 02: SharedPreferences:
-        sharedPreferences = getSharedPreferences("chaveGeral", MODE_PRIVATE)
+       // sharedPreferences = getSharedPreferences("chaveGeral", MODE_PRIVATE)
 
         /*
        Criar Funções
