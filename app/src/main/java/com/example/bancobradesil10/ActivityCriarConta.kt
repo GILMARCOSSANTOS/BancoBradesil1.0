@@ -108,6 +108,8 @@ class ActivityCriarConta : AppCompatActivity() {
         imageViewVoltarParaMainActivity()
     }
 
+    //
+
     /*
     Função criarConta():
      */
