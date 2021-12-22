@@ -12,6 +12,18 @@ import com.google.android.material.snackbar.Snackbar
 
 
 class ActivityLogin : AppCompatActivity() {
+
+    /*
+      Variáveis em Escopo Global:
+       */
+    private lateinit var nomeActivityActivityLogin: TextView
+    private lateinit var numeroContaActivityLogin: TextView
+    private lateinit var imageViewVoltar01: ImageView
+    private lateinit var textViewVoltar01: TextView
+    private lateinit var botaoContinuarActivityLogin: Button
+    private lateinit var qualSenha: EditText
+    private lateinit var nomeActivityLogin: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -22,37 +34,22 @@ class ActivityLogin : AppCompatActivity() {
         requestedOrientation = (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
         /*
-        Recepção dos dados (NOME E CONTA) enviados por MainActivity:
+        Declaração de variáveis:
          */
-        val nomeActivityActivityLogin =
+        nomeActivityActivityLogin =
             findViewById<TextView>(R.id.textViewNomeClienteActivityLoginId)
-        val numeroContaActivityLogin =
+        numeroContaActivityLogin =
             findViewById<TextView>(R.id.textViewNumeroContaLoginActivityId)
-
-        val mensagemNomeActivityLogin = intent.getStringExtra("chaveNomeConta")
-        val mensagemContaActivityLogin = intent.getStringExtra("chaveNumeroConta")
-
-        nomeActivityActivityLogin.apply {
-            text = mensagemNomeActivityLogin
-        }
-        numeroContaActivityLogin.apply {
-            text = mensagemContaActivityLogin
-        }
+        imageViewVoltar01 = findViewById<ImageView>(R.id.imageViewVoltarLoginId)
+        textViewVoltar01 = findViewById<TextView>(R.id.textViewVoltarLoginId)
+        botaoContinuarActivityLogin = findViewById<Button>(R.id.botaoAContinuarActivityLoginId)
 
         /*
-        Criar Função imageViewVoltarActivityLogin():
+        Criar Funções:
          */
-        val imageViewVoltar01 = findViewById<ImageView>(R.id.imageViewVoltarLoginId)
-        imageViewVoltar01.setOnClickListener { imageViewVoltarActivityLogin() }
-
-        /*
-        Criar função textViewVoltarActivityLogin():
-         */
-        val textViewVoltar01 = findViewById<TextView>(R.id.textViewVoltarLoginId)
         textViewVoltar01.setOnClickListener { textViewVoltarActivityLogin() }
-
-        val botaoContinuarActivityLogin = findViewById<Button>(R.id.botaoAContinuarActivityLoginId)
         botaoContinuarActivityLogin.setOnClickListener { botaoContinuar() }
+        imageViewVoltar01.setOnClickListener { imageViewVoltarActivityLogin() }
     }
 
     /*
@@ -60,25 +57,24 @@ class ActivityLogin : AppCompatActivity() {
      */
     private fun botaoContinuar() {
         //Declaração das variáveis:
-        val botaoContinuarActivityLogin = findViewById<Button>(R.id.botaoAContinuarActivityLoginId)
-        val qualSenha = findViewById<EditText>(R.id.editTextQualSenhaLoginId)
         val mensagemConta = intent.getStringExtra("chaveSenha")
-        val nomeActivityLogin = findViewById<TextView>(R.id.textViewNomeClienteActivityLoginId)
-
-        qualSenha.apply {
-        }
 
         if (qualSenha.text.toString().isEmpty()) {
-            val snackBar = Snackbar.make(botaoContinuarActivityLogin, "Digite a sua senha.", Snackbar.LENGTH_LONG)
+            val snackBar = Snackbar.make(
+                botaoContinuarActivityLogin,
+                "Digite a sua senha.",
+                Snackbar.LENGTH_LONG
+            )
             snackBar.show()
         }
         if (qualSenha.text.toString() != mensagemConta.toString()) {
-            val snackBar = Snackbar.make(botaoContinuarActivityLogin, "Senha Errada!", Snackbar.LENGTH_LONG)
+            val snackBar =
+                Snackbar.make(botaoContinuarActivityLogin, "Senha Errada!", Snackbar.LENGTH_LONG)
             snackBar.show()
         }
         if (qualSenha.text.toString() == mensagemConta.toString()) {
             val intent = Intent(this, ActivityConta::class.java).apply {
-                putExtra("chaveNomeConta", nomeActivityLogin.text.toString())
+
             }
             startActivity(intent)
         }

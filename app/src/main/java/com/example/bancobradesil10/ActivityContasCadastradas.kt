@@ -1,14 +1,19 @@
 package com.example.bancobradesil10
 
-import android.content.Intent
 import android.content.pm.ActivityInfo
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class ActivityContasCadastradas : AppCompatActivity() {
+
+    /**
+     * Variáveis em Escopo global:
+     */
+    private lateinit var imageButtonVoltar02: ImageView
+    private lateinit var textViewVoltar02: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contas_cadastradas)
@@ -19,44 +24,25 @@ class ActivityContasCadastradas : AppCompatActivity() {
         requestedOrientation = (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
         /*
-        Criar Função imageViewVoltarActivityContasCadastradas():
+        Criar Funções:
          */
-        val imageButtonVoltar02 =
-            findViewById<ImageView>(R.id.imageButtonVoltarContasCadastradasId)
-        imageButtonVoltar02.setOnClickListener { imageButtonVoltarContasCadastradasId() }
 
-        /*
-       Criar Função textViewVoltarActivityContasCadastradas():
-         */
-        val textViewVoltar02 = findViewById<TextView>(R.id.textViewVoltarContasCadastradasId)
         textViewVoltar02.setOnClickListener { textViewVoltarActivityContasCadastradas() }
+        imageButtonVoltar02.setOnClickListener { imageButtonVoltarContasCadastradasId() }
     }
-
-    /* override fun onSaveInstanceState(outState: Bundle) {
-         super.onSaveInstanceState(outState)
-         outState.putStringArrayList("nomes", nomes)
-     }*/
 
     /*
    Função textViewVoltarActivityContasCadastradas():
   */
     private fun textViewVoltarActivityContasCadastradas() {
-        // val intent = Intent(this, MainActivity::class.java).apply {
-        // }
-        // startActivity(intent)
         finish()
-
     }
 
-    /*
-        Função imageViewVoltarActivityContasCadastradas():
+    /**
+     * Função imageViewVoltarActivityContasCadastradas():
      */
 
     private fun imageButtonVoltarContasCadastradasId() {
-        // val intent = Intent(this, MainActivity::class.java).apply {
-        //  }
-        //  startActivity(intent)
         finish()
-
     }
 }
