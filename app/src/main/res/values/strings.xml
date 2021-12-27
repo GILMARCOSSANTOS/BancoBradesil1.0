@@ -41,5 +41,7 @@
     <string name="acessarContas">Acessar outras contas</string>
     <string name="situacaoErroEmailJaCadastrado">Situação: E-mail já cadastrado ou inválido. </string>
     <string name="situacaoEmailErroPreenchaOsDados">Situação: Preencha os seus dados. </string>
+    <string name="digiteSuaSenha">Digite a sua senha:</string>
+    <string name="digiteSeuEmail">Digite o seu e - mail:</string>
 
 </resources>

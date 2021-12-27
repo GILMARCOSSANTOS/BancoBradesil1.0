@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.firestore.FirebaseFirestore
 import android.content.Intent as Intent1
 import android.os.Bundle as Bundle1
@@ -26,18 +25,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var botaoCriarconta: MaterialButton
     private lateinit var imageButtonContasCadastradas: ImageButton
     private lateinit var texViewAcessarConta: TextView
-    private lateinit var lembrarMeuUsuario: CheckBox
     private lateinit var checkBoxLembrar: CheckBox
-    private lateinit var nomeMainActivity: TextView
-    private lateinit var numeroContaMainActivity: TextView
 
-    // 01 Recuperar dados do Cloud Firestore:
-    var db: FirebaseFirestore? = FirebaseFirestore.getInstance()
-    lateinit var auth: FirebaseAuth
-    lateinit var firebaseDatabase: DatabaseReference
-
-    // 02 Recuperar dados do Cloud Firestore:
-    lateinit var usuarioId: String
+    // Firebase 02 = Recuperar instância do Firebase Database para recuperar dados:
+    private val bancoDadosFirebase = FirebaseFirestore.getInstance()
+    private var usuarioFirebase: String = ""
+    private var emailFirebase: String = ""
+    private var numeroContaFirebase: String = ""
 
     @SuppressLint("SourceLockedOrientationActivity", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle1?) {
@@ -105,43 +99,35 @@ class MainActivity : AppCompatActivity() {
     Função AcessarConta():
      */
     private fun acessarConta() {
-        //Variáveis:
-        val nome = nomeMainActivity.text.toString()
-        val conta = numeroContaMainActivity.text.toString()
-        val recebeSenha = intent.getStringExtra("chaveSenha")
 
-        // Enviar dados para a ActivityLogin:
-        if (nome.isEmpty() && conta.isEmpty()) {
+        if (textViewNomeConta.text.toString().isEmpty() || textViewNumeroConta.text.toString()
+                .isEmpty() || texViewEmail.text.toString().isEmpty()
+        ) {
             val snackBar =
                 Snackbar.make(botaoAcessarConta, "Cadastre a sua conta.", Snackbar.LENGTH_LONG)
             snackBar.show()
 
         } else {
             val intent = Intent1(this, ActivityLogin::class.java).apply {
-                putExtra("chaveNomeConta", nomeMainActivity.text.toString())
-                putExtra("chaveNumeroConta", numeroContaMainActivity.text.toString())
-                putExtra("chaveSenha", recebeSenha)
             }
             startActivity(intent)
         }
     }
 
-
     override fun onStart() {
         super.onStart()
+        usuarioFirebase = FirebaseAuth.getInstance().currentUser!!.uid
+        emailFirebase = FirebaseAuth.getInstance().currentUser.toString()
+        numeroContaFirebase = FirebaseAuth.getInstance().currentUser.toString()
 
-//        // usuarioId = FirebaseAuth.getInstance().getCurrentUser().getUid()
-//        usuarioId = FirebaseAuth.getInstance().currentUser!!.uid
-//        val nomeMainActivity = findViewById<TextView>(R.id.textViewNomeClienteMainActivityId)
-//        var nome = nomeMainActivity.text.toString()
-//
-//        val documentReference: DocumentReference = db!!.collection("Usuários Banco Bradesil 1.0").document(usuarioId)
-//        documentReference.addSnapshotListener { value, error ->
-//            if (value != null) {
-//               //nomeMainActivity.setText(value.getString("Nome do usuário"))
-//                nomeMainActivity.text = value.getString("Nome do usuário")
-//            }
-//        }
-
+        val documentReference =
+            bancoDadosFirebase.collection("UsuariosFirebase").document(usuarioFirebase)
+        documentReference.addSnapshotListener { value, error ->
+            if (value != null) {
+                textViewNomeConta.text = value.getString("NomeUsuario")
+                texViewEmail.text = value.getString("EmailUsuario")
+                textViewNumeroConta.text = value.getString("NumeroConta")
+            }
+        }
     }
 }
