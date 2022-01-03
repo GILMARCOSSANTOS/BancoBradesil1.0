@@ -2,32 +2,18 @@ package com.example.bancobradesil10
 
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
-import android.widget.CheckBox
-import android.widget.ImageButton
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.*
 import com.google.android.material.button.MaterialButton
 import android.content.Intent as Intent1
 import android.os.Bundle as Bundle1
 
 class MainActivity : AppCompatActivity() {
-
-    /**
-     * Declaração de variáveis em Escopo Global:
-     */
-    private lateinit var textViewNomeConta: TextView
-    private lateinit var textViewNumeroConta: TextView
-    private lateinit var texViewEmail: TextView
-    private lateinit var botaoAcessarConta: MaterialButton
-    private lateinit var botaoCriarconta: MaterialButton
-    private lateinit var imageButtonContasCadastradas: ImageButton
-    private lateinit var checkBoxLembrar: CheckBox
-    private lateinit var textViewAContasCadastradas: TextView
-
     @SuppressLint("SourceLockedOrientationActivity", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle1?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         /*
         Bloquear Orientação de tela:
          */
@@ -36,46 +22,42 @@ class MainActivity : AppCompatActivity() {
         /**
          * Declaração de variáveis:
          */
-        textViewNomeConta = findViewById(R.id.textViewNomeCliente02ActivityMainId)
-        textViewNumeroConta = findViewById(R.id.textViewConta02ActivityMainId)
-        texViewEmail = findViewById(R.id.textViewEmail2ActivityLoginId)
-        botaoAcessarConta = findViewById(R.id.acessarContaBotaoMainActivityId)
-        botaoCriarconta = findViewById(R.id.botaoCriarContaMainActivityId)
-        checkBoxLembrar = findViewById(R.id.checkboxLembrarUsuarioId)
-        textViewAContasCadastradas =
-            findViewById(R.id.textViewAcessarContasCadastradasMainActivityId)
-        imageButtonContasCadastradas = findViewById(R.id.imageButtonContasCadastradasMainActivityId)
+        val textViewNomeConta = findViewById<TextView>(R.id.textViewNomeClienteMainActivityId)
+        val textViewNumeroConta = findViewById<TextView>(R.id.textViewNumeroContaMainActivityId)
+        val botaoAcessarConta = findViewById<MaterialButton>(R.id.acessarContaBotaoMainActivityId)
+        val botaoCriarconta = findViewById<MaterialButton>(R.id.botaoCriarContaMainActivityId)
+        val imageButtonContasCadastradas =
+            findViewById<ImageButton>(R.id.imageButtonContasCadastradasMainActivityId)
+
+        /*
+       Recepção dos dados da Activity CriarConta:
+         */
+        val mensagemNome = intent.getStringExtra("chaveNomeConta")
+        val mensagemConta = intent.getStringExtra("chaveNumeroConta")
+
+        // Valores das Views da MainActivity = valores da ActivityCriarConta:
+        textViewNomeConta.apply {
+            text = mensagemNome
+        }
+        textViewNumeroConta.apply {
+            text = mensagemConta
+        }
 
         /*
         Criar Funções:
          */
         botaoAcessarConta.setOnClickListener { acessarConta() }
         botaoCriarconta.setOnClickListener { criarConta() }
-        // imageButtonContasCadastradas.setOnClickListener { imageButtonEntrarEmContasCadastradas() }
-        textViewAContasCadastradas.setOnClickListener { textViewEntrarContasCadastradas() }
-        imageButtonContasCadastradas.setOnClickListener { imageButtonEntrarContasCadastradas() }
-        checkBoxLembrar.setOnClickListener { lembrarUsuario() }
-        // lembrarMeuUsuario.setOnClickListener { lembrarUsuario() }
-
-    }
-
-    /*
-Função CheckBoxLembrarUsuario():
- */
-    private fun lembrarUsuario() {
+        imageButtonContasCadastradas.setOnClickListener { entrarEmContasCadastradas() }
     }
 
     /*
     Função EntrarEmContasCadastradas():
      */
-    private fun imageButtonEntrarContasCadastradas() {
+    private fun entrarEmContasCadastradas() {
         val intent = Intent1(this, ActivityContasCadastradas::class.java).apply {
         }
         startActivity(intent)
-    }
-
-    private fun textViewEntrarContasCadastradas() {
-        imageButtonEntrarContasCadastradas()
     }
 
     /*
@@ -91,14 +73,27 @@ Função CheckBoxLembrarUsuario():
     Função AcessarConta():
      */
     private fun acessarConta() {
-        val intent = Intent1(this, ActivityLogin::class.java).apply {
+        //Variáveis:
+        val nomeMainActivity = findViewById<TextView>(R.id.textViewNomeClienteMainActivityId)
+        val numeroContaMainActivity = findViewById<TextView>(R.id.textViewNumeroContaMainActivityId)
+        val nome = nomeMainActivity.text.toString()
+        val conta = numeroContaMainActivity.text.toString()
+        val recebeSenha = intent.getStringExtra("chaveSenha")
+
+        // Enviar dados para a ActivityLogin:
+        if (nome.isEmpty() && conta.isEmpty()) {
+            Toast.makeText(
+                this,
+                "Cadastre a sua conta.",
+                Toast.LENGTH_LONG
+            ).show()
+        } else {
+            val intent = Intent1(this, ActivityLogin::class.java).apply {
+                putExtra("chaveNomeConta", nomeMainActivity.text.toString())
+                putExtra("chaveNumeroConta", numeroContaMainActivity.text.toString())
+                putExtra("chaveSenha", recebeSenha)
+            }
+            startActivity(intent)
         }
-        startActivity(intent)
     }
-
-
 }
-
-
-
-

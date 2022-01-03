@@ -2,30 +2,12 @@ package com.example.bancobradesil10
 
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
+import android.os.Bundle
+import android.widget.*
 
 
 class ActivityLogin : AppCompatActivity() {
-
-    /*
-      Variáveis em Escopo Global:
-       */
-    private lateinit var textViewNumeroContaActivityLogin: TextView
-    private lateinit var imageViewVoltar01: ImageView
-    private lateinit var textViewVoltar01: TextView
-    private lateinit var botaoContinuarActivityLogin: Button
-    private lateinit var editTextInformeSenha: EditText
-    private lateinit var textViewNomeActivityLogin: TextView
-    private lateinit var textViewEmailActivityLogin: TextView
-    private lateinit var editTexTEmail: EditText
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -36,26 +18,37 @@ class ActivityLogin : AppCompatActivity() {
         requestedOrientation = (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
         /*
-        Declaração de variáveis:
+        Recepção dos dados (NOME E CONTA) enviados por MainActivity:
          */
-        textViewNomeActivityLogin =
-            findViewById(R.id.textViewNomeCliente02ActivityLoginId)
-        textViewNumeroContaActivityLogin =
-            findViewById(R.id.textViewConta02ActivityLoginId)
-        imageViewVoltar01 = findViewById(R.id.imageViewVoltarLoginId)
-        textViewVoltar01 = findViewById(R.id.textViewVoltarLoginId)
-        botaoContinuarActivityLogin = findViewById(R.id.botaoAContinuarActivityLoginId)
-        textViewEmailActivityLogin = findViewById(R.id.textViewEmail2ActivityLoginId)
-        editTextInformeSenha = findViewById(R.id.editTextQualSenhaLoginId)
-        editTexTEmail = findViewById(R.id.editTextQualEmailLoginId)
+        val nomeActivityActivityLogin =
+            findViewById<TextView>(R.id.textViewNomeClienteActivityLoginId)
+        val numeroContaActivityLogin =
+            findViewById<TextView>(R.id.textViewNumeroContaLoginActivityId)
+
+        val mensagemNomeActivityLogin = intent.getStringExtra("chaveNomeConta")
+        val mensagemContaActivityLogin = intent.getStringExtra("chaveNumeroConta")
+
+        nomeActivityActivityLogin.apply {
+            text = mensagemNomeActivityLogin
+        }
+        numeroContaActivityLogin.apply {
+            text = mensagemContaActivityLogin
+        }
 
         /*
-        Criar Funções:
+        Criar Função imageViewVoltarActivityLogin():
          */
-        textViewVoltar01.setOnClickListener { textViewVoltarActivityLogin() }
-        botaoContinuarActivityLogin.setOnClickListener { botaoContinuar() }
+        val imageViewVoltar01 = findViewById<ImageView>(R.id.imageViewVoltarLoginId)
         imageViewVoltar01.setOnClickListener { imageViewVoltarActivityLogin() }
 
+        /*
+        Criar função textViewVoltarActivityLogin():
+         */
+        val textViewVoltar01 = findViewById<TextView>(R.id.textViewVoltarLoginId)
+        textViewVoltar01.setOnClickListener { textViewVoltarActivityLogin() }
+
+        val botaoContinuarActivityLogin = findViewById<Button>(R.id.botaoAContinuarActivityLoginId)
+        botaoContinuarActivityLogin.setOnClickListener { botaoContinuar() }
     }
 
     /*
@@ -63,41 +56,21 @@ class ActivityLogin : AppCompatActivity() {
      */
     private fun botaoContinuar() {
         //Declaração das variáveis:
+        val qualSenha = findViewById<EditText>(R.id.editTextQualSenhaLoginId)
+        val mensagemConta = intent.getStringExtra("chaveSenha")
+        val nomeActivityLogin = findViewById<TextView>(R.id.textViewNomeClienteActivityLoginId)
 
-        //Reconhecer usuário atual e fazer LOGIN no Firebase:
-
-        if (editTextInformeSenha.text.toString().isEmpty()) {
-            val snackBar = Snackbar.make(
-                botaoContinuarActivityLogin,
-                "Digite a sua senha.",
-                Snackbar.LENGTH_LONG
-            )
-            snackBar.show()
-        } else {
-            autenticarLoginUsuario()
+       qualSenha.apply {
         }
-    }
-
-    private fun autenticarLoginUsuario() {
-//        val email = textViewEmailActivityLogin.text.toString()
-        val senha = editTextInformeSenha.text.toString()
-        val email = editTexTEmail.text.toString()
-
-        FirebaseAuth.getInstance()
-            .signInWithEmailAndPassword(email, senha)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val intent = Intent(this, ActivityConta::class.java)
-                    startActivity(intent)
-                } else {
-                    val snackbar = Snackbar.make(
-                        botaoContinuarActivityLogin,
-                        "Senha ou e e-mail incorretos.",
-                        Snackbar.LENGTH_LONG
-                    )
-                    snackbar.show()
-                }
+        if (qualSenha.text.toString() == mensagemConta.toString()){
+            val intent = Intent(this, ActivityConta::class.java).apply {
+                putExtra("chaveNomeConta", nomeActivityLogin.text.toString())
             }
+            startActivity(intent)
+
+        } else{
+            Toast.makeText(this, "Senha Errada!", Toast.LENGTH_LONG).show()
+        }
     }
 
     /*
@@ -106,7 +79,7 @@ class ActivityLogin : AppCompatActivity() {
     private fun imageViewVoltarActivityLogin() {
         val intent = Intent(this, MainActivity::class.java).apply {
         }
-        startActivity(intent)
+       // startActivity(intent)
         finish()
     }
 
@@ -114,10 +87,9 @@ class ActivityLogin : AppCompatActivity() {
     Função textViewVoltarActivityLogin():
     */
     private fun textViewVoltarActivityLogin() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        val intent = Intent(this, MainActivity::class.java).apply {
+        }
+       // startActivity(intent)
         finish()
     }
-
 }
-
