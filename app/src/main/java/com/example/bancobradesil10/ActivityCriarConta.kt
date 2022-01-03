@@ -269,15 +269,15 @@ class ActivityCriarConta : AppCompatActivity() {
     private fun salvarDadosFirestoreDatabase() {
 
         val usuarioFirebase = FirebaseAuth.getInstance().currentUser!!.uid
-        val nomeUsuarioFirebase: String = digiteSeuNome.text.toString()
+        val nomeUsuarioFirebased: String = digiteSeuNome.text.toString()
         val emailUsuarioFirebase: String = digiteEmail.text.toString()
         val contaUsuarioFirebase: String = numeroConta.text.toString()
         val bancoDadosFirebase = FirebaseFirestore.getInstance()
 
         val usuariosHashMapFirebase: MutableMap<String, Any> = HashMap()
-        usuariosHashMapFirebase["nomeUsuario"] = nomeUsuarioFirebase
+        usuariosHashMapFirebase["nomeUsuario"] = nomeUsuarioFirebased
         usuariosHashMapFirebase["emailUsuario"] = emailUsuarioFirebase
-        usuariosHashMapFirebase["contaUsuario"] = contaUsuarioFirebase
+       // usuariosHashMapFirebase["contaUsuario"] = contaUsuarioFirebase
 
         val documentReference = bancoDadosFirebase.collection("Usuários Bradesil").document(usuarioFirebase)
         documentReference.set(usuariosHashMapFirebase).addOnSuccessListener {
