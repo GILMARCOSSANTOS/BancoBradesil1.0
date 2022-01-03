@@ -283,7 +283,7 @@ class ActivityCriarConta : AppCompatActivity() {
         documentReference.set(usuariosHashMapFirebase).addOnSuccessListener {
             Log.d(
                 "db",
-                "Sucesso ao salvar os dados."
+                "Sucesso ao salvaddr os dados."
             )
         }
             .addOnFailureListener {
