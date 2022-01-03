@@ -268,8 +268,8 @@ class ActivityCriarConta : AppCompatActivity() {
     //Firebase Tela 01.04 = Implementar Função de cadastrar usuário no Firestore Database:
     private fun salvarDadosFirestoreDatabase() {
 
-        val usuarioFirebasex = FirebaseAuth.getInstance().currentUser!!.uid
-        val nomeUsuarioFirebasex: String = digiteSeuNome.text.toString()
+        val usuarioFirebase = FirebaseAuth.getInstance().currentUser!!.uid
+        val nomeUsuarioFirebase: String = digiteSeuNome.text.toString()
         val emailUsuarioFirebase: String = digiteEmail.text.toString()
         val contaUsuarioFirebase: String = numeroConta.text.toString()
         val bancoDadosFirebase = FirebaseFirestore.getInstance()
@@ -279,11 +279,11 @@ class ActivityCriarConta : AppCompatActivity() {
         usuariosHashMapFirebase["emailUsuario"] = emailUsuarioFirebase
         usuariosHashMapFirebase["contaUsuario"] = contaUsuarioFirebase
 
-        val documentReference = bancoDadosFirebase.collection("Usuários Bradesil").document(usuarioFirebasex)
+        val documentReference = bancoDadosFirebase.collection("Usuários Bradesil").document(usuarioFirebase)
         documentReference.set(usuariosHashMapFirebase).addOnSuccessListener {
             Log.d(
                 "db",
-                "Sucesso ao salvaddr os dados."
+                "Sucesso ao salvar os dados."
             )
         }
             .addOnFailureListener {

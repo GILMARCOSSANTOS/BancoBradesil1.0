@@ -11,7 +11,7 @@
         android:id="@+id/imageViewVoltarActivityCriarContaId"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="25dp"
         android:scaleType="centerCrop"
         android:src="@drawable/voltar_icone"
@@ -23,129 +23,64 @@
         android:id="@+id/texTeViewVoltarActivityCriarContaId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
         android:gravity="center"
-        android:text="@string/menuPrincipal"
+        android:text="@string/acessoAconta"
         android:textColor="@color/white01"
         android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@+id/imageViewVoltarActivityCriarContaId"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/view01ActivityCriarConta01Id"
-        android:layout_width="205dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="10dp"
-        android:background="@color/white01"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewVoltarActivityCriarContaId" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageViewLogintarActivityCriarContaId"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="10dp"
-        android:rotation="180"
-        android:scaleType="centerCrop"
-        android:src="@drawable/voltar_icone"
-        android:tint="@color/white01"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewVoltarActivityCriarContaId" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/texTeViewLoginctivityCriarContaId"
-        android:layout_width="wrap_content"
+        android:id="@+id/materialTextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginTop="45dp"
         android:gravity="center"
-        android:text="@string/acessarSuaConta"
+        android:text="@string/informeDados"
         android:textColor="@color/white01"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toStartOf="@id/imageViewLogintarActivityCriarContaId"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewVoltarActivityCriarContaId" />
-
-    <View
-        android:id="@+id/view01ActivityCriarConta02Id"
-        android:layout_width="243dp"
-        android:layout_height="1dp"
-        android:layout_marginEnd="10dp"
-        android:background="@color/white01"
+        android:textSize="31sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewLogintarActivityCriarContaId" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texTeViewVoltarActivityCriarContaId" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayoutCompat"
         android:layout_width="match_parent"
         android:layout_height="500dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/botao_redondo01"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialTextView">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/texViewInformeDadosCriarContaId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="@string/informeDados"
-            android:textColor="@color/black"
-            android:textSize="31sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="15dp"
             android:hint="@string/nomeCompleto"
             android:inputType="textCapWords|textImeMultiLine"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
-            app:endIconDrawable="@drawable/caneta"
-            app:endIconMode="custom"
             app:hintTextColor="#0363D8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/texViewInformeDadosCriarContaId">
+            app:layout_constraintTop_toBottomOf="@+id/materialTextView">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextInformeNomeActivityCriarContaId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="abcdefghijklmnopqrstuvwxykzABCDEFGHIJKLMNOPQRSTUVWXYK Z"
-                android:inputType="text"
-                android:maxLength="25"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:hint="@string/eMail"
-            android:inputType="textCapWords|textImeMultiLine"
-            android:textSize="20sp"
-            app:colorControlActivated="?attr/colorOnPrimary"
-            app:endIconDrawable="@drawable/email"
-            app:endIconMode="custom"
-            app:hintTextColor="#0363D8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextInformeNomeActivityCriarContaId">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextInformeEmailActivityCriarContaId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:digits="abcdefghijklmnopqrstuvwxykzABCDEFGHIJKLMNOPQRSTUVWXYK Z"
-                android:inputType="textWebEmailAddress"
-                android:singleLine="true" />
+                android:inputType="textCapWords|textImeMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -159,6 +94,8 @@
             android:textColorHint="@color/black"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
+            app:counterEnabled="true"
+            app:counterMaxLength="5"
             app:hintTextColor="#0363D8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -169,8 +106,7 @@
                 android:id="@+id/editTextCriarSenhaActivityCriarContaId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberPassword"
-                android:singleLine="true" />
+                android:inputType="numberPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -184,6 +120,8 @@
             android:textColorHint="@color/black"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
+            app:counterEnabled="true"
+            app:counterMaxLength="5"
             app:hintTextColor="#0363D8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -194,89 +132,49 @@
                 android:id="@+id/editTextRepitaSenhaActivityCriarContaId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberPassword"
-                android:singleLine="true" />
+                android:inputType="numberPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/botaoCriarContaActivityCriarContaId"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="55dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/botao_redondo02"
             android:text="@string/criarConta"
             android:textAllCaps="false"
             android:textColor="@color/white01"
             android:textSize="21sp"
+
             app:backgroundTint="@color/corSecundaria"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toBottomOf="@+id/linerLayoutContasId" />
-
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/progressBarMainActivityId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"
-            android:progress="50"
-            android:visibility="invisible"
-            app:indicatorColor="@color/corSecundariaVariante"
-            app:trackColor="@color/black" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewSituacaoContaActivityCriarContaId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="25dp"
             android:text="@string/situacaoCadastro"
-            android:textSize="17sp"
-            android:textStyle="bold"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/botaoCriarContaActivityCriarContaId" />
-
-        <View
-            android:id="@+id/viewId02"
-            android:layout_width="wrap_content"
-            android:layout_height="5dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:background="@color/cinzaEscuroMenu" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewNumeroContaActivityCriarConta01Id"
-            android:layout_width="wrap_content"
+            android:id="@+id/textViewNumeroContaActivityCriarContaId"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:text="@string/conta"
-            android:textSize="17sp"
-            android:textStyle="bold"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="25dp"
+            android:text="@string/numeroContaActivityCriarConta"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Conta:" />
-
-        <View
-            android:id="@+id/viewId03"
-            android:layout_width="wrap_content"
-            android:layout_height="5dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:background="@color/cinzaEscuroMenu" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewNumeroContaActivityCriarConta02Id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="67dp"
-            android:layout_marginTop="-28dp"
-            android:textSize="17sp"
-            android:textStyle="bold" />
-
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
