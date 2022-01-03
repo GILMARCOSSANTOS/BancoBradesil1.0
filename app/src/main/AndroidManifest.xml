@@ -11,22 +11,26 @@
         android:theme="@style/Theme.BancoBradesil10">
         <activity
             android:name=".ActivityConta"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true" />
         <activity
             android:name=".ActivityContasCadastradas"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true" />
         <activity
             android:name=".ActivityCriarConta"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true" />
         <activity
             android:name=".ActivityLogin"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

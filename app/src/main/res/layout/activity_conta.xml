@@ -67,7 +67,6 @@
         app:layout_constraintStart_toEndOf="@id/linhaDivisoria01Id"
         app:layout_constraintTop_toTopOf="@+id/textViewSairActivityContaId" />
 
-
     <TextView
         android:id="@+id/textViewSairActivityContaId"
         style="bold"
@@ -79,7 +78,6 @@
         android:textSize="21sp"
         app:layout_constraintStart_toEndOf="@id/imageViewSairActivityContaId"
         app:layout_constraintTop_toBottomOf="@+id/imageViewNotificacoesActivityContaId" />
-
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageViewPessoaActivityContaId"
@@ -209,7 +207,6 @@
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSaldoReaisContaActivityId">
 
@@ -232,8 +229,7 @@
         android:textSize="17sp"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewSaldoContaActivityId"
-        app:popupTheme="@style/ToolbarOverflowMenuStyle" />
+        app:layout_constraintTop_toBottomOf="@id/textViewSaldoContaActivityId" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeableImageView"
@@ -261,6 +257,5 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintGuide_begin="397dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

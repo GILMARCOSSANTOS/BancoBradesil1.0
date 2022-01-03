@@ -277,9 +277,10 @@ class ActivityCriarConta : AppCompatActivity() {
         val usuariosHashMapFirebase: MutableMap<String, Any> = HashMap()
         usuariosHashMapFirebase["nomeUsuario"] = nomeUsuarioFirebased
         usuariosHashMapFirebase["emailUsuario"] = emailUsuarioFirebase
-       usuariosHashMapFirebase["contaUsuario"] = contaUsuarioFirebase
+        usuariosHashMapFirebase["contaUsuario"] = contaUsuarioFirebase
 
-        val documentReference = bancoDadosFirebase.collection("Usuários Bradesil").document(usuarioFirebase)
+        val documentReference =
+            bancoDadosFirebase.collection("Usuários Bradesil").document(usuarioFirebase)
         documentReference.set(usuariosHashMapFirebase).addOnSuccessListener {
             Log.d(
                 "db",
