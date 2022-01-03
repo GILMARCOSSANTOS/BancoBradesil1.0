@@ -23,6 +23,13 @@ class ActivityContasCadastradas : AppCompatActivity() {
          */
         requestedOrientation = (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
+        /**
+         * Declaração de variáveis:
+         */
+        textViewVoltar02 = findViewById(R.id.textViewVoltarContasCadastradasId)
+        imageButtonVoltar02 = findViewById(R.id.imageButtonVoltarContasCadastradasId)
+
+
         /*
         Criar Funções:
          */

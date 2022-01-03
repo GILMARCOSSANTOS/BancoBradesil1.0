@@ -57,37 +57,47 @@
         app:layout_constraintStart_toEndOf="@+id/imageViewPessoaActivityContaId"
         app:layout_constraintTop_toBottomOf="@+id/texViewNomeBradesilActivityContaId" />
 
-
-
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageViewSairActivityContaId"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="15dp"
         android:src="@drawable/exit_activity_conta"
         android:tint="@color/white01"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewSairActivityContaId"
+        app:layout_constraintStart_toEndOf="@id/linhaDivisoria01Id"
+        app:layout_constraintTop_toTopOf="@+id/textViewSairActivityContaId" />
+
+
+    <TextView
+        android:id="@+id/textViewSairActivityContaId"
+        style="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/sair"
+        android:textColor="@color/white01"
+        android:textSize="21sp"
+        app:layout_constraintStart_toEndOf="@id/imageViewSairActivityContaId"
         app:layout_constraintTop_toBottomOf="@+id/imageViewNotificacoesActivityContaId" />
+
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageViewPessoaActivityContaId"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginTop="17dp"
         android:layout_marginStart="-5dp"
+        android:layout_marginTop="17dp"
         android:src="@drawable/pessoa"
         android:tint="@color/white01"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/imageViewOpcoesActivityContaId" />
-
 
     <View
         android:id="@+id/linhaDivisoria01Id"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="50dp"
-        android:layout_marginEnd="55dp"
+        android:layout_marginEnd="85dp"
         android:background="@color/white01"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:text="@string/saldoDisponivelActivityConta"
         android:textColor="@color/white01"
         android:textColorHint="@color/white01"
@@ -136,7 +146,7 @@
         android:id="@+id/textViewExtratoContaActivityId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:text="@string/verExtrato"
         android:textColor="@color/white01"
         android:textColorHint="@color/white01"
@@ -199,8 +209,10 @@
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSaldoReaisContaActivityId">
+        app:layout_constraintTop_toBottomOf="@+id/textViewSaldoReaisContaActivityId"
+        >
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -234,7 +246,6 @@
         android:src="@drawable/microfone"
         app:layout_constraintStart_toEndOf="@+id/autoCompleteFaleBiaContaActivityId"
         app:layout_constraintTop_toBottomOf="@id/textViewSaldoContaActivityId" />
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"

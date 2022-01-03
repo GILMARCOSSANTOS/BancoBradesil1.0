@@ -5,6 +5,7 @@
 package com.example.bancobradesil10
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
@@ -14,7 +15,6 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
@@ -23,7 +23,6 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.NumberFormat
 import java.util.*
-import kotlin.collections.HashMap
 
 class ActivityCriarConta : AppCompatActivity() {
 
@@ -32,21 +31,16 @@ class ActivityCriarConta : AppCompatActivity() {
      */
     private lateinit var botaoCriarConta: Button
     lateinit var imageViewVoltarParaMainActivity: ImageView
-    lateinit var texViewVoltarParaTelaPrincipal: TextView
-    lateinit var informeSeuNome: EditText
+    private lateinit var texViewVoltarParaTelaPrincipal: TextView
+    lateinit var digiteSeuNome: EditText
     lateinit var situacaoConta: TextView
     lateinit var numeroConta: TextView
     lateinit var digiteEmail: EditText
     lateinit var repitaSuaSenha: EditText
     private lateinit var digiteSuaSenha: EditText
-    private val nome = "Nome: "
-    private val email = "E-mail: "
-    private val conta = "Conta: "
     lateinit var indicadorDeProgresso: ProgressBar
-
-    //Aula 01.05: Usuário do CurrentUserId do Firebase Database:
-    private lateinit var usuarioId: String
-    var bancoDadosFirestore = FirebaseFirestore.getInstance()
+    private lateinit var imageViewLogarActivityCriarConta: ImageView
+    private lateinit var textViewLogarActivityCriarConta: TextView
 
     @RequiresApi(Build.VERSION_CODES.S)
     @SuppressLint("SetTextI18n", "SourceLockedOrientationActivity")
@@ -65,16 +59,18 @@ class ActivityCriarConta : AppCompatActivity() {
         digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
         repitaSuaSenha =
             findViewById<EditText>(R.id.editTextRepitaSenhaActivityCriarContaId)
-        informeSeuNome = findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
+        digiteSeuNome = findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
         situacaoConta = findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarContaId)
-        numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
+        numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarConta02Id)
         digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
         botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
         imageViewVoltarParaMainActivity =
             findViewById<ImageView>(R.id.imageViewVoltarActivityCriarContaId)
         texViewVoltarParaTelaPrincipal =
             findViewById<TextView>(R.id.texTeViewVoltarActivityCriarContaId)
-       indicadorDeProgresso = findViewById(R.id.progressBarMainActivityId)
+        indicadorDeProgresso = findViewById(R.id.progressBarMainActivityId)
+        imageViewLogarActivityCriarConta = findViewById(R.id.imageViewLogintarActivityCriarContaId)
+        textViewLogarActivityCriarConta = findViewById(R.id.texTeViewLoginctivityCriarContaId)
 
         /*
        Criar Funções
@@ -82,8 +78,20 @@ class ActivityCriarConta : AppCompatActivity() {
         botaoCriarConta.setOnClickListener { criarConta() }
         imageViewVoltarParaMainActivity.setOnClickListener { imageViewVoltarParaMainActivity() }
         texViewVoltarParaTelaPrincipal.setOnClickListener { textViewVoltarParaMainActivity() }
+        imageViewLogarActivityCriarConta.setOnClickListener { imageViewLogar() }
+        textViewLogarActivityCriarConta.setOnClickListener { textViewLogar() }
 
     }
+
+    private fun imageViewLogar() {
+        val intent = Intent(this, ActivityLogin::class.java)
+        startActivity(intent)
+    }
+
+    private fun textViewLogar() {
+        imageViewLogar()
+    }
+
 
     /*
     Função imageViewVoltarParaMainActivity():
@@ -107,10 +115,9 @@ class ActivityCriarConta : AppCompatActivity() {
 
         //Variáveis usadas na função.
         val email = digiteEmail.text.toString()
-        val informeNome = informeSeuNome.text.toString()
+        val informeNome = digiteSeuNome.text.toString()
         val repitaSenha = repitaSuaSenha.text.toString()
         val suaSenha = digiteSuaSenha.text.toString()
-
         var contador = 0
 
         //Condicional
@@ -174,16 +181,16 @@ class ActivityCriarConta : AppCompatActivity() {
             }
 
             else -> {
-              //  indicadorDeProgresso.setVisibility(View.VISIBLE)
-               // indicadorDeProgresso.setVisibility(View.VISIBLE)
+                //  indicadorDeProgresso.setVisibility(View.VISIBLE)
+                // indicadorDeProgresso.setVisibility(View.VISIBLE)
 
-             //   indicadorDeProgresso.setVisibility(if (isVisible === 3) View.Visible else View.Invisible)
+                //   indicadorDeProgresso.setVisibility(if (isVisible === 3) View.Visible else View.Invisible)
 
                 java.lang.Thread(
-                    object: Runnable {
+                    object : Runnable {
                         override fun run() {
                             while (contador < 100) {
-                               contador += 1
+                                contador += 1
                                 try {
                                     Thread.sleep(0)
                                     Thread.interrupted()
@@ -191,51 +198,48 @@ class ActivityCriarConta : AppCompatActivity() {
                                     e.printStackTrace()
                                 }
                             }
-                            indicadorDeProgresso.post(Runnable { indicadorDeProgresso.setVisibility(View.VISIBLE) })
+                            indicadorDeProgresso.post(Runnable {
+                                indicadorDeProgresso.setVisibility(
+                                    View.VISIBLE
+                                )
+                            })
                         }
                     }).start()
 
-               // indicadorDeProgresso.setVisibility(View.GONE)
-
+                //Firebase Tela 01.02 = Invocar Função de cadastrar usuário no Firebase Authentication:
                 cadastrarUsuarioFirebase()
 
             }
         }
     }
 
-
-
     /**
      * Função cadastrarUsuarioFirebase():
      */
-    // Firebase 01.02 = Implementar função para o cadastro do usuário no Firebase:
+    //Firebase Tela 01.01 = Implementar Função de cadastrar usuário no Firebase Authentication:
     private fun cadastrarUsuarioFirebase() {
 
+        //Para Cadastrar, só precisa do e - mail e senha.
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(
             digiteEmail.text.toString(),
             repitaSuaSenha.text.toString()
         )
             .addOnCompleteListener(OnCompleteListener { task ->
                 if (task.isSuccessful) {
-                   // indicadorDeProgresso.setIndeterminate(false)
-                    indicadorDeProgresso.visibility
-
-
-
-                    // Firebase 01.03.01 = Criar função para salvar os dados do usuário no Firestore Database:
 
                     situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
+                    indicadorDeProgresso.visibility
 
                     val contaAbertasRandom = (10000..99999).random()
                     val ptBr = Locale("pt", "BR")
                     val formatarValorConta =
-                        "Conta: " + NumberFormat.getNumberInstance(ptBr)
+                        NumberFormat.getNumberInstance(ptBr)
                             .format(contaAbertasRandom.toDouble())
                     numeroConta.text = formatarValorConta
 
+                    //Firebase Tela 01.03 = Invocar Função de cadastrar usuário no Firebase Authentication:
                     salvarDadosFirestoreDatabase()
 
-                    // Firebase 01.03.02 = Condicionais de exceção de erro no cadastro de usuário no Firerestore Database:
                     Toast.makeText(this, "Cadastro realizado com sucesso.", Toast.LENGTH_LONG)
                         .show()
                 } else {
@@ -254,41 +258,38 @@ class ActivityCriarConta : AppCompatActivity() {
                         Toast.makeText(this, "Erro ao cadastrar usuário.", Toast.LENGTH_SHORT)
                             .show()
                     }
-
-
                 }
             })
-
     }
 
     /**
      * Função salvarDadosFirestoreDatabase():
      */
-    // Firebase: 01.04 = Implementar função para salvar os dados no Firestore Database:
+    //Firebase Tela 01.04 = Implementar Função de cadastrar usuário no Firestore Database:
     private fun salvarDadosFirestoreDatabase() {
 
-        // Firebase 01.05: Iniciar o banco de dados Firestore Database:
-        bancoDadosFirestore = FirebaseFirestore.getInstance()
-        val usuarioDatabase: MutableMap<String, Any> = HashMap()
-        usuarioDatabase["NomeUsuario"] = nome + informeSeuNome.text.toString()
-        usuarioDatabase["EmailUsuario"] = email + digiteEmail.text.toString()
-        usuarioDatabase["NumeroConta"] = conta + numeroConta.text.toString()
+        val usuarioFirebase = FirebaseAuth.getInstance().currentUser!!.uid
+        val nomeUsuarioFirebase: String = digiteSeuNome.text.toString()
+        val emailUsuarioFirebase: String = digiteEmail.text.toString()
+        val contaUsuarioFirebase: String = numeroConta.text.toString()
+        val bancoDadosFirebase = FirebaseFirestore.getInstance()
 
-        usuarioId = FirebaseAuth.getInstance().currentUser!!.uid
+        val usuariosHashMapFirebase: MutableMap<String, Any> = HashMap()
+        usuariosHashMapFirebase["nomeUsuario"] = nomeUsuarioFirebase
+        usuariosHashMapFirebase["emailUsuario"] = emailUsuarioFirebase
+        usuariosHashMapFirebase["contaUsuario"] = contaUsuarioFirebase
 
-        // Firebase 01.06: Salvar dados no Firebase Database; -> Segue para a MainActivity :
-        val documentReference =
-            bancoDadosFirestore.collection("UsuariosFirebase").document(usuarioId)
-        documentReference.set(usuarioDatabase)
-            .addOnSuccessListener(object : OnSuccessListener<Void?> {
-
-                override fun onSuccess(p0: Void?) {
-                    Log.d("db", "Sucesso ao salvar os dados.")
-                }
-            })
+        val documentReference = bancoDadosFirebase.collection("Usuários Bradesil").document(usuarioFirebase)
+        documentReference.set(usuariosHashMapFirebase).addOnSuccessListener {
+            Log.d(
+                "db",
+                "Sucesso ao salvar os dados."
+            )
+        }
             .addOnFailureListener {
                 Log.d("dbError", "Erro ao salvar os dados")
             }
     }
+
 }
 

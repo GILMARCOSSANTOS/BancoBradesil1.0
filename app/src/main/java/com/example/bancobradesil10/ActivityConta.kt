@@ -7,6 +7,8 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class ActivityConta : AppCompatActivity() {
@@ -14,12 +16,13 @@ class ActivityConta : AppCompatActivity() {
     /**
      * Variáveis em escopo global:
      */
-    lateinit var imageViewVisivel: ImageView
+    private lateinit var imageViewVisivel: ImageView
     lateinit var imageViewNaoVisivel: ImageView
-    lateinit var botaoSair: ImageView
     lateinit var nomeCliente: TextView
-    lateinit var faleBia: AutoCompleteTextView
+    private lateinit var faleBia: AutoCompleteTextView
     lateinit var textViewSaldo: TextView
+    lateinit var textViewSairDaConta: TextView
+    lateinit var imageViewSairDaConta: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +36,13 @@ class ActivityConta : AppCompatActivity() {
         /**
          * Declaração de Variáveis:
          */
-        textViewSaldo = findViewById<TextView>(R.id.textViewSaldoReaisContaActivityId)
-        imageViewVisivel = findViewById<ImageView>(R.id.imageViewVisivelActivityContaId)
-        imageViewNaoVisivel = findViewById<ImageView>(R.id.imageViewNaoVisivelActivityContaId)
-        botaoSair = findViewById<ImageView>(R.id.imageViewSairActivityContaId)
-        nomeCliente = findViewById<TextView>(R.id.textViewNomeClienteActivityContaId)
-        faleBia = findViewById<AutoCompleteTextView>(R.id.autoCompleteFaleBiaContaActivityId)
+        textViewSaldo = findViewById(R.id.textViewSaldoReaisContaActivityId)
+        imageViewVisivel = findViewById(R.id.imageViewVisivelActivityContaId)
+        imageViewNaoVisivel = findViewById(R.id.imageViewNaoVisivelActivityContaId)
+        nomeCliente = findViewById(R.id.textViewNomeClienteActivityContaId)
+        faleBia = findViewById(R.id.autoCompleteFaleBiaContaActivityId)
+        textViewSairDaConta = findViewById(R.id.textViewSairActivityContaId)
+        imageViewSairDaConta = findViewById(R.id.imageViewSairActivityContaId)
 
         /**
          *OlhoNãoVisivel inicia de forma oculta:
@@ -51,10 +55,25 @@ class ActivityConta : AppCompatActivity() {
         /**
          * Criar Funções:
          */
-        botaoSair.setOnClickListener { botaoSair() }
+        imageViewSairDaConta.setOnClickListener { imageViewSair() }
+        textViewSairDaConta.setOnClickListener { textViewSair() }
         imageViewVisivel.setOnClickListener { olhoVisivel() }
         imageViewNaoVisivel.setOnClickListener { olhoNaoVisivel() }
         faleBia.setOnClickListener { faleComBia() }
+
+    }
+
+    /**
+     * Fun
+     */
+    private fun textViewSair() {
+        FirebaseAuth.getInstance().signOut()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun imageViewSair() {
+       textViewSair()
     }
 
     /**
@@ -107,12 +126,25 @@ class ActivityConta : AppCompatActivity() {
         }
     }
 
-    /**
-     * Função botaoSair():
-     */
-    private fun botaoSair() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-    }
+    override fun onStart() {
+        super.onStart()
 
+        var usuarioId: String = ""
+        usuarioId = FirebaseAuth.getInstance().currentUser!!.uid
+        var email: String = ""
+        email = FirebaseAuth.getInstance().currentUser!!.email!!
+        val db = FirebaseFirestore.getInstance()
+
+        // Aula 03.04 = Ler os dados salvos no Cloud Firestore:
+        val documentReference = db.collection("Usuarios").document(usuarioId)
+        documentReference.addSnapshotListener { documentSnapshot, error ->
+            if (documentSnapshot != null) {
+                nomeCliente.text = documentSnapshot.getString("nome")
+                //  emailUsuario.text = email
+            }
+        }
+    }
 }
+
+
+

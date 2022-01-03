@@ -6,12 +6,11 @@
     <string name="acessoAconta">Acesso à conta</string>
     <string name="continuar">Continuar</string>
     <string name="informeDados">Informe os seus dados</string>
-    <string name="nomeCompleto">Nome completo</string>
+    <string name="nomeCompleto">Nome completo:</string>
     <string name="criarConta">Criar conta</string>
-    <string name="repitaSenha">Repita a senha</string>
-    <string name="crieSenha">Crie a sua senha</string>
+    <string name="repitaSenha">Repita a senha:</string>
+    <string name="crieSenha">Crie a sua senha:</string>
     <string name="nomeClienteContasCadastradas">Nome do cliente:</string>
-
     <string name="criarCOntaBotaoMain">Criar conta</string>
     <string name="situacaoErroSenhasDiferentes">Situação: Erro! Senhas incompatíveis.</string>
     <string name="situacaoErroRepitaSenhas">Situação: Erro! Repita a senha.</string>
@@ -21,10 +20,9 @@
     <string name="situacaoErroSenhaMenos">Situação: Erro! A senha tem menos de 6 dígitos.</string>
     <string name="situacaoContaCriadaComSucesso">Situação: Conta criada com sucesso!</string>
     <string name="situacaoCadastro">Situação:</string>
-    <string name="nomeCliente">Nome:</string>
     <string name="numeroContaActivityMain">Conta:</string>
-    <string name="nome">Nome:</string>
-    <string name="conta">Conta:</string>
+    <string name="nome">Nome: </string>
+    <string name="conta">Conta: </string>
     <string name="ol_cliente">Olá Cliente</string>
     <string name="saldoDisponivelActivityConta">Saldo disponível</string>
     <string name="olaCliente">Olá, Cliente</string>
@@ -37,11 +35,18 @@
     <string name="QueroPagarConta">Quero pagar uma conta</string>
     <string name="precisTransferir">Preciso transferir dinheiro</string>
     <string name="lembrarUsuario">Lembrar usuário</string>
-    <string name="eMail">E-mail:</string>
+    <string name="eMail">E-mail: </string>
     <string name="acessarContas">Acessar outras contas</string>
     <string name="situacaoErroEmailJaCadastrado">Situação: E-mail já cadastrado ou inválido. </string>
     <string name="situacaoEmailErroPreenchaOsDados">Situação: Preencha os seus dados. </string>
     <string name="digiteSuaSenha">Digite a sua senha:</string>
     <string name="digiteSeuEmail">Digite o seu e - mail:</string>
+    <string name="nomeCliente"> Nome do cliente</string>
+    <string name="eMailCliente"> E-mail do cliente</string>
+    <string name="contaCliente"> Conta do cliente</string>
+    <string name="sair">Sair</string>
+    <string name="menuPrincipal">Menu Principal</string>
+    <string name="acessarSuaConta">Acessar sua conta</string>
+
 
 </resources>
