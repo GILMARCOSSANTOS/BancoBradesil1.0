@@ -275,9 +275,9 @@ class ActivityCriarConta : AppCompatActivity() {
         val bancoDadosFirebase = FirebaseFirestore.getInstance()
 
         val usuariosHashMapFirebase: MutableMap<String, Any> = HashMap()
-        usuariosHashMapFirebase["nomeUsuario"] = nomeUsuarioFirebased
-        usuariosHashMapFirebase["emailUsuario"] = emailUsuarioFirebase
         usuariosHashMapFirebase["contaUsuario"] = contaUsuarioFirebase
+        usuariosHashMapFirebase["emailUsuario"] = emailUsuarioFirebase
+        usuariosHashMapFirebase["nomeUsuario"] = nomeUsuarioFirebased
 
         val documentReference =
             bancoDadosFirebase.collection("Usuários Bradesil").document(usuarioFirebase)

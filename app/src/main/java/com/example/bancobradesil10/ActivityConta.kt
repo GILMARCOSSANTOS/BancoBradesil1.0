@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class ActivityConta : AppCompatActivity() {
 
@@ -53,8 +54,8 @@ class ActivityConta : AppCompatActivity() {
         /**
          * Criar Funções:
          */
-     //   imageViewSairDaConta.setOnClickListener { imageViewSair() }
-      //  textViewSairDaConta.setOnClickListener { textViewSair() }
+        imageViewSairDaConta.setOnClickListener { imageViewSair() }
+        textViewSairDaConta.setOnClickListener { textViewSair() }
         imageViewVisivel.setOnClickListener { olhoVisivel() }
         imageViewNaoVisivel.setOnClickListener { olhoNaoVisivel() }
         faleBia.setOnClickListener { faleComBia() }
@@ -71,7 +72,7 @@ class ActivityConta : AppCompatActivity() {
     }
 
     private fun imageViewSair() {
-        textViewSair()
+       textViewSair()
     }
 
     /**
@@ -127,21 +128,18 @@ class ActivityConta : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        val bancoDadosFirebase =  FirebaseAuth.getInstance().currentUser!!.uid
+        val usuarioId: String = FirebaseAuth.getInstance().currentUser!!.uid
+        val db = FirebaseFirestore.getInstance()
 
-        var usuarioFirebase: String = ""
-        usuarioFirebase = FirebaseAuth.getInstance().currentUser!!.uid
-
-        // Aula 03.04 = Ler os dados salvos no Cloud Firestore:
-//        val documentReference = bancoDadosFirebase.collection("Usuários Bradesil").document(usuarioFirebase)
-//        documentReference.addSnapshotListener { documentSnapshot, error ->
-//            if (documentSnapshot != null) {
-//                nomeCliente.text = documentSnapshot.getString("nomeUsuario")
-//                //  emailUsuario.text = email
-//            }
-//        }
-
-
+        val documentReference = db.collection("Usuários Bradesil").document(usuarioId)
+        documentReference.addSnapshotListener { documentSnapshot, error ->
+            if (documentSnapshot != null) {
+               nomeCliente.text = documentSnapshot.getString("nomeUsuario")
+//                textViewEmailActivityLogin.text = documentSnapshot.getString("emailUsuario")
+//                textViewNumeroContaActivityLogin.text = documentSnapshot.getString("contaUsuario")
+            }
+        }
 
     }
+
 }

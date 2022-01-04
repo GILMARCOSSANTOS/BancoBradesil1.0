@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-
+import com.google.firebase.firestore.FirebaseFirestore
 
 class ActivityLogin : AppCompatActivity() {
 
@@ -62,8 +62,6 @@ class ActivityLogin : AppCompatActivity() {
     Função botaoContinuar():
      */
     private fun botaoContinuar() {
-        //Declaração das variáveis:
-
         //Reconhecer usuário atual e fazer LOGIN no Firebase:
 
         if (editTextInformeSenha.text.toString().isEmpty()) {
@@ -79,7 +77,6 @@ class ActivityLogin : AppCompatActivity() {
     }
 
     private fun autenticarLoginUsuario() {
-//        val email = textViewEmailActivityLogin.text.toString()
         val senha = editTextInformeSenha.text.toString()
         val email = editTexTEmail.text.toString()
 
@@ -118,5 +115,6 @@ class ActivityLogin : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
 
 }
