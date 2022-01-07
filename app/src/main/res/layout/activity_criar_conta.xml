@@ -23,13 +23,12 @@
         android:id="@+id/texTeViewVoltarActivityCriarContaId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:gravity="center"
         android:text="@string/menuPrincipal"
         android:textColor="@color/white01"
         android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@+id/imageViewVoltarActivityCriarContaId"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/imageViewVoltarActivityCriarContaId" />
 
     <View
         android:id="@+id/view01ActivityCriarConta01Id"
@@ -62,7 +61,7 @@
         android:textColor="@color/white01"
         android:textSize="25sp"
         app:layout_constraintEnd_toStartOf="@id/imageViewLogintarActivityCriarContaId"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewVoltarActivityCriarContaId" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewLogintarActivityCriarContaId" />
 
     <View
         android:id="@+id/view01ActivityCriarConta02Id"
@@ -76,8 +75,9 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayoutCompat"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:background="@drawable/botao_redondo01"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/botao_redondo06"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +106,7 @@
             app:colorControlActivated="?attr/colorOnPrimary"
             app:endIconDrawable="@drawable/caneta"
             app:endIconMode="custom"
-            app:hintTextColor="#0363D8"
+            app:hintTextColor="@color/corSecundaria"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/texViewInformeDadosCriarContaId">
@@ -133,7 +133,7 @@
             app:colorControlActivated="?attr/colorOnPrimary"
             app:endIconDrawable="@drawable/email"
             app:endIconMode="custom"
-            app:hintTextColor="#0363D8"
+            app:hintTextColor="@color/corSecundaria"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextInformeNomeActivityCriarContaId">
@@ -158,7 +158,7 @@
             android:textColorHint="@color/black"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
-            app:hintTextColor="#0363D8"
+            app:hintTextColor="@color/corSecundaria"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialTextView"
@@ -183,7 +183,7 @@
             android:textColorHint="@color/black"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
-            app:hintTextColor="#0363D8"
+            app:hintTextColor="@color/corSecundaria"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialTextView"
@@ -230,7 +230,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"
             android:text="@string/situacaoCadastro"
             android:textSize="17sp"
@@ -263,6 +262,7 @@
             android:id="@+id/viewId03"
             android:layout_width="wrap_content"
             android:layout_height="5dp"
+            android:layout_marginBottom="35dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:background="@color/cinzaEscuroMenu" />

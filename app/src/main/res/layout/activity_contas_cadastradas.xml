@@ -11,7 +11,7 @@
         android:id="@+id/imageButtonVoltarContasCadastradasId"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
         android:scaleType="centerCrop"
         android:src="@drawable/voltar_icone"
@@ -23,15 +23,22 @@
         android:id="@+id/textViewVoltarContasCadastradasId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
         android:gravity="center"
-        android:text="@string/acessoAconta"
+        android:text="@string/menuPrincipal"
         android:textColor="@color/white01"
         android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@+id/imageButtonVoltarContasCadastradasId"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <View
+        android:id="@+id/viewActivityContasCadastradas01Id"
+        android:layout_width="205dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/white01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageButtonVoltarContasCadastradasId" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -41,7 +48,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewVoltarContasCadastradasId">
-
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -61,7 +67,18 @@
                 android:textSize="31sp" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textViewContaClienteContasCadastradasId"
+                android:id="@+id/textViewEmailContasCadastradasId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:maxLines="1"
+                android:text="@string/eMail"
+                android:textColor="@color/white01"
+                android:textSize="31sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textViewContaContasCadastradasId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -70,7 +87,6 @@
                 android:text="@string/conta"
                 android:textColor="@color/white01"
                 android:textSize="31sp" />
-
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.core.widget.NestedScrollView>

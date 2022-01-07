@@ -18,7 +18,7 @@
         android:src="@drawable/voltar_icone"
         android:tint="@color/white01"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
-        app:layout_constraintStart_toStartOf="@+id/guideline15"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -36,11 +36,11 @@
 
     <View
         android:id="@+id/view01ActivityLoginId"
-        android:layout_width="205dp"
+        android:layout_width="202dp"
         android:layout_height="1dp"
         android:layout_marginStart="15dp"
         android:background="@color/white01"
-        app:layout_constraintStart_toStartOf="@+id/guideline15"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewVoltarLoginId" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -284,7 +284,7 @@
             app:colorControlActivated="?attr/colorOnPrimary"
             app:counterEnabled="true"
             app:counterMaxLength="6"
-            app:hintTextColor="#0363D8"
+            app:hintTextColor="@color/corSecundaria"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -306,6 +306,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white01"
             android:textSize="21sp"
+            app:hintTextColor="@color/corSecundaria"
             app:backgroundTint="@color/corSecundariaVariante" />
 
 
