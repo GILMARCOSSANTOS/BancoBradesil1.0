@@ -62,65 +62,73 @@ class ActivityLogin : AppCompatActivity() {
         textViewNomeActivityLogin.apply {
             text = nomeUsuarioShared
         }
-    }
+        val emailUsuarioShared = intent.getStringExtra("chaveEmail")
+        textViewEmailActivityLogin.apply {
+            text = emailUsuarioShared
+        }
+        val contaUsuarioshared = intent.getStringExtra("chaveConta")
+        textViewNumeroContaActivityLogin.apply {
+            text = contaUsuarioshared
+        }
 
-    /*
+        /*
     Função botaoContinuar():
      */
-    private fun botaoContinuar() {
-        //Reconhecer usuário atual e fazer LOGIN no Firebase:
-
-        if (editTextInformeSenha.text.toString().isEmpty()) {
-            val snackBar = Snackbar.make(
-                botaoContinuarActivityLogin,
-                "Digite a sua senha.",
-                Snackbar.LENGTH_LONG
-            )
-            snackBar.show()
-        } else {
-            autenticarLoginUsuario()
-        }
     }
+        private fun botaoContinuar() {
+            //Reconhecer usuário atual e fazer LOGIN no Firebase:
 
-    private fun autenticarLoginUsuario() {
-        val senha = editTextInformeSenha.text.toString()
-        val email = editTexTEmail.text.toString()
-
-        FirebaseAuth.getInstance()
-            .signInWithEmailAndPassword(email, senha)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val intent = Intent(this, ActivityConta::class.java)
-                    startActivity(intent)
-                } else {
-                    val snackbar = Snackbar.make(
-                        botaoContinuarActivityLogin,
-                        "Senha ou e e-mail incorretos.",
-                        Snackbar.LENGTH_LONG
-                    )
-                    snackbar.show()
-                }
+            if (editTextInformeSenha.text.toString().isEmpty()) {
+                val snackBar = Snackbar.make(
+                    botaoContinuarActivityLogin,
+                    "Digite a sua senha.",
+                    Snackbar.LENGTH_LONG
+                )
+                snackBar.show()
+            } else {
+                autenticarLoginUsuario()
             }
-    }
-
-    /*
-    Função imageViewVoltarActivityLogin():
-     */
-    private fun imageViewVoltarActivityLogin() {
-        val intent = Intent(this, MainActivity::class.java).apply {
         }
-        startActivity(intent)
-        finish()
+
+        private fun autenticarLoginUsuario() {
+            val senha = editTextInformeSenha.text.toString()
+            val email = editTexTEmail.text.toString()
+
+            FirebaseAuth.getInstance()
+                .signInWithEmailAndPassword(email, senha)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val intent = Intent(this, ActivityConta::class.java)
+                        startActivity(intent)
+                    } else {
+                        val snackbar = Snackbar.make(
+                            botaoContinuarActivityLogin,
+                            "Senha ou e e-mail incorretos.",
+                            Snackbar.LENGTH_LONG
+                        )
+                        snackbar.show()
+                    }
+                }
+        }
+
+        /*
+        Função imageViewVoltarActivityLogin():
+         */
+        private fun imageViewVoltarActivityLogin() {
+            val intent = Intent(this, MainActivity::class.java).apply {
+            }
+            startActivity(intent)
+            finish()
+        }
+
+        /*
+        Função textViewVoltarActivityLogin():
+        */
+        private fun textViewVoltarActivityLogin() {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
     }
-
-    /*
-    Função textViewVoltarActivityLogin():
-    */
-    private fun textViewVoltarActivityLogin() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-
-
-}

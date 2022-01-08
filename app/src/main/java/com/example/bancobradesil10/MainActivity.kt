@@ -57,6 +57,22 @@ class MainActivity : AppCompatActivity() {
         checkBoxLembrar.setOnClickListener { lembrarUsuario() }
         // lembrarMeuUsuario.setOnClickListener { lembrarUsuario() }
 
+        /**
+         * Shared Preferences: Recebimentos dos dados da ActivityCriarConta:
+         */
+        val nomeUsuarioShared = intent.getStringExtra("chaveNome")
+       textViewNomeConta.apply {
+            text = nomeUsuarioShared
+        }
+        val emailUsuarioShared = intent.getStringExtra("chaveEmail")
+        texViewEmail.apply {
+            text = emailUsuarioShared
+        }
+        val contaUsuarioshared = intent.getStringExtra("chaveConta")
+        textViewNumeroConta.apply {
+            text = contaUsuarioshared
+        }
+
     }
 
     /*

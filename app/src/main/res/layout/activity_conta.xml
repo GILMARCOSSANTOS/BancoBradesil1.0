@@ -61,8 +61,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
-        android:hint="@string/olaCliente"
-        android:textColorHint="@color/white01"
+        android:textColor="@color/white01"
+        tools:text="Nome do Cliente"
         android:textSize="19sp"
         app:layout_constraintStart_toEndOf="@+id/imageViewPessoaActivityContaId"
         app:layout_constraintTop_toTopOf="@+id/imageViewPessoaActivityContaId" />
@@ -174,7 +174,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewExtratoContaActivityId" />
 
-      <!-- Esta ImageView Está em sobrescrevento a outra ImageView -->
+    <!-- Esta ImageView Está em sobrescrevento a outra ImageView -->
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageViewVisivelActivityContaId"
         android:layout_width="19dp"

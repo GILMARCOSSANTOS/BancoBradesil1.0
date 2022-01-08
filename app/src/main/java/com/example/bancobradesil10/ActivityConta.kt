@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 
 class ActivityConta : AppCompatActivity() {
 
@@ -125,21 +124,21 @@ class ActivityConta : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        val usuarioId: String = FirebaseAuth.getInstance().currentUser!!.uid
-        val db = FirebaseFirestore.getInstance()
-
-        val documentReference = db.collection("Usuários Bradesil").document(usuarioId)
-        documentReference.addSnapshotListener { documentSnapshot, error ->
-            if (documentSnapshot != null) {
-               nomeCliente.text = documentSnapshot.getString("nomeUsuario")
-//                textViewEmailActivityLogin.text = documentSnapshot.getString("emailUsuario")
-//                textViewNumeroContaActivityLogin.text = documentSnapshot.getString("contaUsuario")
-            }
-        }
-
-    }
+//    override fun onStart() {
+//        super.onStart()
+//
+//        val usuarioId: String = FirebaseAuth.getInstance().currentUser!!.uid
+//        val db = FirebaseFirestore.getInstance()
+//
+//        val documentReference = db.collection("Usuários Bradesil").document(usuarioId)
+//        documentReference.addSnapshotListener { documentSnapshot, error ->
+//            if (documentSnapshot != null) {
+//               nomeCliente.text = documentSnapshot.getString("nomeUsuario")
+////                textViewEmailActivityLogin.text = documentSnapshot.getString("emailUsuario")
+////                textViewNumeroContaActivityLogin.text = documentSnapshot.getString("contaUsuario")
+//            }
+//        }
+//
+//    }
 
 }

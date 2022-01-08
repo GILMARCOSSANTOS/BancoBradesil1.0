@@ -9,14 +9,16 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.*
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import java.text.NumberFormat
 import java.util.*
 
@@ -52,18 +54,18 @@ class ActivityCriarConta : AppCompatActivity() {
         /**
          * Declaração de variáveis:
          */
-        digiteSuaSenha = findViewById(R.id.editTextCriarSenhaActivityCriarContaId)
+        digiteSeuNome = findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
+        digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
         repitaSuaSenha =
-            findViewById(R.id.editTextRepitaSenhaActivityCriarContaId)
-        digiteSeuNome = findViewById(R.id.editTextInformeNomeActivityCriarContaId)
-        situacaoConta = findViewById(R.id.textViewSituacaoContaActivityCriarContaId)
-        numeroConta = findViewById(R.id.textViewNumeroContaActivityCriarConta02Id)
-        digiteEmail = findViewById(R.id.editTextInformeEmailActivityCriarContaId)
-        botaoCriarConta = findViewById(R.id.botaoCriarContaActivityCriarContaId)
+            findViewById<EditText>(R.id.editTextRepitaSenhaActivityCriarContaId)
+        numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarConta02Id)
+        digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
+        situacaoConta = findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarContaId)
+        botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
         imageViewVoltarParaMainActivity =
-            findViewById(R.id.imageViewVoltarActivityCriarContaId)
+            findViewById<ImageView>(R.id.imageViewVoltarActivityCriarContaId)
         texViewVoltarParaTelaPrincipal =
-            findViewById(R.id.texTeViewVoltarActivityCriarContaId)
+            findViewById<TextView>(R.id.texTeViewVoltarActivityCriarContaId)
         indicadorDeProgresso = findViewById(R.id.progressBarMainActivityId)
         imageViewLogarActivityCriarConta = findViewById(R.id.imageViewLogintarActivityCriarContaId)
         textViewLogarActivityCriarConta = findViewById(R.id.texTeViewLoginctivityCriarContaId)
@@ -80,26 +82,50 @@ class ActivityCriarConta : AppCompatActivity() {
     }
 
     private fun imageViewLogar() {
-        val intent = Intent(this, ActivityLogin::class.java)
-        startActivity(intent)
+
+        val nome = digiteSeuNome.text.toString()
+        val email = digiteEmail.text.toString()
+        val conta = numeroConta.text.toString()
+
+        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
+            val intent = Intent(this, ActivityLogin::class.java).apply {
+                putExtra("chaveNome", nome)
+                putExtra("chaveConta", conta)
+                putExtra("chaveEmail", email)
+            }
+            startActivity(intent)
+        }
     }
 
     private fun textViewLogar() {
         imageViewLogar()
     }
 
+
     /*
     Função imageViewVoltarParaMainActivity():
      */
     private fun imageViewVoltarParaMainActivity() {
-        finish()
+
+        val nome = digiteSeuNome.text.toString()
+        val email = digiteEmail.text.toString()
+        val conta = numeroConta.text.toString()
+
+        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra("chaveNome", nome)
+                putExtra("chaveConta", conta)
+                putExtra("chaveEmail", email)
+            }
+            startActivity(intent)
+        }
     }
 
     /*
   Função textViewVoltarParaMainActivity():
    */
     private fun textViewVoltarParaMainActivity() {
-        finish()
+        imageViewVoltarParaMainActivity()
     }
 
     /*
@@ -109,16 +135,15 @@ class ActivityCriarConta : AppCompatActivity() {
     private fun criarConta() {
 
         //Variáveis usadas na função.
-        val nome = digiteSeuNome.text.toString()
         val email = digiteEmail.text.toString()
-        val conta = numeroConta.text.toString()
+        val informeNome = digiteSeuNome.text.toString()
         val repitaSenha = repitaSuaSenha.text.toString()
         val suaSenha = digiteSuaSenha.text.toString()
         var contador = 0
 
         //Condicional
         when {
-            (nome.isEmpty()) -> {
+            (informeNome.isEmpty()) -> {
                 val snackBar = Snackbar.make(
                     botaoCriarConta,
                     "Situação: Erro! Preencha o seu nome.",
@@ -182,25 +207,25 @@ class ActivityCriarConta : AppCompatActivity() {
 
                 //   indicadorDeProgresso.setVisibility(if (isVisible === 3) View.Visible else View.Invisible)
 
-//                java.lang.Thread(
-//                    object : Runnable {
-//                        override fun run() {
-//                            while (contador < 100) {
-//                                contador += 1
-//                                try {
-//                                    Thread.sleep(0)
-//                                    Thread.interrupted()
-//                                } catch (e: InterruptedException) {
-//                                    e.printStackTrace()
-//                                }
-//                            }
-//                            indicadorDeProgresso.post(Runnable {
-//                                indicadorDeProgresso.setVisibility(
-//                                    View.VISIBLE
-//                                )
-//                            })
-//                        }
-//                    }).start()
+                java.lang.Thread(
+                    object : Runnable {
+                        override fun run() {
+                            while (contador < 100) {
+                                contador += 1
+                                try {
+                                    Thread.sleep(0)
+                                    Thread.interrupted()
+                                } catch (e: InterruptedException) {
+                                    e.printStackTrace()
+                                }
+                            }
+                            indicadorDeProgresso.post(Runnable {
+                                indicadorDeProgresso.setVisibility(
+                                    View.VISIBLE
+                                )
+                            })
+                        }
+                    }).start()
 
                 //Firebase Tela 01.02 = Invocar Função de cadastrar usuário no Firebase Authentication:
                 cadastrarUsuarioFirebase()
@@ -214,34 +239,16 @@ class ActivityCriarConta : AppCompatActivity() {
      */
     //Firebase Tela 01.01 = Implementar Função de cadastrar usuário no Firebase Authentication:
     private fun cadastrarUsuarioFirebase() {
-        val nome = digiteSeuNome.text.toString()
-        val email = digiteEmail.text.toString()
-        val conta = numeroConta.text.toString()
-        val senha = repitaSuaSenha.text.toString()
 
         //Para Cadastrar, só precisa do e - mail e senha.
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(
-          email, senha)
-            .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
+            digiteEmail.text.toString(),
+            repitaSuaSenha.text.toString()
+        )
+            .addOnCompleteListener(OnCompleteListener { task ->
                 if (task.isSuccessful) {
 
-                    salvarDadosFirestoreDatabase()
-                    //Firebase Tela 01.03 = Invocar Função de cadastrar usuário no Firebase Authentication:
-
                     situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
-
-//                    if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
-//
-//
-//
-//
-//
-//                        val intent = Intent(this, ActivityLogin::class.java).apply {
-//                            putExtra("chaveNome", nome)
-//                            putExtra("chaveEmail", email)
-//                            putExtra("chaveConta", conta)
-//                        }
-                    // startActivity(intent)
 
                     indicadorDeProgresso.visibility
 
@@ -252,9 +259,9 @@ class ActivityCriarConta : AppCompatActivity() {
                             .format(contaAbertasRandom.toDouble())
                     numeroConta.text = formatarValorConta
 
-                    Toast.makeText(this, "xxxxxxCadastro realizado com sucesso.", Toast.LENGTH_LONG)
+                    //Firebase Tela 01.03 = Invocar Função de cadastrar usuário no Firebase Authentication:
+                    Toast.makeText(this, "Cadastro realizado com sucesso.", Toast.LENGTH_LONG)
                         .show()
-
                 } else {
                     try {
                         throw task.exception!!
@@ -275,35 +282,5 @@ class ActivityCriarConta : AppCompatActivity() {
             })
     }
 
-    /**
-     * Função salvarDadosFirestoreDatabase():
-     */
-    //Firebase Tela 01.04 = Implementar Função de cadastrar usuário no Firestore Database:
-    private fun salvarDadosFirestoreDatabase() {
-
-        val usuarioFirebaseId = FirebaseAuth.getInstance().currentUser!!.uid
-        val emailUsuarioFirebase: String?
-        emailUsuarioFirebase = digiteEmail.text.toString()
-        val contaUsuarioFirebase: String?
-        contaUsuarioFirebase = numeroConta.text.toString()
-        val bancoDadosFirebase = FirebaseFirestore.getInstance()
-        val nomeUsuarioFirebased: String?
-        nomeUsuarioFirebased = digiteSeuNome.text.toString()
-
-        val usuariosHashMapFirebase: MutableMap<String, Any> = HashMap()
-        usuariosHashMapFirebase["nomeUsuario"] = nomeUsuarioFirebased
-        usuariosHashMapFirebase["emailUsuario"] = emailUsuarioFirebase
-        usuariosHashMapFirebase["contaUsuario"] = contaUsuarioFirebase
-
-
-        val documentReference =
-            bancoDadosFirebase.collection("Usuarios Bradesil").document(usuarioFirebaseId)
-        documentReference.set(usuariosHashMapFirebase).addOnSuccessListener(object :
-            OnSuccessListener<Void?> {
-            override fun onSuccess(p0: Void) {
-                TODO("Not yet implemented")
-            }
-
-        })
-    }
 }
+
