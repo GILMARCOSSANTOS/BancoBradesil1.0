@@ -100,8 +100,11 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxykzABCDEFGHIJKLMNOPQRSTUVWXYK Z"
             android:hint="@string/nomeCompleto"
             android:inputType="textCapWords|textImeMultiLine"
+            android:maxLength="35"
+            android:singleLine="true"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
             app:endIconDrawable="@drawable/caneta"
@@ -114,11 +117,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextInformeNomeActivityCriarContaId"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:digits="abcdefghijklmnopqrstuvwxykzABCDEFGHIJKLMNOPQRSTUVWXYK Z"
-                android:inputType="text"
-                android:maxLength="25"
-                android:singleLine="true" />
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -142,8 +141,7 @@
                 android:id="@+id/editTextInformeEmailActivityCriarContaId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:digits="abcdefghijklmnopqrstuvwxykzABCDEFGHIJKLMNOPQRSTUVWXYK Z"
-                android:inputType="textWebEmailAddress"
+                android:inputType="textEmailAddress"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,7 +152,8 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:hint="@string/crieSenha"
-            android:inputType="number"
+            android:inputType="numberPassword|textPassword"
+            android:singleLine="true"
             android:textColorHint="@color/black"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
@@ -167,9 +166,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextCriarSenhaActivityCriarContaId"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberPassword"
-                android:singleLine="true" />
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -179,7 +176,8 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:hint="@string/repitaSenha"
-            android:inputType="number"
+            android:inputType="numberPassword|textPassword"
+            android:singleLine="true"
             android:textColorHint="@color/black"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
@@ -192,9 +190,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextRepitaSenhaActivityCriarContaId"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberPassword"
-                android:singleLine="true" />
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -202,8 +198,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/botao_redondo02"
             android:text="@string/criarConta"
             android:textAllCaps="false"
@@ -254,27 +250,25 @@
             android:text="@string/conta"
             android:textSize="17sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             tools:text="Conta:" />
-
-        <View
-            android:id="@+id/viewId03"
-            android:layout_width="wrap_content"
-            android:layout_height="5dp"
-            android:layout_marginBottom="35dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:background="@color/cinzaEscuroMenu" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewNumeroContaActivityCriarConta02Id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="67dp"
-            android:layout_marginTop="-28dp"
+            android:layout_marginTop="-23dp"
             android:textSize="17sp"
             android:textStyle="bold" />
+
+        <View
+            android:id="@+id/viewId03"
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="35dp"
+            android:background="@color/cinzaEscuroMenu" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

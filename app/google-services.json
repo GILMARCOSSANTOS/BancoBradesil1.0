@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "379534902108",
-    "project_id": "bancobradesil1-0",
-    "storage_bucket": "bancobradesil1-0.appspot.com"
+    "project_number": "354980975459",
+    "project_id": "bradesil10",
+    "storage_bucket": "bradesil10.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:379534902108:android:64e4d3a8383e9d6f0db799",
+        "mobilesdk_app_id": "1:354980975459:android:3b2fc2189f8f90dc843956",
         "android_client_info": {
           "package_name": "com.example.bancobradesil10"
         }
       },
       "oauth_client": [
         {
-          "client_id": "379534902108-6ng5k0akcd683gdlm0v7l0levaegalg3.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.bancobradesil10",
-            "certificate_hash": "694fc7a9b160368b118a0a417d3a7ec3201815c7"
-          }
-        },
-        {
-          "client_id": "379534902108-59b25ikfrhu68piiidqipcs5q9jtimt4.apps.googleusercontent.com",
+          "client_id": "354980975459-fpug4n901fa1u019gungugg7qiq9ncq1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC-HBK31VNaOcCoF8z3-nYUMuy9RMHYvB8"
+          "current_key": "AIzaSyCiePM4JjGXVO1QkTlMBwNjdnp6jzQMdRE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "379534902108-59b25ikfrhu68piiidqipcs5q9jtimt4.apps.googleusercontent.com",
+              "client_id": "354980975459-fpug4n901fa1u019gungugg7qiq9ncq1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

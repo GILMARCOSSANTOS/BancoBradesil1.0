@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 
 class ActivityLogin : AppCompatActivity() {
 
@@ -56,6 +55,13 @@ class ActivityLogin : AppCompatActivity() {
         botaoContinuarActivityLogin.setOnClickListener { botaoContinuar() }
         imageViewVoltar01.setOnClickListener { imageViewVoltarActivityLogin() }
 
+        /**
+         * Shared Preferences: Recebimentos dos dados da ActivityCriarConta:
+         */
+        val nomeUsuarioShared = intent.getStringExtra("chaveNome")
+        textViewNomeActivityLogin.apply {
+            text = nomeUsuarioShared
+        }
     }
 
     /*

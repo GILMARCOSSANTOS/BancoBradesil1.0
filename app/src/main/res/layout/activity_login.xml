@@ -12,8 +12,8 @@
         android:id="@+id/imageViewVoltarLoginId"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginTop="-35dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="-35dp"
         android:scaleType="centerCrop"
         android:src="@drawable/voltar_icone"
         android:tint="@color/white01"
@@ -233,10 +233,8 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline22"
-        app:layout_constraintVertical_bias="0.6">
+        app:layout_constraintTop_toTopOf="@+id/guideline22">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/texViewInformeDadosActivityLoginId"
@@ -257,16 +255,16 @@
             android:layout_marginEnd="15dp"
             android:background="@color/white01"
             android:hint="@string/digiteSeuEmail"
-            android:inputType="number"
+            android:inputType="textEmailAddress"
             android:textColorHint="@color/black"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
             app:hintTextColor="#0363D8">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextQualEmailLoginId"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -278,7 +276,7 @@
             android:layout_marginEnd="15dp"
             android:background="@color/white01"
             android:hint="@string/digiteSuaSenha"
-            android:inputType="number"
+            android:inputType="textPassword"
             android:textColorHint="@color/black"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
@@ -290,8 +288,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextQualSenhaLoginId"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -299,15 +296,15 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/botao_redondo02"
             android:text="@string/continuar"
             android:textAllCaps="false"
             android:textColor="@color/white01"
             android:textSize="21sp"
-            app:hintTextColor="@color/corSecundaria"
-            app:backgroundTint="@color/corSecundariaVariante" />
+            app:backgroundTint="@color/corSecundariaVariante"
+            app:hintTextColor="@color/corSecundaria" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
