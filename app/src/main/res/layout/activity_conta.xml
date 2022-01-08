@@ -60,12 +60,12 @@
         android:id="@+id/textViewNomeClienteActivityContaId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="4dp"
         android:textColor="@color/white01"
-        tools:text="Nome do Cliente"
         android:textSize="19sp"
         app:layout_constraintStart_toEndOf="@+id/imageViewPessoaActivityContaId"
-        app:layout_constraintTop_toTopOf="@+id/imageViewPessoaActivityContaId" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewPessoaActivityContaId"
+        tools:text="Nome do Cliente" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageViewSairActivityContaId"
@@ -93,7 +93,7 @@
         android:id="@+id/linhaDivisoria01Id"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="47dp"
         android:layout_marginEnd="85dp"
         android:background="@color/white01"
         app:layout_constraintEnd_toEndOf="parent"
@@ -207,8 +207,10 @@
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSaldoReaisContaActivityId">
+        app:layout_constraintTop_toBottomOf="@+id/textViewSaldoReaisContaActivityId"
+        app:layout_constraintVertical_bias="1.0">
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -235,9 +237,11 @@
         android:id="@+id/shapeableImageView"
         android:layout_width="55dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/microfone_botao_redondo"
         android:scaleType="center"
         android:src="@drawable/microfone"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/autoCompleteFaleBiaContaActivityId"
         app:layout_constraintStart_toEndOf="@+id/autoCompleteFaleBiaContaActivityId"
         app:layout_constraintTop_toTopOf="@+id/autoCompleteFaleBiaContaActivityId" />

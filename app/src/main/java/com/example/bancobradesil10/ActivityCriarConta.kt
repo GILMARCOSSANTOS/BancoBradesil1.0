@@ -9,18 +9,19 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import com.google.firebase.auth.*
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.NumberFormat
 import java.util.*
+import kotlin.collections.HashMap
 
 class ActivityCriarConta : AppCompatActivity() {
 
@@ -60,7 +61,7 @@ class ActivityCriarConta : AppCompatActivity() {
             findViewById<EditText>(R.id.editTextRepitaSenhaActivityCriarContaId)
         numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarConta02Id)
         digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
-        situacaoConta = findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarContaId)
+        situacaoConta = findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarConta02Id)
         botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
         imageViewVoltarParaMainActivity =
             findViewById<ImageView>(R.id.imageViewVoltarActivityCriarContaId)
@@ -87,7 +88,7 @@ class ActivityCriarConta : AppCompatActivity() {
         val email = digiteEmail.text.toString()
         val conta = numeroConta.text.toString()
 
-        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
+        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso) || situacaoConta.text == "") {
             val intent = Intent(this, ActivityLogin::class.java).apply {
                 putExtra("chaveNome", nome)
                 putExtra("chaveConta", conta)
@@ -111,7 +112,7 @@ class ActivityCriarConta : AppCompatActivity() {
         val email = digiteEmail.text.toString()
         val conta = numeroConta.text.toString()
 
-        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
+        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso) || situacaoConta.text == "") {
             val intent = Intent(this, MainActivity::class.java).apply {
                 putExtra("chaveNome", nome)
                 putExtra("chaveConta", conta)
@@ -245,8 +246,10 @@ class ActivityCriarConta : AppCompatActivity() {
             digiteEmail.text.toString(),
             repitaSuaSenha.text.toString()
         )
-            .addOnCompleteListener(OnCompleteListener { task ->
+            .addOnCompleteListener(OnCompleteListener<AuthResult>{ task ->
                 if (task.isSuccessful) {
+
+                    salvarDadoscloudFirestore()
 
                     situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
 
@@ -280,6 +283,26 @@ class ActivityCriarConta : AppCompatActivity() {
                     }
                 }
             })
+    }
+
+    private fun salvarDadoscloudFirestore(){
+        val db = FirebaseFirestore.getInstance()
+        val usuarioId = FirebaseAuth.getInstance().currentUser!!.uid
+        var nome: String
+        nome = digiteSeuNome.text.toString()
+
+        val usuarios: MutableMap<String, Any> = HashMap()
+        usuarios["nome"] = nome
+
+        val documentReference = db.collection("Usuarios").document(usuarioId)
+        documentReference.set(usuarios).addOnSuccessListener(object : OnSuccessListener<Void?>{
+            override fun onSuccess(p0: Void?) {
+                Log.d("db", "Sucesso ao salvar os dados.")
+            }
+
+        })
+
+
     }
 
 }
