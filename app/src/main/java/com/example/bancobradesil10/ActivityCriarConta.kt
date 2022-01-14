@@ -198,9 +198,6 @@ class ActivityCriarConta : AppCompatActivity() {
                 snackBar.show()
                 situacaoConta.text = getString(R.string.situacaoErroSenhaMenos)
             }
-            situacaoConta.text == "" -> {
-                Toast.makeText(this, "Preencha todos os dados.", Toast.LENGTH_SHORT).show()
-            }
 
             else -> {
                 //  indicadorDeProgresso.setVisibility(View.VISIBLE)
@@ -208,6 +205,7 @@ class ActivityCriarConta : AppCompatActivity() {
 
                 //   indicadorDeProgresso.setVisibility(if (isVisible === 3) View.Visible else View.Invisible)
 
+                //  salvarDadoscloudFirestore()
                 java.lang.Thread(
                     object : Runnable {
                         override fun run() {
@@ -229,9 +227,10 @@ class ActivityCriarConta : AppCompatActivity() {
                     }).start()
 
                 //Firebase Tela 01.02 = Invocar Função de cadastrar usuário no Firebase Authentication:
-                cadastrarUsuarioFirebase()
 
+                cadastrarUsuarioFirebase()
             }
+
         }
     }
 
@@ -246,12 +245,8 @@ class ActivityCriarConta : AppCompatActivity() {
             digiteEmail.text.toString(),
             repitaSuaSenha.text.toString()
         )
-            .addOnCompleteListener(OnCompleteListener<AuthResult>{ task ->
+            .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
                 if (task.isSuccessful) {
-
-                    salvarDadoscloudFirestore()
-
-                    situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
 
                     indicadorDeProgresso.visibility
 
@@ -261,6 +256,10 @@ class ActivityCriarConta : AppCompatActivity() {
                         NumberFormat.getNumberInstance(ptBr)
                             .format(contaAbertasRandom.toDouble())
                     numeroConta.text = formatarValorConta
+
+                    situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
+
+                    salvarDadoscloudFirestore()
 
                     //Firebase Tela 01.03 = Invocar Função de cadastrar usuário no Firebase Authentication:
                     Toast.makeText(this, "Cadastro realizado com sucesso.", Toast.LENGTH_LONG)
@@ -285,25 +284,26 @@ class ActivityCriarConta : AppCompatActivity() {
             })
     }
 
-    private fun salvarDadoscloudFirestore(){
-        val db = FirebaseFirestore.getInstance()
-        val usuarioId = FirebaseAuth.getInstance().currentUser!!.uid
-        var nome: String
-        nome = digiteSeuNome.text.toString()
+    private fun salvarDadoscloudFirestore() {
+        val bancoDadosFirebase = FirebaseFirestore.getInstance()
+        val usuarioFirebaseId = FirebaseAuth.getInstance().currentUser!!.uid
+        val nomeFirebase: String = digiteSeuNome.text.toString()
+        val emailFirebase: String = digiteEmail.text.toString()
+        val contaFirebase: String = numeroConta.text.toString()
 
-        val usuarios: MutableMap<String, Any> = HashMap()
-        usuarios["nome"] = nome
+        val usuariosFirebaseHashMap: MutableMap<String, Any> = HashMap()
+        usuariosFirebaseHashMap["nomeFirebase"] = nomeFirebase
+        usuariosFirebaseHashMap["emailFirebase"] = emailFirebase
+        usuariosFirebaseHashMap["contaFirebase"] = contaFirebase
 
-        val documentReference = db.collection("Usuarios").document(usuarioId)
-        documentReference.set(usuarios).addOnSuccessListener(object : OnSuccessListener<Void?>{
-            override fun onSuccess(p0: Void?) {
-                Log.d("db", "Sucesso ao salvar os dados.")
-            }
-
-        })
-
-
+        val documentReference =
+            bancoDadosFirebase.collection("Usuarios Bradesil").document(usuarioFirebaseId)
+        documentReference.set(usuariosFirebaseHashMap)
+            .addOnSuccessListener(object : OnSuccessListener<Void?> {
+                override fun onSuccess(p0: Void?) {
+                    Log.d("db", "Sucesso ao salvar os dados.")
+                }
+            })
     }
-
 }
 

@@ -16,14 +16,15 @@
         android:scaleType="centerCrop"
         android:src="@drawable/menuopcoes01"
         android:tint="@color/white01"
+        app:layout_constraintBottom_toBottomOf="@id/texViewNomeBradesilActivityContaId"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/texViewNomeBradesilActivityContaId" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/texViewNomeBradesilActivityContaId"
         android:layout_width="wrap_content"
         android:layout_height="63dp"
-        android:gravity="center"
+        android:gravity="center|center_horizontal"
         android:scaleType="centerCrop"
         android:text="@string/bradesil"
         android:textColor="@color/white01"
@@ -36,33 +37,35 @@
         android:id="@+id/imageViewNotificacoesActivityContaId"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:scaleType="centerCrop"
         android:src="@drawable/sino_notificacao"
         android:tint="@color/white01"
+        app:layout_constraintBottom_toBottomOf="@id/texViewNomeBradesilActivityContaId"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/texViewNomeBradesilActivityContaId" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageViewPessoaActivityContaId"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginStart="-5dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="17dp"
         android:src="@drawable/pessoa"
         android:tint="@color/white01"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintBottom_toBottomOf="@id/textViewNomeClienteActivityContaId"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewOpcoesActivityContaId" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewNomeClienteActivityContaId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="-10dp"
         android:textColor="@color/white01"
         android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewPessoaActivityContaId"
         app:layout_constraintStart_toEndOf="@+id/imageViewPessoaActivityContaId"
         app:layout_constraintTop_toTopOf="@+id/imageViewPessoaActivityContaId"
         tools:text="Nome do Cliente" />
@@ -83,10 +86,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
         android:text="@string/sair"
         android:textColor="@color/white01"
         android:textSize="21sp"
-        app:layout_constraintStart_toEndOf="@id/imageViewSairActivityContaId"
+        app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/imageViewNotificacoesActivityContaId" />
 
     <View
@@ -110,6 +115,7 @@
         android:textColor="@color/white01"
         android:textColorHint="@color/white01"
         android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="textViewSaldoReaisContaActivityId"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSaldoContaActivityId" />
 
@@ -117,14 +123,13 @@
         android:id="@+id/textViewSaldoReaisContaActivityId"
         android:layout_width="116dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginStart="4dp"
         android:background="@drawable/botao_redondo03"
         android:text="@string/_0_00"
         android:textColor="@color/cinzaOcultarSaldo"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewReaisActivityContaId"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSaldoContaActivityId" />
+        app:layout_constraintBottom_toBottomOf="@+id/textViewReaisActivityContaId"
+        app:layout_constraintStart_toEndOf="@+id/textViewReaisActivityContaId" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewSaldoContaActivityId"
@@ -136,6 +141,7 @@
         android:textColor="@color/white01"
         android:textColorHint="@color/white01"
         android:textSize="19sp"
+        app:layout_constraintBottom_toTopOf="@id/textViewSaldoReaisContaActivityId"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linhaDivisoria01Id" />
 
@@ -162,7 +168,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/imageViewVerExtratoActivityContaId"
         app:layout_constraintEnd_toStartOf="@+id/imageViewVerExtratoActivityContaId"
-        app:layout_constraintTop_toBottomOf="@+id/linhaDivisoria01Id" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSairActivityContaId" />
 
     <View
         android:id="@+id/linhaDivisoria02Id"
@@ -180,23 +186,23 @@
         android:layout_width="19dp"
         android:layout_height="19dp"
         android:layout_marginStart="3dp"
-        android:layout_marginTop="3dp"
         android:src="@drawable/visivel"
         android:tint="@color/white01"
+        app:layout_constraintBottom_toBottomOf="@id/textViewSaldoReaisContaActivityId"
         app:layout_constraintStart_toEndOf="@+id/textViewSaldoReaisContaActivityId"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSaldoContaActivityId" />
+        app:layout_constraintTop_toTopOf="@id/textViewSaldoReaisContaActivityId" />
 
     <!-- Esta ImageView Está em sobrescrevento a outra ImageView -->
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageViewNaoVisivelActivityContaId"
         android:layout_width="19dp"
         android:layout_height="19dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
         android:src="@drawable/nao_visivel"
         android:tint="@color/white01"
-        app:layout_constraintStart_toEndOf="@+id/textViewSaldoReaisContaActivityId"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSaldoContaActivityId" />
+        app:layout_constraintBottom_toBottomOf="@id/imageViewVisivelActivityContaId"
+        app:layout_constraintStart_toEndOf="@+id/imageViewVisivelActivityContaId"
+        app:layout_constraintTop_toTopOf="@+id/imageViewVisivelActivityContaId" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayoutCompat2"
@@ -217,34 +223,39 @@
     <com.google.android.material.textfield.MaterialAutoCompleteTextView
         android:id="@+id/autoCompleteFaleBiaContaActivityId"
         android:layout_width="325dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="41dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/botaofalebia"
         android:completionThreshold="0"
         android:drawableEnd="@drawable/lupa"
         android:dropDownWidth="880dp"
+        android:foregroundGravity="center_horizontal"
+        android:gravity="center"
         android:hint="@string/faleBia"
         android:inputType="text"
-        android:paddingStart="100dp"
+        android:paddingStart="90dp"
         android:paddingEnd="85dp"
         android:textSize="17sp"
         android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/microfoneFaleBia"
+        app:layout_constraintEnd_toStartOf="@id/microfoneFaleBia"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewSaldoContaActivityId" />
+        app:layout_constraintTop_toBottomOf="@id/textViewSaldoReaisContaActivityId" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/shapeableImageView"
+        android:id="@+id/microfoneFaleBia"
         android:layout_width="55dp"
         android:layout_height="50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/microfone_botao_redondo"
         android:scaleType="center"
         android:src="@drawable/microfone"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/autoCompleteFaleBiaContaActivityId"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/autoCompleteFaleBiaContaActivityId"
-        app:layout_constraintTop_toTopOf="@+id/autoCompleteFaleBiaContaActivityId" />
+        app:layout_constraintTop_toBottomOf="@id/textViewSaldoReaisContaActivityId" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
