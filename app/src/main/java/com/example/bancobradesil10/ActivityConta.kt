@@ -35,7 +35,7 @@ class ActivityConta : AppCompatActivity() {
         /**
          * Declaração de Variáveis:
          */
-        textViewSaldo = findViewById(R.id.textViewSaldoReaisContaActivityId)
+        textViewSaldo = findViewById(R.id.textViewValorSaldoContaActivityId)
         imageViewVisivel = findViewById(R.id.imageViewVisivelActivityContaId)
         imageViewNaoVisivel = findViewById(R.id.imageViewNaoVisivelActivityContaId)
         nomeCliente = findViewById(R.id.textViewNomeClienteActivityContaId)
@@ -131,10 +131,10 @@ class ActivityConta : AppCompatActivity() {
         val usuarioId: String = FirebaseAuth.getInstance().currentUser!!.uid
         val db = FirebaseFirestore.getInstance()
 
-        val documentReference = db.collection("Usuarios").document(usuarioId)
+        val documentReference = db.collection("Usuarios Bradesil").document(usuarioId)
         documentReference.addSnapshotListener { documentSnapshot, error ->
             if (documentSnapshot != null) {
-               nomeCliente.text = documentSnapshot.getString("nome")
+               nomeCliente.text = documentSnapshot.getString("nomeFirebase")
 //                textViewEmailActivityLogin.text = documentSnapshot.getString("emailUsuario")
 //                textViewNumeroContaActivityLogin.text = documentSnapshot.getString("contaUsuario")
             }
