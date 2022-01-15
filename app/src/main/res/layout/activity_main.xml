@@ -44,8 +44,9 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewPessoaActivityMainId"
             android:layout_width="30dp"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="3dp"
             android:src="@drawable/pessoa"
             app:layout_constraintBottom_toBottomOf="@id/textViewNomeCliente01ActivityMainId"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +57,7 @@
             android:id="@+id/textViewNomeCliente01ActivityMainId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="@string/nome"
             android:textColor="@color/white01"
             android:textColorHint="@color/white01"
@@ -63,7 +65,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewPessoaActivityMainId"
             app:layout_constraintStart_toEndOf="@id/imageViewPessoaActivityMainId"
-            app:layout_constraintTop_toTopOf="@+id/imageViewPessoaActivityMainId" />
+            app:layout_constraintTop_toTopOf="@id/imageViewPessoaActivityMainId" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewNomeCliente02ActivityMainId"
@@ -82,17 +84,17 @@
             android:id="@+id/view01ActivityMain01Id"
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="-3dp"
             android:layout_marginStart="7dp"
-            android:layout_marginTop="-5dp"
             android:layout_marginEnd="7dp"
             android:background="@color/white01"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageViewPessoaActivityMainId" />
+            app:layout_constraintTop_toBottomOf="@id/imageViewPessoaActivityMainId"/>
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewEmailActivityMainId"
             android:layout_width="30dp"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_marginStart="5dp"
             android:src="@drawable/email"
             app:layout_constraintStart_toStartOf="parent"
@@ -103,6 +105,7 @@
             android:id="@+id/textViewEmail01ActivityMainId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
             android:text="@string/eMail"
             android:textColor="@color/white01"
             android:textColorHint="@color/white01"
@@ -130,18 +133,17 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="7dp"
-            android:layout_marginTop="2dp"
             android:layout_marginEnd="7dp"
             android:background="@color/white01"
+           android:layout_marginTop="-2dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewEmail01ActivityMainId" />
+            app:layout_constraintTop_toBottomOf="@id/imageViewEmailActivityMainId" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewContaActivityMainId"
             android:layout_width="30dp"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
             android:src="@drawable/money_account"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageViewEmailActivityMainId"
@@ -151,6 +153,7 @@
             android:id="@+id/textViewConta01ActivityMainId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
             android:text="@string/conta"
             android:textColor="@color/white01"
             android:textColorHint="@color/white01"
@@ -178,7 +181,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="7dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="7dp"
             android:background="@color/white01"
             app:layout_constraintStart_toStartOf="parent"
