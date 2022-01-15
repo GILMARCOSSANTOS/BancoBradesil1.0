@@ -17,6 +17,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/voltar_icone"
         android:tint="@color/white01"
+        app:layout_constraintBottom_toBottomOf="@id/textViewVoltarContasCadastradasId"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,13 +25,12 @@
         android:id="@+id/textViewVoltarContasCadastradasId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:gravity="center"
         android:text="@string/menuPrincipal"
         android:textColor="@color/white01"
         android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonVoltarContasCadastradasId"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonVoltarContasCadastradasId"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonVoltarContasCadastradasId" />
 
     <View
         android:id="@+id/viewActivityContasCadastradas01Id"
@@ -47,7 +47,6 @@
         android:layout_marginTop="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewVoltarContasCadastradasId">
 

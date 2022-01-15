@@ -120,10 +120,10 @@
             android:textColor="@color/white01"
             android:textSize="17sp"
             android:textStyle="bold"
-            tools:text="E - mail do cliente"
             app:layout_constraintBottom_toBottomOf="@+id/textViewEmail01ActivityMainId"
             app:layout_constraintStart_toEndOf="@id/textViewEmail01ActivityMainId"
-            app:layout_constraintTop_toTopOf="@+id/textViewEmail01ActivityMainId" />
+            app:layout_constraintTop_toTopOf="@+id/textViewEmail01ActivityMainId"
+            tools:text="E - mail do cliente" />
 
         <View
             android:id="@+id/view02ActivityMain02Id"
@@ -144,7 +144,7 @@
             android:layout_marginTop="5dp"
             android:src="@drawable/money_account"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view02ActivityMain02Id"
+            app:layout_constraintTop_toBottomOf="@id/imageViewEmailActivityMainId"
             app:tint="@color/white01" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -165,14 +165,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="11dp"
             android:textColor="@color/white01"
             android:textSize="17sp"
             android:textStyle="bold"
-            tools:text="conta do Cliente"
             app:layout_constraintBottom_toBottomOf="@+id/textViewConta01ActivityMainId"
             app:layout_constraintStart_toEndOf="@id/textViewConta01ActivityMainId"
-            app:layout_constraintTop_toBottomOf="@id/view02ActivityMain02Id" />
+            tools:text="conta do Cliente" />
 
         <View
             android:id="@+id/view03ActivityMainId"
@@ -197,6 +196,7 @@
             android:textColorHint="@color/white01"
             android:textSize="21sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imageButtonContasCadastradasMainActivityId"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewConta01ActivityMainId" />
 
@@ -232,6 +232,7 @@
         android:text="@string/lembrarUsuario"
         android:textColor="@color/white01"
         android:textSize="21sp"
+        app:layout_constraintBottom_toTopOf="@id/acessarContaBotaoMainActivityId"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayoutActivityMainId02" />
 
@@ -247,6 +248,7 @@
         android:textColor="@color/corSecundariaVariante"
         android:textSize="21sp"
         app:backgroundTint="@color/white01"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/checkboxLembrarUsuarioId" />
 
@@ -263,6 +265,7 @@
         android:textColor="@color/corSecundariaVariante"
         android:textSize="21sp"
         app:backgroundTint="@color/white01"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/acessarContaBotaoMainActivityId" />
 
