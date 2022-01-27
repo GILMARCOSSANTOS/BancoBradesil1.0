@@ -181,7 +181,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="7dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="3dp"
             android:layout_marginEnd="7dp"
             android:background="@color/white01"
             app:layout_constraintStart_toStartOf="parent"
@@ -245,6 +245,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+
         android:background="@drawable/botao_redondo02"
         android:text="@string/acessarConta"
         android:textAllCaps="false"

@@ -13,7 +13,6 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="10dp"
-
         android:scaleType="centerCrop"
         android:src="@drawable/voltar_icone"
         android:tint="@color/white01"
@@ -69,14 +68,14 @@
             android:id="@+id/textViewNomeCliente01ActivityLoginId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:text="@string/nome"
             android:textColor="@color/white01"
             android:textColorHint="@color/white01"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/imageViewPessoaActivityLoginId"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/imageViewPessoaActivityLoginId" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewNomeCliente02ActivityLoginId"
@@ -85,18 +84,18 @@
             android:layout_marginStart="5dp"
             android:textColor="@color/white01"
             android:textSize="17sp"
-            tools:text="Nome do Cliente"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/textViewNomeCliente01ActivityLoginId"
             app:layout_constraintStart_toEndOf="@id/textViewNomeCliente01ActivityLoginId"
-            app:layout_constraintTop_toTopOf="@id/textViewNomeCliente01ActivityLoginId" />
+            app:layout_constraintTop_toTopOf="@id/textViewNomeCliente01ActivityLoginId"
+            tools:text="Nome do Cliente" />
 
         <View
             android:id="@+id/view01ActivityLogin01Id"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="7dp"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="-2dp"
             android:layout_marginEnd="7dp"
             android:background="@color/white01"
             app:layout_constraintStart_toStartOf="parent"
@@ -118,6 +117,7 @@
             android:id="@+id/textViewEmail01ActivityLoginId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:text="@string/eMail"
             android:textColor="@color/white01"
             android:textColorHint="@color/white01"
@@ -132,19 +132,19 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:textColor="@color/white01"
-            tools:text="E - mail do Cliente"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/textViewEmail01ActivityLoginId"
             app:layout_constraintStart_toEndOf="@id/textViewEmail01ActivityLoginId"
-            app:layout_constraintTop_toTopOf="@+id/textViewEmail01ActivityLoginId" />
+            app:layout_constraintTop_toTopOf="@+id/textViewEmail01ActivityLoginId"
+            tools:text="E - mail do Cliente" />
 
         <View
             android:id="@+id/view02ActivityLogin01Id"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="7dp"
-            android:layout_marginTop="-5dp"
+            android:layout_marginTop="-6dp"
             android:layout_marginEnd="7dp"
             android:background="@color/white01"
             app:layout_constraintStart_toStartOf="parent"
@@ -154,12 +154,11 @@
             android:id="@+id/imageViewContaActivityLoginId"
             android:layout_width="30dp"
             android:layout_height="35dp"
+            android:layout_marginTop="-5dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
             android:src="@drawable/money_account"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewConta01ActivityLoginId"
+            app:layout_constraintTop_toBottomOf="@id/imageViewEmailActivityLoginId"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewConta01ActivityLoginId"
             app:tint="@color/white01" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -169,24 +168,24 @@
             android:text="@string/conta"
             android:textColor="@color/white01"
             android:textColorHint="@color/white01"
+            android:layout_marginTop="-30dp"
             android:textSize="17sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewConta02ActivityLoginId"
             app:layout_constraintStart_toEndOf="@id/imageViewContaActivityLoginId"
-            app:layout_constraintTop_toTopOf="@+id/textViewConta02ActivityLoginId" />
+           app:layout_constraintTop_toBottomOf="@id/imageViewContaActivityLoginId" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewConta02ActivityLoginId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+
             android:textColor="@color/white01"
-            tools:text="Conta do Cliente"
             android:textSize="17sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/textViewConta01ActivityLoginId"
             app:layout_constraintStart_toEndOf="@id/textViewConta01ActivityLoginId"
-            app:layout_constraintTop_toTopOf="@id/view02ActivityLogin01Id" />
+            app:layout_constraintTop_toTopOf="@id/textViewConta01ActivityLoginId"
+            tools:text="Conta do Cliente" />
 
         <View
             android:id="@+id/view03ActivityLogin01Id"
@@ -225,14 +224,12 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="395dp"
-        android:layout_marginTop="100dp"
+        android:layout_height="450dp"
         android:background="@drawable/botao_redondo01"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline22">
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/texViewInformeDadosActivityLoginId"
@@ -278,8 +275,6 @@
             android:textColorHint="@color/black"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
-            app:counterEnabled="true"
-            app:counterMaxLength="6"
             app:hintTextColor="@color/corSecundaria"
             app:passwordToggleEnabled="true">
 
@@ -288,6 +283,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkboxLembrarUsuarioId"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:buttonTint="@color/corSecundariaVariante"
+            android:text="@string/lembrarUsuario"
+            android:textColor="@color/corSecundariaVariante"
+            android:textSize="21sp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/botaoAContinuarActivityLoginId"
@@ -306,13 +311,6 @@
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="270dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

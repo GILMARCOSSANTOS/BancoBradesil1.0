@@ -134,7 +134,7 @@ class ActivityConta : AppCompatActivity() {
         val documentReference = db.collection("Usuarios Bradesil").document(usuarioId)
         documentReference.addSnapshotListener { documentSnapshot, error ->
             if (documentSnapshot != null) {
-               nomeCliente.text = documentSnapshot.getString("nomeFirebase")
+                nomeCliente.text = documentSnapshot.getString("nomeFirebase")
 //                textViewEmailActivityLogin.text = documentSnapshot.getString("emailUsuario")
 //                textViewNumeroContaActivityLogin.text = documentSnapshot.getString("contaUsuario")
             }
