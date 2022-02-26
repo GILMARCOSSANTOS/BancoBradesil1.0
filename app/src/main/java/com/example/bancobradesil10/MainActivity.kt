@@ -36,9 +36,9 @@ class MainActivity : AppCompatActivity() {
         /**
          * Declaração de variáveis:
          */
-        textViewNomeConta = findViewById(R.id.textViewNomeCliente02ActivityMainId)
-        textViewNumeroConta = findViewById(R.id.textViewConta02ActivityMainId)
-        texViewEmail = findViewById(R.id.textViewEmail2ActivityLoginId)
+        textViewNomeConta = findViewById(R.id.txtVw_nomeCliente_componentDados_id)
+        textViewNumeroConta = findViewById(R.id.txtVw_contaCliente_componentDados_id)
+        texViewEmail = findViewById(R.id.txtVw_emailCliente_componentDados_id)
         botaoAcessarConta = findViewById(R.id.acessarContaBotaoMainActivityId)
         botaoCriarconta = findViewById(R.id.botaoCriarContaMainActivityId)
         checkBoxLembrar = findViewById(R.id.checkboxLembrarUsuarioId)
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
          * Shared Preferences: Recebimentos dos dados da ActivityCriarConta:
          */
         val nomeUsuarioShared = intent.getStringExtra("chaveNome")
-       textViewNomeConta.apply {
+        textViewNomeConta.apply {
             text = nomeUsuarioShared
         }
         val emailUsuarioShared = intent.getStringExtra("chaveEmail")

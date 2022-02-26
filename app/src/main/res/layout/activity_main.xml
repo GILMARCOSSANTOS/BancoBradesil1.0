@@ -7,229 +7,68 @@
     android:background="@drawable/back_groud_geral"
     tools:context=".MainActivity">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageViewSimboloBradesilMainActivityId"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="15dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/banco_icone"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/white01" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/texViewNomeBradesilMainActivityId"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:gravity="center"
-        android:text="@string/bradesil"
-        android:textColor="@color/white01"
-        android:textSize="35sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewSimboloBradesilMainActivityId"
-        app:layout_constraintStart_toEndOf="@id/imageViewSimboloBradesilMainActivityId"
-        app:layout_constraintTop_toTopOf="@+id/imageViewSimboloBradesilMainActivityId" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayoutActivityMainId02"
+    <include
+        android:id="@+id/include_slogan_actvt_main_id"
+        layout="@layout/component_slogan"
         android:layout_width="match_parent"
-        android:layout_height="225dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/texViewNomeBradesilMainActivityId">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewPessoaActivityMainId"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="3dp"
-            android:src="@drawable/pessoa"
-            app:layout_constraintBottom_toBottomOf="@id/textViewNomeCliente01ActivityMainId"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/white01" />
+    <include
+        android:id="@+id/include_dados_actvt_main_id"
+        layout="@layout/componentes_dados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintTop_toBottomOf="@id/include_slogan_actvt_main_id" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewNomeCliente01ActivityMainId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/nome"
-            android:textColor="@color/white01"
-            android:textColorHint="@color/white01"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewPessoaActivityMainId"
-            app:layout_constraintStart_toEndOf="@id/imageViewPessoaActivityMainId"
-            app:layout_constraintTop_toTopOf="@id/imageViewPessoaActivityMainId" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewNomeCliente02ActivityMainId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:textColor="@color/white01"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewNomeCliente01ActivityMainId"
-            app:layout_constraintStart_toEndOf="@id/textViewNomeCliente01ActivityMainId"
-            app:layout_constraintTop_toTopOf="@+id/textViewNomeCliente01ActivityMainId"
-            tools:text="Nome do Cliente" />
-
-        <View
-            android:id="@+id/view01ActivityMain01Id"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="-3dp"
-            android:layout_marginStart="7dp"
-            android:layout_marginEnd="7dp"
-            android:background="@color/white01"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageViewPessoaActivityMainId"/>
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewEmailActivityMainId"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="5dp"
-            android:src="@drawable/email"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view01ActivityMain01Id"
-            app:tint="@color/white01" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewEmail01ActivityMainId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:text="@string/eMail"
-            android:textColor="@color/white01"
-            android:textColorHint="@color/white01"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewEmailActivityMainId"
-            app:layout_constraintStart_toEndOf="@id/imageViewEmailActivityMainId"
-            app:layout_constraintTop_toTopOf="@+id/imageViewEmailActivityMainId" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewEmail2ActivityLoginId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:textColor="@color/white01"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewEmail01ActivityMainId"
-            app:layout_constraintStart_toEndOf="@id/textViewEmail01ActivityMainId"
-            app:layout_constraintTop_toTopOf="@+id/textViewEmail01ActivityMainId"
-            tools:text="E - mail do cliente" />
-
-        <View
-            android:id="@+id/view02ActivityMain02Id"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="7dp"
-            android:layout_marginEnd="7dp"
-            android:background="@color/white01"
-           android:layout_marginTop="-2dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageViewEmailActivityMainId" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewContaActivityMainId"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="5dp"
-            android:src="@drawable/money_account"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageViewEmailActivityMainId"
-            app:tint="@color/white01" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewConta01ActivityMainId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:text="@string/conta"
-            android:textColor="@color/white01"
-            android:textColorHint="@color/white01"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewContaActivityMainId"
-            app:layout_constraintStart_toEndOf="@id/imageViewContaActivityMainId"
-            app:layout_constraintTop_toTopOf="@+id/imageViewContaActivityMainId" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewConta02ActivityMainId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="11dp"
-            android:textColor="@color/white01"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewConta01ActivityMainId"
-            app:layout_constraintStart_toEndOf="@id/textViewConta01ActivityMainId"
-            tools:text="conta do Cliente" />
-
-        <View
-            android:id="@+id/view03ActivityMainId"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="7dp"
-            android:background="@color/white01"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewConta02ActivityMainId" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/LinearLayoutActivityMainId02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/include_dados_actvt_main_id">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewAcessarContasCadastradasMainActivityId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="13dp"
             android:hint="@string/acessarContas"
             android:text="@string/acessarContas"
             android:textColor="@color/white01"
             android:textColorHint="@color/white01"
             android:textSize="21sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/imageButtonContasCadastradasMainActivityId"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewConta01ActivityMainId" />
+            android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/imageButtonContasCadastradasMainActivityId"
             android:layout_width="26dp"
+            android:layout_marginBottom="3dp"
             android:layout_height="26dp"
-            android:layout_marginTop="1dp"
             android:background="#C00354"
             android:rotation="270"
             android:src="@drawable/botao_baixo2"
-            android:tint="@color/white01"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewAcessarContasCadastradasMainActivityId"
-            app:layout_constraintStart_toEndOf="@+id/textViewAcessarContasCadastradasMainActivityId"
-            app:layout_constraintTop_toBottomOf="@id/view03ActivityMainId" />
+            android:tint="@color/white01" />
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="50dp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/checkboxLembrarUsuarioId"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
+        android:layout_marginTop="30dp"
         android:layout_marginStart="95dp"
         android:buttonTint="@color/white01"
         android:text="@string/lembrarUsuario"
@@ -237,15 +76,14 @@
         android:textSize="21sp"
         app:layout_constraintBottom_toTopOf="@id/acessarContaBotaoMainActivityId"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutActivityMainId02" />
+        app:layout_constraintTop_toBottomOf="@+id/LinearLayoutActivityMainId02" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/acessarContaBotaoMainActivityId"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/botao_redondo02"
         android:text="@string/acessarConta"
         android:textAllCaps="false"
@@ -253,16 +91,17 @@
         android:textSize="21sp"
         app:backgroundTint="@color/white01"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkboxLembrarUsuarioId" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/botaoCriarContaMainActivityId"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="5dp"
+
         android:background="@drawable/botao_redondo02"
         android:text="@string/criarCOntaBotaoMain"
         android:textAllCaps="false"
@@ -270,28 +109,8 @@
         android:textSize="21sp"
         app:backgroundTint="@color/white01"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/acessarContaBotaoMainActivityId" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="120dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="44dp" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="left"
-        app:constraint_referenced_ids="constraintLayoutActivityMainId02" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

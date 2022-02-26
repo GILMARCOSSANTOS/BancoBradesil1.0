@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    Sem backGround para não interferir no backGround da View Destino -->
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/componente_slogon_Bradesil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewSimboloBradesilMainActivityId"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:src="@drawable/banco_icone"
+            android:tint="@color/white01" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/texViewNomeBradesilMainActivityId"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:text="@string/bradesil"
+            android:textColor="@color/white01"
+            android:textSize="35sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!--    Sem backGround para não interferir no backGround da View Destino -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
