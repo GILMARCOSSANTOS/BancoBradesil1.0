@@ -2,6 +2,7 @@ package com.example.bancobradesil10
 
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.TextView
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textViewNomeConta: TextView
     private lateinit var textViewNumeroConta: TextView
     private lateinit var texViewEmail: TextView
-    private lateinit var botaoAcessarConta: MaterialButton
+    private lateinit var botaoAcessarConta: Button
     private lateinit var botaoCriarconta: MaterialButton
     private lateinit var imageButtonContasCadastradas: ImageButton
     private lateinit var checkBoxLembrar: CheckBox
@@ -28,19 +29,24 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle1?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        /*
-        Bloquear Orientação de tela:
+
+        /**
+         * Bloquear Orientação de tela:
          */
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
+        botaoAcessarConta.setBackgroundColor(R.drawable.botao_redondo02)
+
 
         /**
          * Declaração de variáveis:
          */
+        botaoAcessarConta = findViewById(R.id.botao_acessarConta_id)
         textViewNomeConta = findViewById(R.id.txtVw_nomeCliente_componentDados_id)
         textViewNumeroConta = findViewById(R.id.txtVw_contaCliente_componentDados_id)
         texViewEmail = findViewById(R.id.txtVw_emailCliente_componentDados_id)
-        botaoAcessarConta = findViewById(R.id.acessarContaBotaoMainActivityId)
-        botaoCriarconta = findViewById(R.id.botaoCriarContaMainActivityId)
+        botaoAcessarConta = findViewById(R.id.botao_acessarConta_id)
+        //botaoCriarconta = findViewById(R.id.botaoCriarContaMainActivityId)
         checkBoxLembrar = findViewById(R.id.checkboxLembrarUsuarioId)
         textViewAContasCadastradas =
             findViewById(R.id.textViewAcessarContasCadastradasMainActivityId)
@@ -110,6 +116,7 @@ Função CheckBoxLembrarUsuario():
         val intent = Intent1(this, ActivityLogin::class.java).apply {
         }
         startActivity(intent)
+
     }
 
 }

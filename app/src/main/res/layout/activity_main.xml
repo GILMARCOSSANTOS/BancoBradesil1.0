@@ -55,8 +55,8 @@
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/imageButtonContasCadastradasMainActivityId"
             android:layout_width="26dp"
-            android:layout_marginBottom="3dp"
             android:layout_height="26dp"
+            android:layout_marginBottom="3dp"
             android:background="#C00354"
             android:rotation="270"
             android:src="@drawable/botao_baixo2"
@@ -68,49 +68,70 @@
         android:id="@+id/checkboxLembrarUsuarioId"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="30dp"
         android:layout_marginStart="95dp"
+        android:layout_marginTop="30dp"
         android:buttonTint="@color/white01"
         android:text="@string/lembrarUsuario"
         android:textColor="@color/white01"
         android:textSize="21sp"
-        app:layout_constraintBottom_toTopOf="@id/acessarContaBotaoMainActivityId"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LinearLayoutActivityMainId02" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/acessarContaBotaoMainActivityId"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/incld_botaoAcesso_actvt_main_id"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/botao_redondo02"
-        android:text="@string/acessarConta"
-        android:textAllCaps="false"
-        android:textColor="@color/corSecundariaVariante"
-        android:textSize="21sp"
-        app:backgroundTint="@color/white01"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxLembrarUsuarioId" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/botaoCriarContaMainActivityId"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="5dp"
-
-        android:background="@drawable/botao_redondo02"
-        android:text="@string/criarCOntaBotaoMain"
-        android:textAllCaps="false"
-        android:textColor="@color/corSecundariaVariante"
-        android:textSize="21sp"
-        app:backgroundTint="@color/white01"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/acessarContaBotaoMainActivityId" />
+        app:layout_constraintTop_toBottomOf="@id/checkboxLembrarUsuarioId"
+        android:layout_height="wrap_content">
+
+        <include
+            app:layout_constraintTop_toBottomOf="@id/checkboxLembrarUsuarioId"
+            layout="@layout/component_botao_acesso" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    <!--
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/acessarContaBotaoMainActivityId"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/botao_redondo02"
+            android:text="@string/acessarConta"
+            android:textAllCaps="false"
+            android:textColor="@color/corSecundariaVariante"
+            android:textSize="21sp"
+            app:backgroundTint="@color/white01"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkboxLembrarUsuarioId" />
+
+            -->
+
+    <!--
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botaoCriarContaMainActivityId"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/botao_redondo02"
+            android:text="@string/criarCOntaBotaoMain"
+            android:textAllCaps="false"
+            android:textColor="@color/corSecundariaVariante"
+            android:textSize="21sp"
+            app:backgroundTint="@color/white01"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/incld_botaoAcesso_actvt_main_id" />
+
+            -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
