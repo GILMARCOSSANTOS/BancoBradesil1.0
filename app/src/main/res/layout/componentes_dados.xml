@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-
     android:layout_height="wrap_content">
 
     <!--    Sem backGround para não interferir no backGround da View Destino -->
@@ -27,6 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+               android:hint="@string/nome"
                 android:text="@string/nome"
                 android:textColor="@color/white01"
                 android:textColorHint="@color/white01"
@@ -59,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/eMail"
+                android:hint="@string/eMail"
                 android:textColor="@color/white01"
                 android:textColorHint="@color/white01"
                 android:textSize="17sp"
@@ -80,8 +81,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="30dp"
-                android:layout_marginTop="2dp"
                 android:layout_height="30dp"
+                android:layout_marginTop="2dp"
                 android:src="@drawable/money_account"
                 android:tint="@color/white01" />
 
@@ -91,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/conta"
+                android:hint="@string/conta"
                 android:textColor="@color/white01"
                 android:textColorHint="@color/white01"
                 android:textSize="17sp"
@@ -101,7 +103,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white01" />
 
         <!--    Sem backGround para não interferir no backGround da View Destino -->

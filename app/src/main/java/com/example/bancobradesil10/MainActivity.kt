@@ -7,7 +7,6 @@ import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.button.MaterialButton
 import android.content.Intent as Intent1
 import android.os.Bundle as Bundle1
 
@@ -20,10 +19,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textViewNumeroConta: TextView
     private lateinit var texViewEmail: TextView
     private lateinit var botaoAcessarConta: Button
-    private lateinit var botaoCriarconta: MaterialButton
+    private lateinit var botaoCriarconta: Button
     private lateinit var imageButtonContasCadastradas: ImageButton
     private lateinit var checkBoxLembrar: CheckBox
     private lateinit var textViewAContasCadastradas: TextView
+
 
     @SuppressLint("SourceLockedOrientationActivity", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle1?) {
@@ -35,18 +35,15 @@ class MainActivity : AppCompatActivity() {
          */
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
-        botaoAcessarConta.setBackgroundColor(R.drawable.botao_redondo02)
-
-
         /**
          * Declaração de variáveis:
          */
-        botaoAcessarConta = findViewById(R.id.botao_acessarConta_id)
+
+        botaoAcessarConta = findViewById(R.id.botaoa_acessarConta_mainActivity_Id)
         textViewNomeConta = findViewById(R.id.txtVw_nomeCliente_componentDados_id)
         textViewNumeroConta = findViewById(R.id.txtVw_contaCliente_componentDados_id)
         texViewEmail = findViewById(R.id.txtVw_emailCliente_componentDados_id)
-        botaoAcessarConta = findViewById(R.id.botao_acessarConta_id)
-        //botaoCriarconta = findViewById(R.id.botaoCriarContaMainActivityId)
+        botaoCriarconta = findViewById(R.id.botaoCriarContaMainActivityId)
         checkBoxLembrar = findViewById(R.id.checkboxLembrarUsuarioId)
         textViewAContasCadastradas =
             findViewById(R.id.textViewAcessarContasCadastradasMainActivityId)
@@ -113,10 +110,11 @@ Função CheckBoxLembrarUsuario():
     Função AcessarConta():
      */
     private fun acessarConta() {
+
         val intent = Intent1(this, ActivityLogin::class.java).apply {
         }
         startActivity(intent)
-
     }
 
 }
+

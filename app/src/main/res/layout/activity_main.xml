@@ -27,7 +27,6 @@
         android:layout_marginEnd="5dp"
         app:layout_constraintTop_toBottomOf="@id/include_slogan_actvt_main_id" />
 
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/LinearLayoutActivityMainId02"
         android:layout_width="match_parent"
@@ -77,26 +76,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LinearLayoutActivityMainId02" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/incld_botaoAcesso_actvt_main_id"
-        android:layout_width="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkboxLembrarUsuarioId"
-        android:layout_height="wrap_content">
-
-        <include
-            app:layout_constraintTop_toBottomOf="@id/checkboxLembrarUsuarioId"
-            layout="@layout/component_botao_acesso" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
-    <!--
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/acessarContaBotaoMainActivityId"
+            android:id="@+id/botaoa_acessarConta_mainActivity_Id"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="5dp"
@@ -111,9 +93,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkboxLembrarUsuarioId" />
 
-            -->
 
-    <!--
         <com.google.android.material.button.MaterialButton
             android:id="@+id/botaoCriarContaMainActivityId"
             android:layout_width="match_parent"
@@ -129,9 +109,6 @@
             app:backgroundTint="@color/white01"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/incld_botaoAcesso_actvt_main_id" />
-
-            -->
-
+            app:layout_constraintTop_toBottomOf="@id/botaoa_acessarConta_mainActivity_Id" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
