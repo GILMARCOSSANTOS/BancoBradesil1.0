@@ -7,72 +7,84 @@
     android:background="@drawable/back_ground_2"
     tools:context=".ActivityCriarConta">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageViewVoltarActivityCriarContaId"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="25dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/voltar_icone"
-        android:tint="@color/white01"
-        app:layout_constraintBottom_toBottomOf="@id/texTeViewVoltarActivityCriarContaId"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/texTeViewVoltarActivityCriarContaId"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lnrLyt_menuPrincipal_actvt_criarConta_id"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/menuPrincipal"
-        android:textColor="@color/white01"
-        android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/imageViewVoltarActivityCriarContaId"
-        app:layout_constraintTop_toTopOf="@id/imageViewVoltarActivityCriarContaId" />
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewVoltarActivityCriarContaId"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/voltar_icone"
+            android:tint="@color/white01" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/texTeViewVoltarActivityCriarContaId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menuPrincipal"
+            android:textColor="@color/white01"
+            android:textSize="25sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <View
         android:id="@+id/view01ActivityCriarConta01Id"
-        android:layout_width="205dp"
+        android:layout_width="200dp"
         android:layout_height="1dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
         android:background="@color/white01"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewVoltarActivityCriarContaId" />
+        app:layout_constraintTop_toBottomOf="@id/lnrLyt_menuPrincipal_actvt_criarConta_id" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageViewLogintarActivityCriarContaId"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="10dp"
-        android:rotation="180"
-        android:scaleType="centerCrop"
-        android:src="@drawable/voltar_icone"
-        android:tint="@color/white01"
-        app:layout_constraintBottom_toBottomOf="@id/texTeViewLoginctivityCriarContaId"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewVoltarActivityCriarContaId" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/texTeViewLoginctivityCriarContaId"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lnrLyt_acessarConta_actvt_criarConta_id"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:gravity="center"
-        android:text="@string/acessarSuaConta"
-        android:textColor="@color/white01"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toStartOf="@id/imageViewLogintarActivityCriarContaId"
-        app:layout_constraintTop_toTopOf="@+id/imageViewLogintarActivityCriarContaId" />
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="end"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lnrLyt_menuPrincipal_actvt_criarConta_id">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/texTeViewLoginctivityCriarContaId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/acessarSuaConta"
+            android:textColor="@color/white01"
+            android:textSize="25sp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewLogintarActivityCriarContaId"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:rotation="180"
+            android:src="@drawable/voltar_icone"
+            android:tint="@color/white01" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <View
-        android:id="@+id/view01ActivityCriarConta02Id"
-        android:layout_width="243dp"
+        android:id="@+id/view02ActivityCriarConta01Id"
+        android:layout_width="240dp"
         android:layout_height="1dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="5dp"
         android:background="@color/white01"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewLogintarActivityCriarContaId" />
+        app:layout_constraintTop_toBottomOf="@id/lnrLyt_acessarConta_actvt_criarConta_id" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayoutCompat"
@@ -99,9 +111,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"
             android:digits="0123456789abcdefghijklmnopqrstuvwxykzABCDEFGHIJKLMNOPQRSTUVWXYK Z"
             android:hint="@string/nomeCompleto"
             android:inputType="textCapWords|textImeMultiLine"
@@ -126,8 +138,8 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:hint="@string/eMail"
             android:inputType="textCapWords|textImeMultiLine"
             android:textSize="20sp"
@@ -151,8 +163,8 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:hint="@string/crieSenha"
             android:inputType="numberPassword|textPassword"
             android:singleLine="true"
@@ -175,8 +187,8 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:hint="@string/repitaSenha"
             android:inputType="numberPassword|textPassword"
             android:singleLine="true"
@@ -199,9 +211,9 @@
             android:id="@+id/botaoCriarContaActivityCriarContaId"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
             android:background="@drawable/botao_redondo02"
             android:text="@string/criarConta"
             android:textAllCaps="false"
@@ -215,9 +227,9 @@
             android:id="@+id/progressBarMainActivityId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="5dp"
             android:progress="50"
             android:visibility="invisible"
             app:indicatorColor="@color/corSecundariaVariante"
@@ -227,8 +239,8 @@
             android:id="@+id/textViewSituacaoContaActivityCriarContaId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:text="@string/situacaoCadastro"
             android:textSize="17sp"
             android:textStyle="bold"
@@ -249,16 +261,16 @@
             android:id="@+id/viewId02"
             android:layout_width="wrap_content"
             android:layout_height="5dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:background="@color/cinzaEscuroMenu" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewNumeroContaActivityCriarConta01Id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:text="@string/conta"
             android:textSize="17sp"
             android:textStyle="bold" />
@@ -277,20 +289,12 @@
             android:id="@+id/viewId03"
             android:layout_width="wrap_content"
             android:layout_height="5dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginBottom="35dp"
             android:background="@color/cinzaEscuroMenu" />
 
-
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="264dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
