@@ -8,97 +8,71 @@
     android:orientation="vertical"
     tools:context=".ActivityContasCadastradas">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageButtonVoltarContasCadastradasId"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="25dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/voltar_icone"
-        android:tint="@color/white01"
-        app:layout_constraintBottom_toBottomOf="@id/textViewVoltarContasCadastradasId"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewVoltarContasCadastradasId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/menuPrincipal"
-        android:textColor="@color/white01"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButtonVoltarContasCadastradasId"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonVoltarContasCadastradasId" />
-
-    <View
-        android:id="@+id/viewActivityContasCadastradas01Id"
-        android:layout_width="200dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="12dp"
-        android:background="@color/white01"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageButtonVoltarContasCadastradasId" />
-
-    <androidx.core.widget.NestedScrollView
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lnrLyt_menuPrincipal_actvt_contasCadastradas_id"
         android:layout_width="match_parent"
-        android:layout_height="615dp"
-        android:layout_marginTop="35dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewVoltarContasCadastradasId">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageButtonVoltarContasCadastradasId"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/voltar_icone"
+            android:tint="@color/white01" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageViewPessoaActivityContasCadastradasId"
-                android:layout_width="30dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="5dp"
-                android:src="@drawable/pessoa"
-                app:tint="@color/white01" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/texTeViewVoltarActivityCriarContaId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menuPrincipal"
+            android:textColor="@color/white01"
+            android:textSize="25sp" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textViewNomeCliente01ActivityContasCadastradasId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="-25dp"
-                android:text="@string/nome"
-                android:textColor="@color/white01"
-                android:textColorHint="@color/white01"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textViewNomeCliente02ActivityMainId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="87dp"
-                android:layout_marginTop="-23dp"
-                android:textColor="@color/white01"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                tools:text="Nome do Cliente" />
+    <View
+        android:id="@+id/view01ActivityCriarConta01Id"
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/white01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lnrLyt_menuPrincipal_actvt_contasCadastradas_id" />
 
-            <View
-                android:id="@+id/view01ActivityMain01Id"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="-3dp"
-                android:layout_marginEnd="7dp"
-                android:background="@color/white01" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lnrLyt_nomeCliente_actvt_conta_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lnrLyt_menuPrincipal_actvt_contasCadastradas_id">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewPessoaActivityContaId"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/pessoa"
+            android:tint="@color/white01" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewNomeClienteActivityContaId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:textColor="@color/white01"
+            android:textSize="17sp"
+            tools:text="Nome do Cliente" />
 
-    </androidx.core.widget.NestedScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
