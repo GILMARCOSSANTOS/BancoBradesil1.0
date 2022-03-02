@@ -4,275 +4,303 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@drawable/back_groud_geral2"
     tools:context=".ActivityConta">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageViewOpcoesActivityContaId"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:scaleType="centerCrop"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="5dp"
         android:src="@drawable/menuopcoes01"
         android:tint="@color/white01"
-        app:layout_constraintBottom_toBottomOf="@id/texViewNomeBradesilActivityContaId"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/texViewNomeBradesilActivityContaId" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/texViewNomeBradesilActivityContaId"
         android:layout_width="wrap_content"
-        android:layout_height="63dp"
-        android:gravity="center|center_horizontal"
-        android:scaleType="centerCrop"
+        android:layout_height="wrap_content"
         android:text="@string/bradesil"
         android:textColor="@color/white01"
         android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@id/imageViewNotificacoesActivityContaId"
-        app:layout_constraintStart_toEndOf="@+id/imageViewOpcoesActivityContaId"
+        app:layout_constraintStart_toEndOf="@id/imageViewOpcoesActivityContaId"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageViewNotificacoesActivityContaId"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:scaleType="centerCrop"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="5dp"
         android:src="@drawable/sino_notificacao"
         android:tint="@color/white01"
-        app:layout_constraintBottom_toBottomOf="@id/texViewNomeBradesilActivityContaId"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/texViewNomeBradesilActivityContaId" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageViewPessoaActivityContaId"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="17dp"
-        android:src="@drawable/pessoa"
-        android:tint="@color/white01"
-        app:layout_constraintBottom_toBottomOf="@id/textViewNomeClienteActivityContaId"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewOpcoesActivityContaId" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewNomeClienteActivityContaId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-12dp"
-        android:textColor="@color/white01"
-        android:textSize="19sp"
-        app:layout_constraintBottom_toBottomOf="@id/imageViewPessoaActivityContaId"
-        app:layout_constraintStart_toEndOf="@+id/imageViewPessoaActivityContaId"
-        app:layout_constraintTop_toTopOf="@+id/imageViewPessoaActivityContaId"
-        tools:text="Nome do Cliente" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageViewSairActivityContaId"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/exit_activity_conta"
-        android:tint="@color/white01"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewSairActivityContaId"
-        app:layout_constraintStart_toEndOf="@id/linhaDivisoria01Id"
-        app:layout_constraintTop_toTopOf="@+id/textViewSairActivityContaId" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewSairActivityContaId"
-        style="bold"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lnrLyt_nomeCliente_actvt_conta_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="15dp"
-        android:text="@string/sair"
-        android:textColor="@color/white01"
-        android:textSize="21sp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/texViewNomeBradesilActivityContaId">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewPessoaActivityContaId"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/pessoa"
+            android:tint="@color/white01" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewNomeClienteActivityContaId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:textColor="@color/white01"
+            android:textSize="17sp"
+            tools:text="Nome do Cliente" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lnrLyt_sair_actvt_conta_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewNotificacoesActivityContaId" />
+        app:layout_constraintTop_toBottomOf="@id/texViewNomeBradesilActivityContaId">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewSairActivityContaId"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/exit_activity_conta"
+            android:tint="@color/white01" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewSairActivityContaId"
+            style="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginEnd="5dp"
+            android:text="@string/sair"
+            android:textColor="@color/white01"
+            android:textSize="21sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
     <View
         android:id="@+id/linhaDivisoria01Id"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="85dp"
-        android:background="@color/white01"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomeClienteActivityContaId" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewReaisActivityContaId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="3dp"
-        android:text="@string/rsReais"
-        android:textColor="@color/white01"
-        android:textColorHint="@color/white01"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSaldoContaActivityId" />
+        android:layout_marginEnd="75dp"
+        android:background="@color/white01"
+        app:layout_constraintEnd_toStartOf="@id/lnrLyt_sair_actvt_conta_id"
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewValorSaldoContaActivityId"
-        android:layout_width="116dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:background="@drawable/botao_redondo03"
-        android:text="@string/_0_00"
-        android:textColor="@color/cinzaOcultarSaldo"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewReaisActivityContaId"
-        app:layout_constraintStart_toEndOf="@+id/textViewReaisActivityContaId" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lnrLyt_nomeCliente_actvt_conta_id" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewSaldoContaActivityId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="25dp"
         android:text="@string/saldoDisponivelActivityConta"
         android:textColor="@color/white01"
         android:textColorHint="@color/white01"
         android:textSize="19sp"
-        app:layout_constraintBottom_toTopOf="@id/textViewValorSaldoContaActivityId"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linhaDivisoria01Id" />
+        app:layout_constraintTop_toBottomOf="@id/lnrLyt_nomeCliente_actvt_conta_id" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageViewVerExtratoActivityContaId"
-        android:layout_width="18dp"
-        android:layout_height="16dp"
-        android:layout_marginTop="-26dp"
-        android:layout_marginEnd="15dp"
-        android:rotation="180"
-        android:src="@drawable/botao_baixo2"
-        android:tint="@color/white01"
-        app:layout_constraintBottom_toBottomOf="@id/textViewExtratoContaActivityId"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewExtratoContaActivityId" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lnrLyt_saldo_actcvt_conta_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewSaldoContaActivityId">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewExtratoContaActivityId"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewReaisActivityContaId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/rsReais"
+            android:textColor="@color/white01"
+            android:textColorHint="@color/white01"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnrLyt_nomeCliente_actvt_conta_id" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewValorSaldoContaActivityId"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/botao_redondo03"
+            android:text="@string/_0_00"
+            android:textColor="@color/cinzaOcultarSaldo"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewReaisActivityContaId"
+            app:layout_constraintStart_toEndOf="@+id/textViewReaisActivityContaId" />
+
+        <!-- Esta ImageView Está em sobrescrevento a outra ImageView -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewVisivelActivityContaId"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:src="@drawable/visivel"
+            android:tint="@color/white01" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewNaoVisivelActivityContaId"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:src="@drawable/nao_visivel"
+            android:tint="@color/white01" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lnrLyt_extrato_actcvt_conta_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="@string/verExtrato"
-        android:textColor="@color/white01"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@id/imageViewVerExtratoActivityContaId"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewVerExtratoActivityContaId"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSairActivityContaId" />
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lnrLyt_nomeCliente_actvt_conta_id">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewExtratoContaActivityId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/verExtrato"
+            android:textColor="@color/white01"
+            android:textSize="19sp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewVerExtratoActivityContaId"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="bottom"
+            android:layout_marginEnd="5dp"
+            android:rotation="180"
+            android:src="@drawable/botao_baixo2"
+            android:tint="@color/white01" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
     <View
         android:id="@+id/linhaDivisoria02Id"
-        android:layout_width="107dp"
+        android:layout_width="112dp"
         android:layout_height="1dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="5dp"
         android:background="@color/corSecundaria"
         android:backgroundTint="@color/white01"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewExtratoContaActivityId" />
+        app:layout_constraintTop_toBottomOf="@id/lnrLyt_extrato_actcvt_conta_id" />
+
 
     <!-- Esta ImageView Está em sobrescrevento a outra ImageView -->
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageViewVisivelActivityContaId"
-        android:layout_width="19dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="3dp"
-        android:src="@drawable/visivel"
-        android:tint="@color/white01"
-        app:layout_constraintBottom_toBottomOf="@id/textViewValorSaldoContaActivityId"
-        app:layout_constraintStart_toEndOf="@+id/textViewValorSaldoContaActivityId"
-        app:layout_constraintTop_toTopOf="@id/textViewValorSaldoContaActivityId" />
-
-    <!-- Esta ImageView Está em sobrescrevento a outra ImageView -->
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageViewNaoVisivelActivityContaId"
-        android:layout_width="19dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="2dp"
-        android:src="@drawable/nao_visivel"
-        android:tint="@color/white01"
-        app:layout_constraintBottom_toBottomOf="@id/imageViewVisivelActivityContaId"
-        app:layout_constraintStart_toEndOf="@+id/imageViewVisivelActivityContaId"
-        app:layout_constraintTop_toTopOf="@+id/imageViewVisivelActivityContaId" />
-
     <!-- LinearLayout 01: -->
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayoutCompat2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:background="#D9D4D4"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewValorSaldoContaActivityId">
+        app:layout_constraintTop_toBottomOf="@id/lnrLyt_saldo_actcvt_conta_id"
+        app:layout_constraintVertical_bias="1.0">
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/cnstrntLyt_faleBia_actvt_conta_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       android:layout_marginStart="10dp"
-
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/linearLayoutCompat2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/linearLayoutCompat2">
 
-        <!-- FaleBia -->
+        <!--    android:drawablePadding="205dp"-->
+        <!--        android:drawableEnd="@drawable/lupa"-->
+
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/autoCompleteFaleBiaContaActivityId"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:background="@drawable/botaofalebia"
-            android:completionThreshold="0"
-            android:drawableEnd="@drawable/lupa"
-            android:dropDownWidth="880dp"
-            android:foregroundGravity="center_horizontal"
-            android:gravity="center"
+            android:drawableRight="@drawable/lupa"
             android:hint="@string/faleBia"
             android:inputType="text"
-            android:paddingStart="90dp"
-            android:paddingEnd="85dp"
+            android:paddingRight="35dp"
+            android:textAlignment="center"
             android:textSize="17sp"
             android:textStyle="italic" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/microfoneFaleBia"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/microfone_botao_redondo"
-            android:scaleType="center"
-            android:src="@drawable/microfone" />
-
-
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <!--    Botão fale Bia com microfone -->
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp" />
+    <!--    <androidx.appcompat.widget.LinearLayoutCompat-->
+    <!--        android:id="@+id/cnstrntLyt_faleBia_actvt_conta_id"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/linearLayoutCompat2"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/linearLayoutCompat2">-->
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_begin="397dp" />
+    <!--        <com.google.android.material.textfield.MaterialAutoCompleteTextView-->
+    <!--            android:id="@+id/autoCompleteFaleBiaContaActivityId"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="55dp"-->
+    <!--            android:layout_marginStart="5dp"-->
+    <!--            android:background="@drawable/botaofalebia"-->
+    <!--            android:drawableEnd="@drawable/lupa"-->
+    <!--            android:drawablePadding="205dp"-->
+    <!--            android:hint="@string/faleBia"-->
+    <!--            android:inputType="text"-->
+    <!--            android:textAlignment="center"-->
+    <!--            android:textSize="17sp"-->
+    <!--            android:textStyle="italic"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="@id/cnstrntLyt_faleBia_actvt_conta_id" />-->
+
+    <!--        <com.google.android.material.imageview.ShapeableImageView-->
+    <!--            android:id="@+id/microfoneFaleBia"-->
+    <!--            android:layout_width="55dp"-->
+    <!--            android:layout_height="55dp"-->
+    <!--            android:layout_marginEnd="5dp"-->
+    <!--            android:background="@drawable/microfone_botao_redondo"-->
+    <!--            android:scaleType="center"-->
+    <!--            android:src="@drawable/microfone"-->
+    <!--            app:layout_constraintStart_toEndOf="@id/autoCompleteFaleBiaContaActivityId"-->
+    <!--            app:layout_constraintTop_toTopOf="@id/cnstrntLyt_faleBia_actvt_conta_id" />-->
+
+
+    <!--    </androidx.appcompat.widget.LinearLayoutCompat>-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

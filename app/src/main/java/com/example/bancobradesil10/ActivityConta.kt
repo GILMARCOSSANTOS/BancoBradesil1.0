@@ -35,7 +35,7 @@ class ActivityConta : AppCompatActivity() {
         /**
          * Declaração de Variáveis:
          */
-      //  textViewSaldo = findViewById(R.id.textViewValorSaldoContaActivityId)
+        textViewSaldo = findViewById(R.id.textViewValorSaldoContaActivityId)
         imageViewVisivel = findViewById(R.id.imageViewVisivelActivityContaId)
         imageViewNaoVisivel = findViewById(R.id.imageViewNaoVisivelActivityContaId)
         nomeCliente = findViewById(R.id.textViewNomeClienteActivityContaId)
