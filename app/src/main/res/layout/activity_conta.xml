@@ -103,10 +103,9 @@
         android:layout_height="1dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="3dp"
-        android:layout_marginEnd="75dp"
+        android:layout_marginEnd="5dp"
         android:background="@color/white01"
         app:layout_constraintEnd_toStartOf="@id/lnrLyt_sair_actvt_conta_id"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lnrLyt_nomeCliente_actvt_conta_id" />
 

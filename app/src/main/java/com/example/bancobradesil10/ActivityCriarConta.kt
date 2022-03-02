@@ -88,7 +88,7 @@ class ActivityCriarConta : AppCompatActivity() {
         val email = digiteEmail.text.toString()
         val conta = numeroConta.text.toString()
 
-        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso) || situacaoConta.text == "") {
+        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso) || situacaoConta.text == "" || situacaoConta.text != "") {
             val intent = Intent(this, ActivityLogin::class.java).apply {
                 putExtra("chaveNome", nome)
                 putExtra("chaveConta", conta)
@@ -112,7 +112,7 @@ class ActivityCriarConta : AppCompatActivity() {
         val email = digiteEmail.text.toString()
         val conta = numeroConta.text.toString()
 
-        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso) || situacaoConta.text == "") {
+        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso) || situacaoConta.text == "" || situacaoConta.text != "") {
             val intent = Intent(this, MainActivity::class.java).apply {
                 putExtra("chaveNome", nome)
                 putExtra("chaveConta", conta)

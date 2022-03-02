@@ -22,13 +22,13 @@ class ActivityContasCadastradas : AppCompatActivity() {
         Criar Função imageViewVoltarActivityContasCadastradas():
          */
         val imageButtonVoltar02 =
-            findViewById<ImageView>(R.id.imageButtonVoltarContasCadastradasId)
+            findViewById<ImageView>(R.id.imgBtton_voltar_contasCadastradas_id)
         imageButtonVoltar02.setOnClickListener { imageButtonVoltarContasCadastradasId() }
 
         /*
        Criar Função textViewVoltarActivityContasCadastradas():
          */
-        val textViewVoltar02 = findViewById<TextView>(R.id.textViewVoltarContasCadastradasId)
+        val textViewVoltar02 = findViewById<TextView>(R.id.txtVw_voltar_contasCadastradas_id)
         textViewVoltar02.setOnClickListener { textViewVoltarActivityContasCadastradas() }
     }
 

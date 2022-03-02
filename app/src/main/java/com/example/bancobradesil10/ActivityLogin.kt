@@ -38,13 +38,13 @@ class ActivityLogin : AppCompatActivity() {
         Declaração de variáveis:
          */
         textViewNomeActivityLogin =
-            findViewById(R.id.textViewNomeCliente02ActivityLoginId)
+            findViewById(R.id.txtVw_nomeCliente_componentDados_id)
         textViewNumeroContaActivityLogin =
-            findViewById(R.id.textViewConta02ActivityLoginId)
+            findViewById(R.id.txtVw_contaCliente_componentDados_id)
         imageViewVoltar01 = findViewById(R.id.imageViewVoltarLoginId)
         textViewVoltar01 = findViewById(R.id.textViewVoltarLoginId)
         botaoContinuarActivityLogin = findViewById(R.id.botaoAContinuarActivityLoginId)
-        textViewEmailActivityLogin = findViewById(R.id.textViewEmail2ActivityLoginId)
+        textViewEmailActivityLogin = findViewById(R.id.txtVw_emailCliente_componentDados_id)
         editTextInformeSenha = findViewById(R.id.editTextQualSenhaLoginId)
         editTexTEmail = findViewById(R.id.editTextQualEmailLoginId)
 

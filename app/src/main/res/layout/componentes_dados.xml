@@ -25,8 +25,8 @@
                 android:id="@+id/txtVw_nomeCliente_componentDados_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-           android:layout_gravity="bottom"
-               android:hint="@string/nome"
+                android:layout_gravity="bottom"
+                android:hint="@string/nome"
                 android:text="@string/nome"
                 android:textColor="@color/white01"
                 android:textColorHint="@color/white01"
@@ -39,7 +39,6 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="2dp"
             android:background="@color/white01" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -58,8 +57,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:text="@string/eMail"
                 android:hint="@string/eMail"
+                android:text="@string/eMail"
                 android:textColor="@color/white01"
                 android:textColorHint="@color/white01"
                 android:textSize="17sp"
@@ -71,7 +70,6 @@
             android:id="@+id/view01ActivityMain01Id"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="2dp"
             android:background="@color/white01" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -91,8 +89,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:text="@string/conta"
                 android:hint="@string/conta"
+                android:text="@string/conta"
                 android:textColor="@color/white01"
                 android:textColorHint="@color/white01"
                 android:textSize="17sp"
@@ -103,7 +101,6 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="2dp"
             android:background="@color/white01" />
 
         <!--    Sem backGround para não interferir no backGround da View Destino -->
