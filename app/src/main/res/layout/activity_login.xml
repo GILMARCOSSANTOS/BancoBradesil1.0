@@ -8,221 +8,61 @@
     android:background="@drawable/back_ground_2"
     tools:context=".ActivityLogin">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageViewVoltarLoginId"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="10dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/voltar_icone"
-        android:tint="@color/white01"
-        app:layout_constraintBottom_toBottomOf="@id/textViewVoltarLoginId"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textViewVoltarLoginId" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewVoltarLoginId"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lnrLyt_menuPrincipal_actvt_login_id"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-35dp"
-        android:gravity="center"
-        android:text="@string/menuPrincipal"
-        android:textColor="@color/white01"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline14"
-        app:layout_constraintStart_toEndOf="@+id/imageViewVoltarLoginId"
-        app:layout_constraintTop_toTopOf="@+id/guideline13" />
-
-    <View
-        android:id="@+id/view01ActivityLoginId"
-        android:layout_width="202dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="15dp"
-        android:background="@color/white01"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewVoltarLoginId" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linerLayoutContasId"
-        android:layout_width="395dp"
-        android:layout_height="175dp"
-        android:layout_marginTop="45dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewVoltarLoginId">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewPessoaActivityLoginId"
-            android:layout_width="30dp"
+            android:id="@+id/imageViewVoltarLoginId"
+            android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginStart="5dp"
-            android:src="@drawable/pessoa"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewNomeCliente01ActivityLoginId"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewNomeCliente01ActivityLoginId"
-            app:tint="@color/white01" />
+            android:src="@drawable/voltar_icone"
+            android:tint="@color/white01" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewNomeCliente01ActivityLoginId"
+            android:id="@+id/textViewVoltarLoginId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/nome"
+            android:text="@string/menuPrincipal"
             android:textColor="@color/white01"
-            android:textColorHint="@color/white01"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/imageViewPessoaActivityLoginId"
-            app:layout_constraintTop_toTopOf="@id/imageViewPessoaActivityLoginId" />
+            android:textSize="25sp" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewNomeCliente02ActivityLoginId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:textColor="@color/white01"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/textViewNomeCliente01ActivityLoginId"
-            app:layout_constraintStart_toEndOf="@id/textViewNomeCliente01ActivityLoginId"
-            app:layout_constraintTop_toTopOf="@id/textViewNomeCliente01ActivityLoginId"
-            tools:text="Nome do Cliente" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <View
-            android:id="@+id/view01ActivityLogin01Id"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="-2dp"
-            android:layout_marginEnd="7dp"
-            android:background="@color/white01"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewNomeCliente01ActivityLoginId" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewEmailActivityLoginId"
-            android:layout_width="30dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/email"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewEmail01ActivityLoginId"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewEmail01ActivityLoginId"
-            app:tint="@color/white01" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewEmail01ActivityLoginId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="@string/eMail"
-            android:textColor="@color/white01"
-            android:textColorHint="@color/white01"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/imageViewEmailActivityLoginId"
-            app:layout_constraintTop_toBottomOf="@id/view01ActivityLogin01Id" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewEmail2ActivityLoginId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:textColor="@color/white01"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewEmail01ActivityLoginId"
-            app:layout_constraintStart_toEndOf="@id/textViewEmail01ActivityLoginId"
-            app:layout_constraintTop_toTopOf="@+id/textViewEmail01ActivityLoginId"
-            tools:text="E - mail do Cliente" />
-
-        <View
-            android:id="@+id/view02ActivityLogin01Id"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="-6dp"
-            android:layout_marginEnd="7dp"
-            android:background="@color/white01"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageViewEmailActivityLoginId" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewContaActivityLoginId"
-            android:layout_width="30dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="-5dp"
-            android:layout_marginStart="5dp"
-            android:src="@drawable/money_account"
-            app:layout_constraintTop_toBottomOf="@id/imageViewEmailActivityLoginId"
-            app:layout_constraintStart_toStartOf="parent"
-            app:tint="@color/white01" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewConta01ActivityLoginId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/conta"
-            android:textColor="@color/white01"
-            android:textColorHint="@color/white01"
-            android:layout_marginTop="-30dp"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/imageViewContaActivityLoginId"
-           app:layout_constraintTop_toBottomOf="@id/imageViewContaActivityLoginId" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewConta02ActivityLoginId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-
-            android:textColor="@color/white01"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/textViewConta01ActivityLoginId"
-            app:layout_constraintTop_toTopOf="@id/textViewConta01ActivityLoginId"
-            tools:text="Conta do Cliente" />
-
-        <View
-            android:id="@+id/view03ActivityLogin01Id"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="-3dp"
-            android:layout_marginEnd="7dp"
-            android:background="@color/white01"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageViewContaActivityLoginId" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="35dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="89dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="15dp" />
+    <View
+        android:id="@+id/view01_activity_login_id"
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/white01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lnrLyt_menuPrincipal_actvt_login_id" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayout"
+        android:id="@+id/lnrLyt_dadosPessoais_actvt_login_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lnrLyt_menuPrincipal_actvt_login_id">
+
+        <include layout="@layout/componentes_dados" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lnrLyt_informeDados_actvt_login_id"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:background="@drawable/botao_redondo01"
@@ -245,9 +85,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="5dp"
             android:background="@color/white01"
             android:hint="@string/digiteSeuEmail"
             android:inputType="textEmailAddress"
@@ -266,9 +106,8 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:background="@color/white01"
             android:hint="@string/digiteSuaSenha"
             android:inputType="textPassword"
@@ -289,18 +128,18 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_gravity="center"
+            android:layout_marginTop="15dp"
             android:buttonTint="@color/corSecundariaVariante"
             android:text="@string/lembrarUsuario"
             android:textColor="@color/corSecundariaVariante"
-            android:textSize="21sp"/>
+            android:textSize="21sp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/botaoAContinuarActivityLoginId"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:background="@drawable/botao_redondo02"
             android:text="@string/continuar"
             android:textAllCaps="false"
@@ -308,7 +147,6 @@
             android:textSize="21sp"
             app:backgroundTint="@color/corSecundariaVariante"
             app:hintTextColor="@color/corSecundaria" />
-
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

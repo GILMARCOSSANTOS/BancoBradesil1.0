@@ -20,14 +20,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageButtonVoltarContasCadastradasId"
+            android:id="@+id/imgBtton_voltar_contasCadastradas_id"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:src="@drawable/voltar_icone"
             android:tint="@color/white01" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/texTeViewVoltarActivityCriarContaId"
+            android:id="@+id/txtVw_voltar_contasCadastradas_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/menuPrincipal"
@@ -37,7 +37,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <View
-        android:id="@+id/view01ActivityCriarConta01Id"
+        android:id="@+id/view01_contasCadastradas_id"
         android:layout_width="200dp"
         android:layout_height="1dp"
         android:layout_marginStart="5dp"
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@id/lnrLyt_menuPrincipal_actvt_contasCadastradas_id">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewPessoaActivityContaId"
+            android:id="@+id/imgVw_pessoa_contasCadastradas_id"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="5dp"
@@ -64,7 +64,7 @@
             android:tint="@color/white01" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewNomeClienteActivityContaId"
+            android:id="@+id/txtVw_nome_contasCadastradas_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -73,6 +73,17 @@
             tools:text="Nome do Cliente" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <View
+        android:id="@+id/view02_contasCadastradas_id"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/white01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lnrLyt_nomeCliente_actvt_conta_id" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
