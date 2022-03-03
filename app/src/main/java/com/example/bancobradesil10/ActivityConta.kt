@@ -31,12 +31,12 @@ class ActivityConta : AppCompatActivity() {
         /**
          * Declaração de variáveis:
          */
-        declaracaoVariaveisActvtconta()
+       declararVariaveis()
 
         /**
          * Instância de funções:
          */
-        instanciaFuncoesActvtConta()
+       criarFuncoes()
 
         /**
          * Função para Saldo não visível:
@@ -59,9 +59,6 @@ class ActivityConta : AppCompatActivity() {
         textViewSair()
     }
 
-    /**
-     * Função Menu de Opções FaleComBia():
-     */
     private fun faleComBia() {
         val opcoesMenuBia = arrayOf<String>(
             "Quero meu informe de rendimentos",
@@ -84,9 +81,6 @@ class ActivityConta : AppCompatActivity() {
         faleBia.showDropDown()
     }
 
-    /**
-     * Função olhoNaoVisivel():
-     */
     private fun olhoNaoVisivel() {
         if (imageViewNaoVisivel.isClickable) {
             textViewSaldo.background = getDrawable(R.drawable.botao_redondo03)
@@ -98,9 +92,6 @@ class ActivityConta : AppCompatActivity() {
         }
     }
 
-    /**
-     * Função olhoVisivel():
-     */
     private fun olhoVisivel() {
         if (imageViewVisivel.isClickable) {
             textViewSaldo.background = getDrawable(R.color.ocultarOlhoVisivel)
@@ -125,7 +116,7 @@ class ActivityConta : AppCompatActivity() {
         }
     }
 
-    private fun declaracaoVariaveisActvtconta() {
+    private fun declararVariaveis() {
         imageViewVisivel = findViewById(R.id.imageViewVisivelActivityContaId)
         textViewSaldo = findViewById(R.id.textViewValorSaldoContaActivityId)
         imageViewNaoVisivel = findViewById(R.id.imageViewNaoVisivelActivityContaId)
@@ -135,7 +126,7 @@ class ActivityConta : AppCompatActivity() {
         imageViewSairDaConta = findViewById(R.id.imageViewSairActivityContaId)
     }
 
-    private fun instanciaFuncoesActvtConta() {
+    private fun criarFuncoes () {
         imageViewSairDaConta.setOnClickListener { imageViewSair() }
         textViewSairDaConta.setOnClickListener { textViewSair() }
         imageViewVisivel.setOnClickListener { olhoVisivel() }
@@ -143,11 +134,8 @@ class ActivityConta : AppCompatActivity() {
         faleBia.setOnClickListener { faleComBia() }
     }
 
-    private fun saldoNaoVisivel(){
+    private fun saldoNaoVisivel() {
 
-        /**
-         *OlhoNãoVisivel inicia de forma oculta:
-         */
         imageViewNaoVisivel.setColorFilter(
             R.color.corSecundariaVariante,
             PorterDuff.Mode.CLEAR

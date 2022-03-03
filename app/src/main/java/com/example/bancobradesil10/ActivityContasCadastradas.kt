@@ -7,39 +7,24 @@ import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_contas_cadastradas.*
 
 class ActivityContasCadastradas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contas_cadastradas)
 
-        /*
-        FUNÇÃO BLOQUEAR ORIENTAÇÃO DE TELA:
+        /**
+         *  FUNÇÃO BLOQUEAR ORIENTAÇÃO DE TELA:
          */
         requestedOrientation = (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
-        /*
-        Criar Função imageViewVoltarActivityContasCadastradas():
+        /**
+         * Declaração de funcões:
          */
-        val imageButtonVoltar02 =
-            findViewById<ImageView>(R.id.imgBtton_voltar_contasCadastradas_id)
-        imageButtonVoltar02.setOnClickListener { imageButtonVoltarContasCadastradasId() }
-
-        /*
-       Criar Função textViewVoltarActivityContasCadastradas():
-         */
-        val textViewVoltar02 = findViewById<TextView>(R.id.txtVw_voltar_contasCadastradas_id)
-        textViewVoltar02.setOnClickListener { textViewVoltarActivityContasCadastradas() }
+       criarFuncoes()
     }
 
-    /* override fun onSaveInstanceState(outState: Bundle) {
-         super.onSaveInstanceState(outState)
-         outState.putStringArrayList("nomes", nomes)
-     }*/
-
-    /*
-   Função textViewVoltarActivityContasCadastradas():
-  */
     private fun textViewVoltarActivityContasCadastradas() {
         // val intent = Intent(this, MainActivity::class.java).apply {
         // }
@@ -48,15 +33,20 @@ class ActivityContasCadastradas : AppCompatActivity() {
 
     }
 
-    /*
-        Função imageViewVoltarActivityContasCadastradas():
-     */
-
     private fun imageButtonVoltarContasCadastradasId() {
         // val intent = Intent(this, MainActivity::class.java).apply {
         //  }
         //  startActivity(intent)
         finish()
-
     }
+
+    private fun criarFuncoes() {
+
+        val imageButtonVoltar02 = imgBtton_voltar_contasCadastradas_id
+        val textViewVoltar02 = txtVw_voltar_contasCadastradas_id
+
+        imageButtonVoltar02.setOnClickListener { imageButtonVoltarContasCadastradasId() }
+        textViewVoltar02.setOnClickListener { textViewVoltarActivityContasCadastradas() }
+    }
+
 }

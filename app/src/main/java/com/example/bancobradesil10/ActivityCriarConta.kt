@@ -47,39 +47,20 @@ class ActivityCriarConta : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_criar_conta)
 
-        /*
-        Bloquear função de orientação de tela:
+        /**
+         *  Bloquear função de orientação de tela:
          */
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         /**
-         * Declaração de variáveis:
+         * Função de declaração de variáveis:
          */
-        digiteSeuNome = findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
-        digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
-        repitaSuaSenha =
-            findViewById<EditText>(R.id.editTextRepitaSenhaActivityCriarContaId)
-        numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarConta02Id)
-        digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
-        situacaoConta = findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarConta02Id)
-        botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
-        imageViewVoltarParaMainActivity =
-            findViewById<ImageView>(R.id.imageViewVoltarActivityCriarContaId)
-        texViewVoltarParaTelaPrincipal =
-            findViewById<TextView>(R.id.texTeViewVoltarActivityCriarContaId)
-        indicadorDeProgresso = findViewById(R.id.progressBarMainActivityId)
-        imageViewLogarActivityCriarConta = findViewById(R.id.imageViewLogintarActivityCriarContaId)
-        textViewLogarActivityCriarConta = findViewById(R.id.texTeViewLoginctivityCriarContaId)
+        declararVariaveis()
 
-        /*
-       Criar Funções
+        /**
+         * Função para declaração de funções:
          */
-        botaoCriarConta.setOnClickListener { criarConta() }
-        imageViewVoltarParaMainActivity.setOnClickListener { imageViewVoltarParaMainActivity() }
-        texViewVoltarParaTelaPrincipal.setOnClickListener { textViewVoltarParaMainActivity() }
-        imageViewLogarActivityCriarConta.setOnClickListener { imageViewLogar() }
-        textViewLogarActivityCriarConta.setOnClickListener { textViewLogar() }
-
+       criarFuncoes()
     }
 
     private fun imageViewLogar() {
@@ -102,10 +83,6 @@ class ActivityCriarConta : AppCompatActivity() {
         imageViewLogar()
     }
 
-
-    /*
-    Função imageViewVoltarParaMainActivity():
-     */
     private fun imageViewVoltarParaMainActivity() {
 
         val nome = digiteSeuNome.text.toString()
@@ -122,17 +99,15 @@ class ActivityCriarConta : AppCompatActivity() {
         }
     }
 
-    /*
-  Função textViewVoltarParaMainActivity():
-   */
     private fun textViewVoltarParaMainActivity() {
         imageViewVoltarParaMainActivity()
     }
 
-    /*
-    Função criarConta():
-     */
-    @RequiresApi(Build.VERSION_CODES.S)
+//    private fun criarAConta() {
+//        TODO("Not yet implemented")
+//    }
+
+//    @RequiresApi(Build.VERSION_CODES.S)
     private fun criarConta() {
 
         //Variáveis usadas na função.
@@ -202,9 +177,7 @@ class ActivityCriarConta : AppCompatActivity() {
             else -> {
                 //  indicadorDeProgresso.setVisibility(View.VISIBLE)
                 // indicadorDeProgresso.setVisibility(View.VISIBLE)
-
                 //   indicadorDeProgresso.setVisibility(if (isVisible === 3) View.Visible else View.Invisible)
-
                 //  salvarDadoscloudFirestore()
                 java.lang.Thread(
                     object : Runnable {
@@ -234,9 +207,6 @@ class ActivityCriarConta : AppCompatActivity() {
         }
     }
 
-    /**
-     * Função cadastrarUsuarioFirebase():
-     */
     //Firebase Tela 01.01 = Implementar Função de cadastrar usuário no Firebase Authentication:
     private fun cadastrarUsuarioFirebase() {
 
@@ -305,5 +275,33 @@ class ActivityCriarConta : AppCompatActivity() {
                 }
             })
     }
+
+    private fun declararVariaveis(){
+        digiteSeuNome = findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
+        digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
+        repitaSuaSenha =
+            findViewById<EditText>(R.id.editTextRepitaSenhaActivityCriarContaId)
+        numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarConta02Id)
+        digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
+        situacaoConta = findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarConta02Id)
+        botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
+        imageViewVoltarParaMainActivity =
+            findViewById<ImageView>(R.id.imageViewVoltarActivityCriarContaId)
+        texViewVoltarParaTelaPrincipal =
+            findViewById<TextView>(R.id.texTeViewVoltarActivityCriarContaId)
+        indicadorDeProgresso = findViewById(R.id.progressBarMainActivityId)
+        imageViewLogarActivityCriarConta = findViewById(R.id.imageViewLogintarActivityCriarContaId)
+        textViewLogarActivityCriarConta = findViewById(R.id.texTeViewLoginctivityCriarContaId)
+    }
+
+    private fun criarFuncoes(){
+
+        imageViewVoltarParaMainActivity.setOnClickListener { imageViewVoltarParaMainActivity() }
+        texViewVoltarParaTelaPrincipal.setOnClickListener { textViewVoltarParaMainActivity() }
+        imageViewLogarActivityCriarConta.setOnClickListener { imageViewLogar() }
+        textViewLogarActivityCriarConta.setOnClickListener { textViewLogar() }
+        botaoCriarConta.setOnClickListener { criarConta() }
+    }
+
 }
 

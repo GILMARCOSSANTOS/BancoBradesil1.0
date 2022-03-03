@@ -36,9 +36,50 @@ class MainActivity : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         /**
-         * Declaração de variáveis:
+         * Função de declaração de variáveis:
          */
+       declararVariaveis()
 
+        /**
+         * Criar Funções:
+         */
+        criarFuncoes()
+
+        /**
+         * Shared Preferences: Recebimentos dos dados da ActivityCriarConta:
+         */
+       sharedPreferencesReceberDados()
+
+    }
+
+    private fun lembrarUsuario() {
+
+    }
+
+    private fun imageButtonEntrarContasCadastradas() {
+        val intent = Intent1(this, ActivityContasCadastradas::class.java).apply {
+        }
+        startActivity(intent)
+    }
+
+    private fun textViewEntrarContasCadastradas() {
+        imageButtonEntrarContasCadastradas()
+    }
+
+    private fun criarConta() {
+        val intent = Intent1(this, ActivityCriarConta::class.java).apply {
+        }
+        startActivity(intent)
+    }
+
+    private fun acessarConta() {
+
+        val intent = Intent1(this, ActivityLogin::class.java).apply {
+        }
+        startActivity(intent)
+    }
+
+    private fun declararVariaveis() {
         botaoAcessarConta = findViewById(R.id.botaoa_acessarConta_mainActivity_Id)
         textViewNomeConta = findViewById(R.id.txtVw_nomeCliente_componentDados_id)
         textViewNumeroConta = findViewById(R.id.txtVw_contaCliente_componentDados_id)
@@ -48,10 +89,9 @@ class MainActivity : AppCompatActivity() {
         textViewAContasCadastradas =
             findViewById(R.id.textViewAcessarContasCadastradasMainActivityId)
         imageButtonContasCadastradas = findViewById(R.id.imageButtonContasCadastradasMainActivityId)
+    }
 
-        /*
-        Criar Funções:
-         */
+    private fun criarFuncoes() {
         botaoAcessarConta.setOnClickListener { acessarConta() }
         botaoCriarconta.setOnClickListener { criarConta() }
         // imageButtonContasCadastradas.setOnClickListener { imageButtonEntrarEmContasCadastradas() }
@@ -59,10 +99,9 @@ class MainActivity : AppCompatActivity() {
         imageButtonContasCadastradas.setOnClickListener { imageButtonEntrarContasCadastradas() }
         checkBoxLembrar.setOnClickListener { lembrarUsuario() }
         // lembrarMeuUsuario.setOnClickListener { lembrarUsuario() }
+    }
 
-        /**
-         * Shared Preferences: Recebimentos dos dados da ActivityCriarConta:
-         */
+    private fun sharedPreferencesReceberDados() {
         val nomeUsuarioShared = intent.getStringExtra("chaveNome")
         textViewNomeConta.apply {
             text = nomeUsuarioShared
@@ -75,45 +114,6 @@ class MainActivity : AppCompatActivity() {
         textViewNumeroConta.apply {
             text = contaUsuarioshared
         }
-
-    }
-
-    /*
-Função CheckBoxLembrarUsuario():
- */
-    private fun lembrarUsuario() {
-    }
-
-    /*
-    Função EntrarEmContasCadastradas():
-     */
-    private fun imageButtonEntrarContasCadastradas() {
-        val intent = Intent1(this, ActivityContasCadastradas::class.java).apply {
-        }
-        startActivity(intent)
-    }
-
-    private fun textViewEntrarContasCadastradas() {
-        imageButtonEntrarContasCadastradas()
-    }
-
-    /*
-   Função CriarConta():
-     */
-    private fun criarConta() {
-        val intent = Intent1(this, ActivityCriarConta::class.java).apply {
-        }
-        startActivity(intent)
-    }
-
-    /*
-    Função AcessarConta():
-     */
-    private fun acessarConta() {
-
-        val intent = Intent1(this, ActivityLogin::class.java).apply {
-        }
-        startActivity(intent)
     }
 
 }

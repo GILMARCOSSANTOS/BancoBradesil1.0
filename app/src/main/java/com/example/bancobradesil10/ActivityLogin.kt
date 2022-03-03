@@ -13,9 +13,9 @@ import com.google.firebase.auth.FirebaseAuth
 
 class ActivityLogin : AppCompatActivity() {
 
-    /*
-      Variáveis em Escopo Global:
-       */
+    /**
+     * Variáveis em Escopo Global:
+     */
     private lateinit var textViewNumeroContaActivityLogin: TextView
     private lateinit var imageViewVoltar01: ImageView
     private lateinit var textViewVoltar01: TextView
@@ -29,14 +29,77 @@ class ActivityLogin : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        /*
-        Bloquear a função de orientação de tela:
+        /**
+         * Bloquear a função de orientação de tela:
          */
         requestedOrientation = (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
-        /*
-        Declaração de variáveis:
+        /**
+         *  Função para declaração de variáveis:
          */
+        declararVariaveis()
+
+        /**
+         * Criar Funções:
+         */
+       criarFuncoes()
+
+        /**
+         * Função Shared Preferences: Recebimentos dos dados da ActivityCriarConta:
+         */
+        sharedPreferencesReceberDados()
+    }
+
+    private fun botaoContinuar() {
+        //Reconhecer usuário atual e fazer LOGIN no Firebase:
+
+        if (editTextInformeSenha.text.toString().isEmpty()) {
+            val snackBar = Snackbar.make(
+                botaoContinuarActivityLogin,
+                "Digite a sua senha.",
+                Snackbar.LENGTH_LONG
+            )
+            snackBar.show()
+        } else {
+            autenticarLoginUsuario()
+        }
+    }
+
+    private fun autenticarLoginUsuario() {
+        val senha = editTextInformeSenha.text.toString()
+        val email = editTexTEmail.text.toString()
+
+        FirebaseAuth.getInstance()
+            .signInWithEmailAndPassword(email, senha)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val intent = Intent(this, ActivityConta::class.java)
+                    startActivity(intent)
+                } else {
+                    val snackbar = Snackbar.make(
+                        botaoContinuarActivityLogin,
+                        "Senha ou e e-mail incorretos.",
+                        Snackbar.LENGTH_LONG
+                    )
+                    snackbar.show()
+                }
+            }
+    }
+
+    private fun imageViewVoltarActivityLogin() {
+        val intent = Intent(this, MainActivity::class.java).apply {
+        }
+        startActivity(intent)
+        finish()
+    }
+
+    private fun textViewVoltarActivityLogin() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun declararVariaveis() {
         textViewNomeActivityLogin =
             findViewById(R.id.txtVw_nomeCliente_componentDados_id)
         textViewNumeroContaActivityLogin =
@@ -47,17 +110,16 @@ class ActivityLogin : AppCompatActivity() {
         textViewEmailActivityLogin = findViewById(R.id.txtVw_emailCliente_componentDados_id)
         editTextInformeSenha = findViewById(R.id.editTextQualSenhaLoginId)
         editTexTEmail = findViewById(R.id.editTextQualEmailLoginId)
+    }
 
-        /*
-        Criar Funções:
-         */
+    private fun criarFuncoes(){
         textViewVoltar01.setOnClickListener { textViewVoltarActivityLogin() }
         botaoContinuarActivityLogin.setOnClickListener { botaoContinuar() }
         imageViewVoltar01.setOnClickListener { imageViewVoltarActivityLogin() }
+    }
 
-        /**
-         * Shared Preferences: Recebimentos dos dados da ActivityCriarConta:
-         */
+    private fun sharedPreferencesReceberDados(){
+
         val nomeUsuarioShared = intent.getStringExtra("chaveNome")
         textViewNomeActivityLogin.apply {
             text = nomeUsuarioShared
@@ -70,65 +132,7 @@ class ActivityLogin : AppCompatActivity() {
         textViewNumeroContaActivityLogin.apply {
             text = contaUsuarioshared
         }
-
-        /*
-    Função botaoContinuar():
-     */
     }
-        private fun botaoContinuar() {
-            //Reconhecer usuário atual e fazer LOGIN no Firebase:
-
-            if (editTextInformeSenha.text.toString().isEmpty()) {
-                val snackBar = Snackbar.make(
-                    botaoContinuarActivityLogin,
-                    "Digite a sua senha.",
-                    Snackbar.LENGTH_LONG
-                )
-                snackBar.show()
-            } else {
-                autenticarLoginUsuario()
-            }
-        }
-
-        private fun autenticarLoginUsuario() {
-            val senha = editTextInformeSenha.text.toString()
-            val email = editTexTEmail.text.toString()
-
-            FirebaseAuth.getInstance()
-                .signInWithEmailAndPassword(email, senha)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val intent = Intent(this, ActivityConta::class.java)
-                        startActivity(intent)
-                    } else {
-                        val snackbar = Snackbar.make(
-                            botaoContinuarActivityLogin,
-                            "Senha ou e e-mail incorretos.",
-                            Snackbar.LENGTH_LONG
-                        )
-                        snackbar.show()
-                    }
-                }
-        }
-
-        /*
-        Função imageViewVoltarActivityLogin():
-         */
-        private fun imageViewVoltarActivityLogin() {
-            val intent = Intent(this, MainActivity::class.java).apply {
-            }
-            startActivity(intent)
-            finish()
-        }
-
-        /*
-        Função textViewVoltarActivityLogin():
-        */
-        private fun textViewVoltarActivityLogin() {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
 
 
-    }
+}
