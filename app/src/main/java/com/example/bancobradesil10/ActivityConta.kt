@@ -9,6 +9,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_conta.*
 
 class ActivityConta : AppCompatActivity() {
 
@@ -28,47 +29,30 @@ class ActivityConta : AppCompatActivity() {
         setContentView(R.layout.activity_conta)
 
         /**
-         * Bloquear função de orientação de tela:
+         * Declaração de variáveis:
          */
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+        declaracaoVariaveisActvtconta()
 
         /**
-         * Declaração de Variáveis:
+         * Instância de funções:
          */
-        textViewSaldo = findViewById(R.id.textViewValorSaldoContaActivityId)
-        imageViewVisivel = findViewById(R.id.imageViewVisivelActivityContaId)
-        imageViewNaoVisivel = findViewById(R.id.imageViewNaoVisivelActivityContaId)
-        nomeCliente = findViewById(R.id.textViewNomeClienteActivityContaId)
-        faleBia = findViewById(R.id.autoCompleteFaleBiaContaActivityId)
-        textViewSairDaConta = findViewById(R.id.textViewSairActivityContaId)
-        imageViewSairDaConta = findViewById(R.id.imageViewSairActivityContaId)
+        instanciaFuncoesActvtConta()
 
         /**
-         *OlhoNãoVisivel inicia de forma oculta:
+         * Função para Saldo não visível:
          */
-        imageViewNaoVisivel.setColorFilter(
-            R.color.corSecundariaVariante,
-            PorterDuff.Mode.CLEAR
-        )
-
-        /**
-         * Criar Funções:
-         */
-        imageViewSairDaConta.setOnClickListener { imageViewSair() }
-        textViewSairDaConta.setOnClickListener { textViewSair() }
-        imageViewVisivel.setOnClickListener { olhoVisivel() }
-        imageViewNaoVisivel.setOnClickListener { olhoNaoVisivel() }
-        faleBia.setOnClickListener { faleComBia() }
+        saldoNaoVisivel()
 
     }
 
     /**
-     * Fun
+     * Funções:
      */
     private fun textViewSair() {
         FirebaseAuth.getInstance().signOut()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        imageViewVisivel
     }
 
     private fun imageViewSair() {
@@ -139,5 +123,35 @@ class ActivityConta : AppCompatActivity() {
 //                textViewNumeroContaActivityLogin.text = documentSnapshot.getString("contaUsuario")
             }
         }
+    }
+
+    private fun declaracaoVariaveisActvtconta() {
+        imageViewVisivel = findViewById(R.id.imageViewVisivelActivityContaId)
+        textViewSaldo = findViewById(R.id.textViewValorSaldoContaActivityId)
+        imageViewNaoVisivel = findViewById(R.id.imageViewNaoVisivelActivityContaId)
+        nomeCliente = findViewById(R.id.textViewNomeClienteActivityContaId)
+        faleBia = findViewById(R.id.autoCompleteFaleBiaContaActivityId)
+        textViewSairDaConta = findViewById(R.id.textViewSairActivityContaId)
+        imageViewSairDaConta = findViewById(R.id.imageViewSairActivityContaId)
+    }
+
+    private fun instanciaFuncoesActvtConta() {
+        imageViewSairDaConta.setOnClickListener { imageViewSair() }
+        textViewSairDaConta.setOnClickListener { textViewSair() }
+        imageViewVisivel.setOnClickListener { olhoVisivel() }
+        imageViewNaoVisivel.setOnClickListener { olhoNaoVisivel() }
+        faleBia.setOnClickListener { faleComBia() }
+    }
+
+    private fun saldoNaoVisivel(){
+
+        /**
+         *OlhoNãoVisivel inicia de forma oculta:
+         */
+        imageViewNaoVisivel.setColorFilter(
+            R.color.corSecundariaVariante,
+            PorterDuff.Mode.CLEAR
+        )
+
     }
 }
