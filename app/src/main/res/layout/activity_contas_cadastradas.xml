@@ -67,7 +67,7 @@
             android:id="@+id/txtVw_nome_contasCadastradas_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center"
             android:textColor="@color/white01"
             android:textSize="17sp"
             tools:text="Nome do Cliente" />
