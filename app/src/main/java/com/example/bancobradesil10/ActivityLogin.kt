@@ -3,10 +3,7 @@ package com.example.bancobradesil10
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -42,12 +39,14 @@ class ActivityLogin : AppCompatActivity() {
         /**
          * Criar Funções:
          */
-       criarFuncoes()
+        criarFuncoes()
 
         /**
          * Função Shared Preferences: Recebimentos dos dados da ActivityCriarConta:
          */
         sharedPreferencesReceberDados()
+
+
     }
 
     private fun botaoContinuar() {
@@ -112,13 +111,13 @@ class ActivityLogin : AppCompatActivity() {
         editTexTEmail = findViewById(R.id.editTextQualEmailLoginId)
     }
 
-    private fun criarFuncoes(){
+    private fun criarFuncoes() {
         textViewVoltar01.setOnClickListener { textViewVoltarActivityLogin() }
         botaoContinuarActivityLogin.setOnClickListener { botaoContinuar() }
         imageViewVoltar01.setOnClickListener { imageViewVoltarActivityLogin() }
     }
 
-    private fun sharedPreferencesReceberDados(){
+    private fun sharedPreferencesReceberDados() {
 
         val nomeUsuarioShared = intent.getStringExtra("chaveNome")
         textViewNomeActivityLogin.apply {
@@ -133,6 +132,5 @@ class ActivityLogin : AppCompatActivity() {
             text = contaUsuarioshared
         }
     }
-
 
 }

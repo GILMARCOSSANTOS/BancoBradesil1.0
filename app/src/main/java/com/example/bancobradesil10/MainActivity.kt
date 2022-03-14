@@ -2,6 +2,7 @@ package com.example.bancobradesil10
 
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
+import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageButton
@@ -50,10 +51,10 @@ class MainActivity : AppCompatActivity() {
          */
        sharedPreferencesReceberDados()
 
+
     }
 
     private fun lembrarUsuario() {
-
     }
 
     private fun imageButtonEntrarContasCadastradas() {
@@ -73,7 +74,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun acessarConta() {
-
         val intent = Intent1(this, ActivityLogin::class.java).apply {
         }
         startActivity(intent)

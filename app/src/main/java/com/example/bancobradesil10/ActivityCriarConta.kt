@@ -5,10 +5,12 @@
 package com.example.bancobradesil10
 
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -18,7 +20,10 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.*
+import com.google.firebase.auth.ktx.actionCodeSettings
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.HashMap
@@ -28,7 +33,8 @@ class ActivityCriarConta : AppCompatActivity() {
     /*
     Variáveis em Escopo global:
      */
-    private lateinit var botaoCriarConta: Button
+//    private lateinit var botaoCriarConta: Button
+    private lateinit var botaoLinkConfirmacao: Button
     lateinit var imageViewVoltarParaMainActivity: ImageView
     private lateinit var texViewVoltarParaTelaPrincipal: TextView
     lateinit var digiteSeuNome: EditText
@@ -60,7 +66,7 @@ class ActivityCriarConta : AppCompatActivity() {
         /**
          * Função para declaração de funções:
          */
-       criarFuncoes()
+        criarFuncoes()
     }
 
     private fun imageViewLogar() {
@@ -107,11 +113,11 @@ class ActivityCriarConta : AppCompatActivity() {
 //        TODO("Not yet implemented")
 //    }
 
-//    @RequiresApi(Build.VERSION_CODES.S)
-    private fun criarConta() {
+    //    @RequiresApi(Build.VERSION_CODES.S)
+    private fun confirmarEmail() {
 
         //Variáveis usadas na função.
-        val email = digiteEmail.text.toString()
+        val emailDigitado = digiteEmail.text.toString()
         val informeNome = digiteSeuNome.text.toString()
         val repitaSenha = repitaSuaSenha.text.toString()
         val suaSenha = digiteSuaSenha.text.toString()
@@ -121,16 +127,17 @@ class ActivityCriarConta : AppCompatActivity() {
         when {
             (informeNome.isEmpty()) -> {
                 val snackBar = Snackbar.make(
-                    botaoCriarConta,
+                    botaoLinkConfirmacao,
                     "Situação: Erro! Preencha o seu nome.",
                     Snackbar.LENGTH_LONG
                 )
                 snackBar.show()
                 situacaoConta.text = getString(R.string.situacaoErroPreenchaNome)
             }
-            email.isEmpty() -> {
+
+            emailDigitado.isEmpty() -> {
                 val snackBar = Snackbar.make(
-                    botaoCriarConta,
+                    botaoLinkConfirmacao,
                     "Situação: Erro! Preencha o seu E - mail.",
                     Snackbar.LENGTH_LONG
                 )
@@ -139,7 +146,7 @@ class ActivityCriarConta : AppCompatActivity() {
             }
             suaSenha.isEmpty() -> {
                 val snackBar = Snackbar.make(
-                    botaoCriarConta,
+                    botaoLinkConfirmacao,
                     "Situação: Erro! Preencha a senha.",
                     Snackbar.LENGTH_LONG
                 )
@@ -148,7 +155,7 @@ class ActivityCriarConta : AppCompatActivity() {
             }
             repitaSenha.isEmpty() -> {
                 val snackBar = Snackbar.make(
-                    botaoCriarConta,
+                    botaoLinkConfirmacao,
                     "Situação: Erro! Repita a senha.",
                     Snackbar.LENGTH_LONG
                 )
@@ -157,7 +164,7 @@ class ActivityCriarConta : AppCompatActivity() {
             }
             repitaSenha != suaSenha -> {
                 val snackBar = Snackbar.make(
-                    botaoCriarConta,
+                    botaoLinkConfirmacao,
                     "Situação: Erro! Senhas incompatíveis.",
                     Snackbar.LENGTH_LONG
                 )
@@ -166,7 +173,7 @@ class ActivityCriarConta : AppCompatActivity() {
             }
             suaSenha.length < 6 -> {
                 val snackBar = Snackbar.make(
-                    botaoCriarConta,
+                    botaoLinkConfirmacao,
                     "Situação: Erro! A senha tem menos de 6 dígitos.",
                     Snackbar.LENGTH_LONG
                 )
@@ -175,35 +182,11 @@ class ActivityCriarConta : AppCompatActivity() {
             }
 
             else -> {
-                //  indicadorDeProgresso.setVisibility(View.VISIBLE)
-                // indicadorDeProgresso.setVisibility(View.VISIBLE)
-                //   indicadorDeProgresso.setVisibility(if (isVisible === 3) View.Visible else View.Invisible)
-                //  salvarDadoscloudFirestore()
-                java.lang.Thread(
-                    object : Runnable {
-                        override fun run() {
-                            while (contador < 100) {
-                                contador += 1
-                                try {
-                                    Thread.sleep(0)
-                                    Thread.interrupted()
-                                } catch (e: InterruptedException) {
-                                    e.printStackTrace()
-                                }
-                            }
-                            indicadorDeProgresso.post(Runnable {
-                                indicadorDeProgresso.setVisibility(
-                                    View.VISIBLE
-                                )
-                            })
-                        }
-                    }).start()
-
-                //Firebase Tela 01.02 = Invocar Função de cadastrar usuário no Firebase Authentication:
-
                 cadastrarUsuarioFirebase()
-            }
 
+//                gerarLink()
+//                sendSignInlink(emailDigitado, ActionCodeSettings.zzb())
+            }
         }
     }
 
@@ -228,6 +211,9 @@ class ActivityCriarConta : AppCompatActivity() {
                     numeroConta.text = formatarValorConta
 
                     situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
+
+                    indicadorDeProgresso.progress = 100
+                    indicadorDeProgresso.isIndeterminate = false
 
                     salvarDadoscloudFirestore()
 
@@ -276,7 +262,7 @@ class ActivityCriarConta : AppCompatActivity() {
             })
     }
 
-    private fun declararVariaveis(){
+    private fun declararVariaveis() {
         digiteSeuNome = findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
         digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
         repitaSuaSenha =
@@ -284,7 +270,8 @@ class ActivityCriarConta : AppCompatActivity() {
         numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarConta02Id)
         digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
         situacaoConta = findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarConta02Id)
-        botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
+//        botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
+        botaoLinkConfirmacao = findViewById(R.id.btn_linkConfirmacao_actvt_criarConta)
         imageViewVoltarParaMainActivity =
             findViewById<ImageView>(R.id.imageViewVoltarActivityCriarContaId)
         texViewVoltarParaTelaPrincipal =
@@ -294,13 +281,13 @@ class ActivityCriarConta : AppCompatActivity() {
         textViewLogarActivityCriarConta = findViewById(R.id.texTeViewLoginctivityCriarContaId)
     }
 
-    private fun criarFuncoes(){
+    private fun criarFuncoes() {
 
         imageViewVoltarParaMainActivity.setOnClickListener { imageViewVoltarParaMainActivity() }
         texViewVoltarParaTelaPrincipal.setOnClickListener { textViewVoltarParaMainActivity() }
         imageViewLogarActivityCriarConta.setOnClickListener { imageViewLogar() }
         textViewLogarActivityCriarConta.setOnClickListener { textViewLogar() }
-        botaoCriarConta.setOnClickListener { criarConta() }
+        botaoLinkConfirmacao.setOnClickListener { confirmarEmail() }
     }
 
 }

@@ -110,8 +110,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
             android:digits="0123456789abcdefghijklmnopqrstuvwxykzABCDEFGHIJKLMNOPQRSTUVWXYK Z"
             android:hint="@string/nomeCompleto"
             android:inputType="textCapWords|textImeMultiLine"
@@ -205,15 +205,19 @@
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--            android:text="@string/criarConta"
+         android:id="@+id/botaoCriarContaActivityCriarContaId"
+         android:id="@+id/btn_linkConfirmacao_actvt_criarConta"
+        -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/botaoCriarContaActivityCriarContaId"
+            android:id="@+id/btn_linkConfirmacao_actvt_criarConta"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/botao_redondo02"
-            android:text="@string/criarConta"
+            android:text="Enviar link de confirmação"
             android:textAllCaps="false"
             android:textColor="@color/white01"
             android:textSize="21sp"
@@ -227,11 +231,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
+            android:visibility="visible"
+            android:indeterminateDuration="15"
+            android:progress="1"
+            android:indeterminate="true"
+            app:indicatorDirectionLinear="startToEnd"
             android:layout_marginEnd="5dp"
-            android:progress="50"
-            android:visibility="invisible"
-            app:indicatorColor="@color/corSecundariaVariante"
-            app:trackColor="@color/black" />
+            app:indeterminateAnimationType="disjoint"
+            app:indicatorColor="@color/black"
+            app:trackColor="@color/corSecundariaVariante" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewSituacaoContaActivityCriarContaId"
@@ -243,7 +251,7 @@
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/botaoCriarContaActivityCriarContaId" />
+            app:layout_constraintStart_toStartOf="@id/btn_linkConfirmacao_actvt_criarConta" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewSituacaoContaActivityCriarConta02Id"

@@ -7,9 +7,10 @@ import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_contas_cadastradas.*
+
 
 class ActivityContasCadastradas : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contas_cadastradas)
@@ -22,7 +23,7 @@ class ActivityContasCadastradas : AppCompatActivity() {
         /**
          * Declaração de funcões:
          */
-       criarFuncoes()
+        criarFuncoes()
     }
 
     private fun textViewVoltarActivityContasCadastradas() {
@@ -41,9 +42,8 @@ class ActivityContasCadastradas : AppCompatActivity() {
     }
 
     private fun criarFuncoes() {
-
-        val imageButtonVoltar02 = imgBtton_voltar_contasCadastradas_id
-        val textViewVoltar02 = txtVw_voltar_contasCadastradas_id
+        val imageButtonVoltar02 = findViewById<ImageButton>(R.id.imgBtton_voltar_contasCadastradas_id)
+        val textViewVoltar02 = findViewById<TextView>(R.id.txtVw_voltar_contasCadastradas_id)
 
         imageButtonVoltar02.setOnClickListener { imageButtonVoltarContasCadastradasId() }
         textViewVoltar02.setOnClickListener { textViewVoltarActivityContasCadastradas() }
