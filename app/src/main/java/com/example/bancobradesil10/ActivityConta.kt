@@ -1,7 +1,9 @@
 package com.example.bancobradesil10
 
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.graphics.PorterDuff
 import android.os.Bundle
@@ -11,19 +13,21 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 
-
 class ActivityConta : AppCompatActivity() {
 
     /**
      * Variáveis em escopo global:
      */
     private lateinit var imageViewVisivel: ImageView
-    lateinit var imageViewNaoVisivel: ImageView
-    lateinit var nomeCliente: TextView
+    private lateinit var imageViewNaoVisivel: ImageView
     private lateinit var faleBia: AutoCompleteTextView
-    lateinit var textViewSaldo: TextView
-    lateinit var textViewSairDaConta: TextView
-    lateinit var imageViewSairDaConta: ImageView
+    private lateinit var textViewSaldo: TextView
+    private lateinit var textViewSairDaConta: TextView
+    private lateinit var imageViewSairDaConta: ImageView
+    lateinit var sharedPreferences: SharedPreferences
+    private lateinit var nomeCliente: TextView
+    private lateinit var numeroConta: String
+    private lateinit var email: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,17 +36,22 @@ class ActivityConta : AppCompatActivity() {
         /**
          * Declaração de variáveis:
          */
-       declararVariaveis()
+        declararVariaveis()
 
         /**
          * Instância de funções:
          */
-       criarFuncoes()
+        criarFuncoes()
 
         /**
          * Função para Saldo não visível:
          */
         saldoNaoVisivel()
+
+        /**
+         * Chave do Shared Preference:
+         */
+        sharedPreferences = getSharedPreferences("chaveGeralSP", Context.MODE_PRIVATE)
 
     }
 
@@ -51,8 +60,16 @@ class ActivityConta : AppCompatActivity() {
      */
     private fun textViewSair() {
         FirebaseAuth.getInstance().signOut()
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        val intent01 = Intent(this, MainActivity::class.java)
+        startActivity(intent01)
+
+        salvarSharedPreferences()
+
+        val intent02 = Intent(this, MainActivity::class.java).apply {
+            putExtra("chaveNome", nomeCliente.text)
+        }
+        startActivity(intent02)
+
         imageViewVisivel
     }
 
@@ -111,8 +128,8 @@ class ActivityConta : AppCompatActivity() {
         documentReference.addSnapshotListener { documentSnapshot, error ->
             if (documentSnapshot != null) {
                 nomeCliente.text = documentSnapshot.getString("nomeFirebase")
-//                textViewEmailActivityLogin.text = documentSnapshot.getString("emailUsuario")
-//                textViewNumeroContaActivityLogin.text = documentSnapshot.getString("contaUsuario")
+                email = documentSnapshot.getString("emailFirebase").toString()
+               numeroConta = documentSnapshot.getString("contaFirebase").toString()
             }
         }
     }
@@ -127,7 +144,7 @@ class ActivityConta : AppCompatActivity() {
         imageViewSairDaConta = findViewById(R.id.imageViewSairActivityContaId)
     }
 
-    private fun criarFuncoes () {
+    private fun criarFuncoes() {
         imageViewSairDaConta.setOnClickListener { imageViewSair() }
         textViewSairDaConta.setOnClickListener { textViewSair() }
         imageViewVisivel.setOnClickListener { olhoVisivel() }
@@ -136,11 +153,17 @@ class ActivityConta : AppCompatActivity() {
     }
 
     private fun saldoNaoVisivel() {
-
         imageViewNaoVisivel.setColorFilter(
             R.color.corSecundariaVariante,
             PorterDuff.Mode.CLEAR
         )
+    }
 
+    private fun salvarSharedPreferences() {
+        val sharedPref01 = sharedPreferences.edit()
+        sharedPref01.putString("chaveNome", "Nome: ${nomeCliente.text}")
+        sharedPref01.putString("chaveEmail", "E-mail: $email")
+        sharedPref01.putString("chaveConta", "Nº Conta: $numeroConta")
+        sharedPref01.apply()
     }
 }

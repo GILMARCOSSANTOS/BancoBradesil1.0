@@ -10,9 +10,7 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.util.Log
-import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -21,29 +19,26 @@ import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.actionCodeSettings
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import java.text.NumberFormat
 import java.util.*
-import kotlin.collections.HashMap
+
 
 class ActivityCriarConta : AppCompatActivity() {
 
     /*
     Variáveis em Escopo global:
      */
-//    private lateinit var botaoCriarConta: Button
-    private lateinit var botaoLinkConfirmacao: Button
-    lateinit var imageViewVoltarParaMainActivity: ImageView
+    private lateinit var botaoCadastrarUsuario: Button
+    private lateinit var imageViewVoltarParaMainActivity: ImageView
     private lateinit var texViewVoltarParaTelaPrincipal: TextView
-    lateinit var digiteSeuNome: EditText
-    lateinit var situacaoConta: TextView
-    lateinit var numeroConta: TextView
-    lateinit var digiteEmail: EditText
-    lateinit var repitaSuaSenha: EditText
+    private lateinit var digiteSeuNome: EditText
+    private lateinit var situacaoConta: TextView
+    private lateinit var numeroConta: TextView
+    private lateinit var digiteEmail: EditText
+    private lateinit var repitaSuaSenha: EditText
     private lateinit var digiteSuaSenha: EditText
-    lateinit var indicadorDeProgresso: ProgressBar
+    private lateinit var indicadorDeProgresso: ProgressBar
     private lateinit var imageViewLogarActivityCriarConta: ImageView
     private lateinit var textViewLogarActivityCriarConta: TextView
 
@@ -109,12 +104,8 @@ class ActivityCriarConta : AppCompatActivity() {
         imageViewVoltarParaMainActivity()
     }
 
-//    private fun criarAConta() {
-//        TODO("Not yet implemented")
-//    }
-
     //    @RequiresApi(Build.VERSION_CODES.S)
-    private fun confirmarEmail() {
+    private fun cadastrarUsuario() {
 
         //Variáveis usadas na função.
         val emailDigitado = digiteEmail.text.toString()
@@ -127,7 +118,7 @@ class ActivityCriarConta : AppCompatActivity() {
         when {
             (informeNome.isEmpty()) -> {
                 val snackBar = Snackbar.make(
-                    botaoLinkConfirmacao,
+                    botaoCadastrarUsuario,
                     "Situação: Erro! Preencha o seu nome.",
                     Snackbar.LENGTH_LONG
                 )
@@ -137,7 +128,7 @@ class ActivityCriarConta : AppCompatActivity() {
 
             emailDigitado.isEmpty() -> {
                 val snackBar = Snackbar.make(
-                    botaoLinkConfirmacao,
+                    botaoCadastrarUsuario,
                     "Situação: Erro! Preencha o seu E - mail.",
                     Snackbar.LENGTH_LONG
                 )
@@ -146,7 +137,7 @@ class ActivityCriarConta : AppCompatActivity() {
             }
             suaSenha.isEmpty() -> {
                 val snackBar = Snackbar.make(
-                    botaoLinkConfirmacao,
+                    botaoCadastrarUsuario,
                     "Situação: Erro! Preencha a senha.",
                     Snackbar.LENGTH_LONG
                 )
@@ -155,7 +146,7 @@ class ActivityCriarConta : AppCompatActivity() {
             }
             repitaSenha.isEmpty() -> {
                 val snackBar = Snackbar.make(
-                    botaoLinkConfirmacao,
+                    botaoCadastrarUsuario,
                     "Situação: Erro! Repita a senha.",
                     Snackbar.LENGTH_LONG
                 )
@@ -164,7 +155,7 @@ class ActivityCriarConta : AppCompatActivity() {
             }
             repitaSenha != suaSenha -> {
                 val snackBar = Snackbar.make(
-                    botaoLinkConfirmacao,
+                    botaoCadastrarUsuario,
                     "Situação: Erro! Senhas incompatíveis.",
                     Snackbar.LENGTH_LONG
                 )
@@ -173,7 +164,7 @@ class ActivityCriarConta : AppCompatActivity() {
             }
             suaSenha.length < 6 -> {
                 val snackBar = Snackbar.make(
-                    botaoLinkConfirmacao,
+                    botaoCadastrarUsuario,
                     "Situação: Erro! A senha tem menos de 6 dígitos.",
                     Snackbar.LENGTH_LONG
                 )
@@ -182,13 +173,13 @@ class ActivityCriarConta : AppCompatActivity() {
             }
 
             else -> {
+
                 cadastrarUsuarioFirebase()
 
-//                gerarLink()
-//                sendSignInlink(emailDigitado, ActionCodeSettings.zzb())
             }
         }
     }
+
 
     //Firebase Tela 01.01 = Implementar Função de cadastrar usuário no Firebase Authentication:
     private fun cadastrarUsuarioFirebase() {
@@ -271,7 +262,7 @@ class ActivityCriarConta : AppCompatActivity() {
         digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
         situacaoConta = findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarConta02Id)
 //        botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
-        botaoLinkConfirmacao = findViewById(R.id.btn_linkConfirmacao_actvt_criarConta)
+        botaoCadastrarUsuario = findViewById(R.id.btn_linkConfirmacao_actvt_criarConta)
         imageViewVoltarParaMainActivity =
             findViewById<ImageView>(R.id.imageViewVoltarActivityCriarContaId)
         texViewVoltarParaTelaPrincipal =
@@ -287,7 +278,7 @@ class ActivityCriarConta : AppCompatActivity() {
         texViewVoltarParaTelaPrincipal.setOnClickListener { textViewVoltarParaMainActivity() }
         imageViewLogarActivityCriarConta.setOnClickListener { imageViewLogar() }
         textViewLogarActivityCriarConta.setOnClickListener { textViewLogar() }
-        botaoLinkConfirmacao.setOnClickListener { confirmarEmail() }
+        botaoCadastrarUsuario.setOnClickListener { cadastrarUsuario() }
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.bancobradesil10
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.ActivityInfo
 import android.util.Log
 import android.widget.Button
@@ -8,6 +9,8 @@ import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import android.content.Intent as Intent1
 import android.os.Bundle as Bundle1
 
@@ -49,8 +52,7 @@ class MainActivity : AppCompatActivity() {
         /**
          * Shared Preferences: Recebimentos dos dados da ActivityCriarConta:
          */
-       sharedPreferencesReceberDados()
-
+        sharedPreferencesActvtConta()
 
     }
 
@@ -101,20 +103,17 @@ class MainActivity : AppCompatActivity() {
         // lembrarMeuUsuario.setOnClickListener { lembrarUsuario() }
     }
 
-    private fun sharedPreferencesReceberDados() {
-        val nomeUsuarioShared = intent.getStringExtra("chaveNome")
-        textViewNomeConta.apply {
-            text = nomeUsuarioShared
-        }
-        val emailUsuarioShared = intent.getStringExtra("chaveEmail")
-        texViewEmail.apply {
-            text = emailUsuarioShared
-        }
-        val contaUsuarioshared = intent.getStringExtra("chaveConta")
-        textViewNumeroConta.apply {
-            text = contaUsuarioshared
-        }
-    }
+    private fun sharedPreferencesActvtConta() {
 
+        val sharedPreference = getSharedPreferences("chaveGeralSP", Context.MODE_PRIVATE)
+        val nomeSP = sharedPreference.getString("chaveNome", "Nome: ")
+        textViewNomeConta.setText(nomeSP)
+
+        val emailSP = sharedPreference.getString("chaveEmail", "E-Mail: ")
+       texViewEmail.setText(emailSP)
+
+        val contaSP = sharedPreference.getString("chaveConta", "Nº Conta: ")
+      textViewNumeroConta.setText(contaSP)
+    }
 }
 
