@@ -7,6 +7,7 @@ package com.example.bancobradesil10
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
@@ -41,6 +42,7 @@ class ActivityCriarConta : AppCompatActivity() {
     private lateinit var indicadorDeProgresso: ProgressBar
     private lateinit var imageViewLogarActivityCriarConta: ImageView
     private lateinit var textViewLogarActivityCriarConta: TextView
+    private lateinit var sharedPreferences: SharedPreferences
 
     @RequiresApi(Build.VERSION_CODES.S)
     @SuppressLint("SetTextI18n", "SourceLockedOrientationActivity")
@@ -62,20 +64,16 @@ class ActivityCriarConta : AppCompatActivity() {
          * Função para declaração de funções:
          */
         criarFuncoes()
+
+
     }
 
     private fun imageViewLogar() {
-
-        val nome = digiteSeuNome.text.toString()
-        val email = digiteEmail.text.toString()
-        val conta = numeroConta.text.toString()
-
         if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso) || situacaoConta.text == "" || situacaoConta.text != "") {
             val intent = Intent(this, ActivityLogin::class.java).apply {
-                putExtra("chaveNome", nome)
-                putExtra("chaveConta", conta)
-                putExtra("chaveEmail", email)
             }
+            finish()
+            sharedePreferences()
             startActivity(intent)
         }
     }
@@ -85,17 +83,11 @@ class ActivityCriarConta : AppCompatActivity() {
     }
 
     private fun imageViewVoltarParaMainActivity() {
-
-        val nome = digiteSeuNome.text.toString()
-        val email = digiteEmail.text.toString()
-        val conta = numeroConta.text.toString()
-
         if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso) || situacaoConta.text == "" || situacaoConta.text != "") {
             val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra("chaveNome", nome)
-                putExtra("chaveConta", conta)
-                putExtra("chaveEmail", email)
             }
+            finish()
+            sharedePreferences()
             startActivity(intent)
         }
     }
@@ -171,15 +163,12 @@ class ActivityCriarConta : AppCompatActivity() {
                 snackBar.show()
                 situacaoConta.text = getString(R.string.situacaoErroSenhaMenos)
             }
-
             else -> {
-
                 cadastrarUsuarioFirebase()
 
             }
         }
     }
-
 
     //Firebase Tela 01.01 = Implementar Função de cadastrar usuário no Firebase Authentication:
     private fun cadastrarUsuarioFirebase() {
@@ -253,6 +242,14 @@ class ActivityCriarConta : AppCompatActivity() {
             })
     }
 
+    private fun sharedePreferences() {
+        val sharedPrefActvtCriarConta = sharedPreferences.edit()
+        sharedPrefActvtCriarConta.putString("chaveNomeActvtCriarConta", digiteSeuNome.text.toString())
+        sharedPrefActvtCriarConta.putString("chaveEmailActvtCriarConta", digiteEmail.text.toString())
+        sharedPrefActvtCriarConta.putString("contaActvitiCriarConta", numeroConta.text.toString())
+        sharedPrefActvtCriarConta.apply()
+    }
+
     private fun declararVariaveis() {
         digiteSeuNome = findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
         digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
@@ -268,12 +265,12 @@ class ActivityCriarConta : AppCompatActivity() {
         texViewVoltarParaTelaPrincipal =
             findViewById<TextView>(R.id.texTeViewVoltarActivityCriarContaId)
         indicadorDeProgresso = findViewById(R.id.progressBarMainActivityId)
-        imageViewLogarActivityCriarConta = findViewById(R.id.imageViewLogintarActivityCriarContaId)
+        imageViewLogarActivityCriarConta = findViewById(R.id.imgVw_logar_actvt_criarConta)
         textViewLogarActivityCriarConta = findViewById(R.id.texTeViewLoginctivityCriarContaId)
+        sharedPreferences = getSharedPreferences("chaveGeralActvtCriarConta", MODE_PRIVATE)
     }
 
     private fun criarFuncoes() {
-
         imageViewVoltarParaMainActivity.setOnClickListener { imageViewVoltarParaMainActivity() }
         texViewVoltarParaTelaPrincipal.setOnClickListener { textViewVoltarParaMainActivity() }
         imageViewLogarActivityCriarConta.setOnClickListener { imageViewLogar() }

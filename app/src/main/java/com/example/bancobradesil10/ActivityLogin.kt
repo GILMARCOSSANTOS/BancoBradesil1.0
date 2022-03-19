@@ -1,6 +1,7 @@
 package com.example.bancobradesil10
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.widget.*
@@ -44,8 +45,7 @@ class ActivityLogin : AppCompatActivity() {
         /**
          * Função Shared Preferences: Recebimentos dos dados da ActivityCriarConta:
          */
-        sharedPreferencesReceberDados()
-
+        sharedPreferencesActvtLogin()
 
     }
 
@@ -61,6 +61,7 @@ class ActivityLogin : AppCompatActivity() {
             snackBar.show()
         } else {
             autenticarLoginUsuario()
+
         }
     }
 
@@ -73,6 +74,7 @@ class ActivityLogin : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val intent = Intent(this, ActivityConta::class.java)
+                    finish()
                     startActivity(intent)
                 } else {
                     val snackbar = Snackbar.make(
@@ -88,14 +90,16 @@ class ActivityLogin : AppCompatActivity() {
     private fun imageViewVoltarActivityLogin() {
         val intent = Intent(this, MainActivity::class.java).apply {
         }
-        startActivity(intent)
         finish()
+        startActivity(intent)
+
     }
 
     private fun textViewVoltarActivityLogin() {
         val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
         finish()
+        startActivity(intent)
+
     }
 
     private fun declararVariaveis() {
@@ -117,20 +121,13 @@ class ActivityLogin : AppCompatActivity() {
         imageViewVoltar01.setOnClickListener { imageViewVoltarActivityLogin() }
     }
 
-    private fun sharedPreferencesReceberDados() {
-
-        val nomeUsuarioShared = intent.getStringExtra("chaveNome")
-        textViewNomeActivityLogin.apply {
-            text = nomeUsuarioShared
-        }
-        val emailUsuarioShared = intent.getStringExtra("chaveEmail")
-        textViewEmailActivityLogin.apply {
-            text = emailUsuarioShared
-        }
-        val contaUsuarioshared = intent.getStringExtra("chaveConta")
-        textViewNumeroContaActivityLogin.apply {
-            text = contaUsuarioshared
-        }
+    private fun sharedPreferencesActvtLogin() {
+        val sharedPreferences = getSharedPreferences("chaveSP_ActvtConta", MODE_PRIVATE)
+        val nomeSharedPreferencs = sharedPreferences.getString("chaveNomeActvtConta", "Nome:")
+        textViewNomeActivityLogin.setText(nomeSharedPreferencs)
+        val emailSharedPreferences = sharedPreferences.getString("chaveEmailActvtConta", "E-Mail:" )
+        textViewEmailActivityLogin.setText(emailSharedPreferences)
+        val contaSharedPreferences = sharedPreferences.getString("chaveContaActvtConta", "Nº Conta:")
+       textViewNumeroContaActivityLogin.setText(contaSharedPreferences)
     }
-
 }

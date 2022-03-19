@@ -51,7 +51,7 @@ class ActivityConta : AppCompatActivity() {
         /**
          * Chave do Shared Preference:
          */
-        sharedPreferences = getSharedPreferences("chaveGeralSP", Context.MODE_PRIVATE)
+        //sharedPreferences = getSharedPreferences("chaveSP_ActvtConta", Context.MODE_PRIVATE)
 
     }
 
@@ -60,16 +60,11 @@ class ActivityConta : AppCompatActivity() {
      */
     private fun textViewSair() {
         FirebaseAuth.getInstance().signOut()
-        val intent01 = Intent(this, MainActivity::class.java)
-        startActivity(intent01)
-
-        salvarSharedPreferences()
-
-        val intent02 = Intent(this, MainActivity::class.java).apply {
-            putExtra("chaveNome", nomeCliente.text)
+        val intent01 = Intent(this, MainActivity::class.java).apply {
         }
-        startActivity(intent02)
-
+        finish()
+        startActivity(intent01)
+        salvarSharedPreferences()
         imageViewVisivel
     }
 
@@ -129,7 +124,7 @@ class ActivityConta : AppCompatActivity() {
             if (documentSnapshot != null) {
                 nomeCliente.text = documentSnapshot.getString("nomeFirebase")
                 email = documentSnapshot.getString("emailFirebase").toString()
-               numeroConta = documentSnapshot.getString("contaFirebase").toString()
+                numeroConta = documentSnapshot.getString("contaFirebase").toString()
             }
         }
     }
@@ -142,6 +137,7 @@ class ActivityConta : AppCompatActivity() {
         faleBia = findViewById(R.id.autoCompleteFaleBiaContaActivityId)
         textViewSairDaConta = findViewById(R.id.textViewSairActivityContaId)
         imageViewSairDaConta = findViewById(R.id.imageViewSairActivityContaId)
+        sharedPreferences = getSharedPreferences("chaveSP_ActvtConta", Context.MODE_PRIVATE)
     }
 
     private fun criarFuncoes() {
@@ -160,10 +156,10 @@ class ActivityConta : AppCompatActivity() {
     }
 
     private fun salvarSharedPreferences() {
-        val sharedPref01 = sharedPreferences.edit()
-        sharedPref01.putString("chaveNome", "Nome: ${nomeCliente.text}")
-        sharedPref01.putString("chaveEmail", "E-mail: $email")
-        sharedPref01.putString("chaveConta", "Nº Conta: $numeroConta")
-        sharedPref01.apply()
+        val sharedPrefActvtConta = sharedPreferences.edit()
+        sharedPrefActvtConta.putString("chaveNomeActvtConta", "Nome: ${nomeCliente.text}")
+        sharedPrefActvtConta.putString("chaveEmailActvtConta", "E-mail: $email")
+        sharedPrefActvtConta.putString("chaveContaActvtConta", "Nº Conta: $numeroConta")
+        sharedPrefActvtConta.apply()
     }
 }

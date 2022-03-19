@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         /**
          * Função de declaração de variáveis:
          */
-       declararVariaveis()
+        declararVariaveis()
 
         /**
          * Criar Funções:
@@ -50,9 +50,9 @@ class MainActivity : AppCompatActivity() {
         criarFuncoes()
 
         /**
-         * Shared Preferences: Recebimentos dos dados da ActivityCriarConta:
+         * Shared Preferences: Recebimentos dos dados:
          */
-        sharedPreferencesActvtConta()
+         sharedPreferencesActvtConta()
 
     }
 
@@ -72,12 +72,14 @@ class MainActivity : AppCompatActivity() {
     private fun criarConta() {
         val intent = Intent1(this, ActivityCriarConta::class.java).apply {
         }
+        finish()
         startActivity(intent)
     }
 
     private fun acessarConta() {
         val intent = Intent1(this, ActivityLogin::class.java).apply {
         }
+        finish()
         startActivity(intent)
     }
 
@@ -104,16 +106,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun sharedPreferencesActvtConta() {
+            val sharedPreference = getSharedPreferences("chaveSP_ActvtConta", Context.MODE_PRIVATE)
+            val nomeSP = sharedPreference.getString("chaveNomeActvtConta", "Nome:")
+            textViewNomeConta.setText(nomeSP)
+            val emailSP = sharedPreference.getString("chaveEmailActvtConta", "E-Mail: ")
+            texViewEmail.setText(emailSP)
+            val contaSP = sharedPreference.getString("chaveContaActvtConta", "Nº Conta: ")
+            textViewNumeroConta.setText(contaSP)
 
-        val sharedPreference = getSharedPreferences("chaveGeralSP", Context.MODE_PRIVATE)
-        val nomeSP = sharedPreference.getString("chaveNome", "Nome: ")
-        textViewNomeConta.setText(nomeSP)
-
-        val emailSP = sharedPreference.getString("chaveEmail", "E-Mail: ")
-       texViewEmail.setText(emailSP)
-
-        val contaSP = sharedPreference.getString("chaveConta", "Nº Conta: ")
-      textViewNumeroConta.setText(contaSP)
     }
 }
 
