@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var checkBoxLembrar: CheckBox
     private lateinit var textViewAContasCadastradas: TextView
 
-
     @SuppressLint("SourceLockedOrientationActivity", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle1?) {
         super.onCreate(savedInstanceState)
@@ -42,12 +41,12 @@ class MainActivity : AppCompatActivity() {
         /**
          * Função de declaração de variáveis:
          */
-        declararVariaveis()
+       inicializarVariaveis()
 
         /**
          * Criar Funções:
          */
-        criarFuncoes()
+        inicializarFuncoes()
 
         /**
          * Shared Preferences: Recebimentos dos dados:
@@ -83,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun declararVariaveis() {
+    private fun inicializarVariaveis() {
         botaoAcessarConta = findViewById(R.id.botaoa_acessarConta_mainActivity_Id)
         textViewNomeConta = findViewById(R.id.txtVw_nomeCliente_componentDados_id)
         textViewNumeroConta = findViewById(R.id.txtVw_contaCliente_componentDados_id)
@@ -95,10 +94,9 @@ class MainActivity : AppCompatActivity() {
         imageButtonContasCadastradas = findViewById(R.id.imageButtonContasCadastradasMainActivityId)
     }
 
-    private fun criarFuncoes() {
+    private fun inicializarFuncoes() {
         botaoAcessarConta.setOnClickListener { acessarConta() }
         botaoCriarconta.setOnClickListener { criarConta() }
-        // imageButtonContasCadastradas.setOnClickListener { imageButtonEntrarEmContasCadastradas() }
         textViewAContasCadastradas.setOnClickListener { textViewEntrarContasCadastradas() }
         imageButtonContasCadastradas.setOnClickListener { imageButtonEntrarContasCadastradas() }
         checkBoxLembrar.setOnClickListener { lembrarUsuario() }

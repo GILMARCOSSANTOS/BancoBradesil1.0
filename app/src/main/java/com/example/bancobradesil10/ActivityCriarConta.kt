@@ -58,14 +58,12 @@ class ActivityCriarConta : AppCompatActivity() {
         /**
          * Função de declaração de variáveis:
          */
-        declararVariaveis()
+       inicializarVariavies()
 
         /**
          * Função para declaração de funções:
          */
-        criarFuncoes()
-
-
+        inicializarFuncoes()
     }
 
     private fun imageViewLogar() {
@@ -250,7 +248,7 @@ class ActivityCriarConta : AppCompatActivity() {
         sharedPrefActvtCriarConta.apply()
     }
 
-    private fun declararVariaveis() {
+    private fun inicializarVariavies() {
         digiteSeuNome = findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
         digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
         repitaSuaSenha =
@@ -270,7 +268,7 @@ class ActivityCriarConta : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("chaveGeralActvtCriarConta", MODE_PRIVATE)
     }
 
-    private fun criarFuncoes() {
+    private fun inicializarFuncoes() {
         imageViewVoltarParaMainActivity.setOnClickListener { imageViewVoltarParaMainActivity() }
         texViewVoltarParaTelaPrincipal.setOnClickListener { textViewVoltarParaMainActivity() }
         imageViewLogarActivityCriarConta.setOnClickListener { imageViewLogar() }

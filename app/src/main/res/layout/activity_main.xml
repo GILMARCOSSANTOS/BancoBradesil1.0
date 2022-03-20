@@ -77,38 +77,38 @@
         app:layout_constraintTop_toBottomOf="@+id/LinearLayoutActivityMainId02" />
 
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/botaoa_acessarConta_mainActivity_Id"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/botao_redondo02"
-            android:text="@string/acessarConta"
-            android:textAllCaps="false"
-            android:textColor="@color/corSecundariaVariante"
-            android:textSize="21sp"
-            app:backgroundTint="@color/white01"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkboxLembrarUsuarioId" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botaoa_acessarConta_mainActivity_Id"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/botao_redondo02"
+        android:text="@string/acessarConta"
+        android:textAllCaps="false"
+        android:textColor="@color/corSecundariaVariante"
+        android:textSize="21sp"
+        app:backgroundTint="@color/white01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxLembrarUsuarioId" />
 
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/botaoCriarContaMainActivityId"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/botao_redondo02"
-            android:text="@string/criarCOntaBotaoMain"
-            android:textAllCaps="false"
-            android:textColor="@color/corSecundariaVariante"
-            android:textSize="21sp"
-            app:backgroundTint="@color/white01"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/botaoa_acessarConta_mainActivity_Id" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botaoCriarContaMainActivityId"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/botao_redondo02"
+        android:text="@string/criarCOntaBotaoMain"
+        android:textAllCaps="false"
+        android:textColor="@color/corSecundariaVariante"
+        android:textSize="21sp"
+        app:backgroundTint="@color/white01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/botaoa_acessarConta_mainActivity_Id" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

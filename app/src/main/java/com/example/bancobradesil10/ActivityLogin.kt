@@ -35,12 +35,12 @@ class ActivityLogin : AppCompatActivity() {
         /**
          *  Função para declaração de variáveis:
          */
-        declararVariaveis()
+       inicializarVariaveis()
 
         /**
          * Criar Funções:
          */
-        criarFuncoes()
+        inicializarFuncoes()
 
         /**
          * Função Shared Preferences: Recebimentos dos dados da ActivityCriarConta:
@@ -102,7 +102,7 @@ class ActivityLogin : AppCompatActivity() {
 
     }
 
-    private fun declararVariaveis() {
+    private fun inicializarVariaveis() {
         textViewNomeActivityLogin =
             findViewById(R.id.txtVw_nomeCliente_componentDados_id)
         textViewNumeroContaActivityLogin =
@@ -115,7 +115,7 @@ class ActivityLogin : AppCompatActivity() {
         editTexTEmail = findViewById(R.id.editTextQualEmailLoginId)
     }
 
-    private fun criarFuncoes() {
+    private fun inicializarFuncoes() {
         textViewVoltar01.setOnClickListener { textViewVoltarActivityLogin() }
         botaoContinuarActivityLogin.setOnClickListener { botaoContinuar() }
         imageViewVoltar01.setOnClickListener { imageViewVoltarActivityLogin() }
@@ -125,9 +125,10 @@ class ActivityLogin : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("chaveSP_ActvtConta", MODE_PRIVATE)
         val nomeSharedPreferencs = sharedPreferences.getString("chaveNomeActvtConta", "Nome:")
         textViewNomeActivityLogin.setText(nomeSharedPreferencs)
-        val emailSharedPreferences = sharedPreferences.getString("chaveEmailActvtConta", "E-Mail:" )
+        val emailSharedPreferences = sharedPreferences.getString("chaveEmailActvtConta", "E-Mail:")
         textViewEmailActivityLogin.setText(emailSharedPreferences)
-        val contaSharedPreferences = sharedPreferences.getString("chaveContaActvtConta", "Nº Conta:")
-       textViewNumeroContaActivityLogin.setText(contaSharedPreferences)
+        val contaSharedPreferences =
+            sharedPreferences.getString("chaveContaActvtConta", "Nº Conta:")
+        textViewNumeroContaActivityLogin.setText(contaSharedPreferences)
     }
 }

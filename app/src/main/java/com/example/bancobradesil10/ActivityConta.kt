@@ -36,12 +36,12 @@ class ActivityConta : AppCompatActivity() {
         /**
          * Declaração de variáveis:
          */
-        declararVariaveis()
+       inicializarVariaveis()
 
         /**
          * Instância de funções:
          */
-        criarFuncoes()
+       inicializarFuncoes()
 
         /**
          * Função para Saldo não visível:
@@ -129,7 +129,7 @@ class ActivityConta : AppCompatActivity() {
         }
     }
 
-    private fun declararVariaveis() {
+    private fun inicializarVariaveis() {
         imageViewVisivel = findViewById(R.id.imageViewVisivelActivityContaId)
         textViewSaldo = findViewById(R.id.textViewValorSaldoContaActivityId)
         imageViewNaoVisivel = findViewById(R.id.imageViewNaoVisivelActivityContaId)
@@ -140,7 +140,7 @@ class ActivityConta : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("chaveSP_ActvtConta", Context.MODE_PRIVATE)
     }
 
-    private fun criarFuncoes() {
+    private fun inicializarFuncoes() {
         imageViewSairDaConta.setOnClickListener { imageViewSair() }
         textViewSairDaConta.setOnClickListener { textViewSair() }
         imageViewVisivel.setOnClickListener { olhoVisivel() }

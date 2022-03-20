@@ -217,7 +217,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/botao_redondo02"
-            android:text="Enviar link de confirmação"
+           android:text="@string/criarConta"
             android:textAllCaps="false"
             android:textColor="@color/white01"
             android:textSize="21sp"

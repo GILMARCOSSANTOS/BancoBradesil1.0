@@ -11,6 +11,18 @@ import android.widget.TextView
 
 class ActivityContasCadastradas : AppCompatActivity() {
 
+    /**
+     * Declaração de Variáveis em Escopo Global:
+     */
+//    private lateinit var imageButtonVoltar: ImageView
+//    private lateinit var textViewVoltar: TextView
+
+    /**
+     * Declaração de variáveis em Escopo Global:
+     */
+    private lateinit var imageViewVoltar: ImageView
+    private lateinit var textViewVoltar: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contas_cadastradas)
@@ -21,32 +33,34 @@ class ActivityContasCadastradas : AppCompatActivity() {
         requestedOrientation = (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
         /**
-         * Declaração de funcões:
+         * Inicializar Variáveis:
          */
-        criarFuncoes()
+       inicializarVarias()
+
+        /**
+         * Criar Funçõoes:
+         */
+       inicializarFuncoes()
     }
 
-    private fun textViewVoltarActivityContasCadastradas() {
-        // val intent = Intent(this, MainActivity::class.java).apply {
-        // }
-        // startActivity(intent)
+    private fun textViewVoltarContasCadastradas() {
+        val intent = Intent(this, MainActivity::class.java).apply {
+        }
         finish()
-
+        startActivity(intent)
     }
 
-    private fun imageButtonVoltarContasCadastradasId() {
-        // val intent = Intent(this, MainActivity::class.java).apply {
-        //  }
-        //  startActivity(intent)
-        finish()
+    private fun imageViewVoltarContasCadastradas() {
+       textViewVoltarContasCadastradas()
     }
 
-    private fun criarFuncoes() {
-        val imageButtonVoltar02 = findViewById<ImageButton>(R.id.imgBtton_voltar_contasCadastradas_id)
-        val textViewVoltar02 = findViewById<TextView>(R.id.txtVw_voltar_contasCadastradas_id)
-
-        imageButtonVoltar02.setOnClickListener { imageButtonVoltarContasCadastradasId() }
-        textViewVoltar02.setOnClickListener { textViewVoltarActivityContasCadastradas() }
+    private fun inicializarVarias(){
+        textViewVoltar = findViewById(R.id.txtVw_voltar_contasCadastradas_id)
+        imageViewVoltar = findViewById(R.id.imgVw_voltar_contasCadastradas_id)
     }
 
+    private fun inicializarFuncoes(){
+        textViewVoltar.setOnClickListener { textViewVoltarContasCadastradas() }
+        imageViewVoltar.setOnClickListener { imageViewVoltarContasCadastradas() }
+    }
 }
