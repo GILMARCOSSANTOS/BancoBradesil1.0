@@ -2,12 +2,10 @@ package com.example.bancobradesil10
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.util.Log
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -27,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imageButtonContasCadastradas: ImageButton
     private lateinit var checkBoxLembrar: CheckBox
     private lateinit var textViewAContasCadastradas: TextView
+    private lateinit var sharedPreferences01: SharedPreferences
 
     @SuppressLint("SourceLockedOrientationActivity", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle1?) {
@@ -41,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         /**
          * Função de declaração de variáveis:
          */
-       inicializarVariaveis()
+        inicializarVariaveis()
 
         /**
          * Criar Funções:
@@ -51,11 +50,7 @@ class MainActivity : AppCompatActivity() {
         /**
          * Shared Preferences: Recebimentos dos dados:
          */
-         sharedPreferencesActvtConta()
-
-    }
-
-    private fun lembrarUsuario() {
+        sharedPreferencesReceberDados()
     }
 
     private fun imageButtonEntrarContasCadastradas() {
@@ -100,18 +95,22 @@ class MainActivity : AppCompatActivity() {
         textViewAContasCadastradas.setOnClickListener { textViewEntrarContasCadastradas() }
         imageButtonContasCadastradas.setOnClickListener { imageButtonEntrarContasCadastradas() }
         checkBoxLembrar.setOnClickListener { lembrarUsuario() }
-        // lembrarMeuUsuario.setOnClickListener { lembrarUsuario() }
     }
 
-    private fun sharedPreferencesActvtConta() {
-            val sharedPreference = getSharedPreferences("chaveSP_ActvtConta", Context.MODE_PRIVATE)
-            val nomeSP = sharedPreference.getString("chaveNomeActvtConta", "Nome:")
-            textViewNomeConta.setText(nomeSP)
-            val emailSP = sharedPreference.getString("chaveEmailActvtConta", "E-Mail: ")
-            texViewEmail.setText(emailSP)
-            val contaSP = sharedPreference.getString("chaveContaActvtConta", "Nº Conta: ")
-            textViewNumeroConta.setText(contaSP)
+    private fun lembrarUsuario() {
+        if (checkBoxLembrar.isChecked){
+            sharedPreferencesReceberDados()
+        }
+    }
 
+    private fun sharedPreferencesReceberDados() {
+        val sharedPreference = getSharedPreferences("chaveSP_ActvtConta", Context.MODE_PRIVATE)
+        val nomeSP = sharedPreference.getString("chaveNomeActvtConta", "Nome:")
+        textViewNomeConta.setText(nomeSP)
+        val emailSP = sharedPreference.getString("chaveEmailActvtConta", "E-Mail: ")
+        texViewEmail.setText(emailSP)
+        val contaSP = sharedPreference.getString("chaveContaActvtConta", "Nº Conta: ")
+        textViewNumeroConta.setText(contaSP)
     }
 }
 

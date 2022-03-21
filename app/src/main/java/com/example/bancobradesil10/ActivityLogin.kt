@@ -14,14 +14,11 @@ class ActivityLogin : AppCompatActivity() {
     /**
      * Variáveis em Escopo Global:
      */
-    private lateinit var textViewNumeroContaActivityLogin: TextView
     private lateinit var imageViewVoltar01: ImageView
     private lateinit var textViewVoltar01: TextView
     private lateinit var botaoContinuarActivityLogin: Button
+    private lateinit var editTextEmail: EditText
     private lateinit var editTextInformeSenha: EditText
-    private lateinit var textViewNomeActivityLogin: TextView
-    private lateinit var textViewEmailActivityLogin: TextView
-    private lateinit var editTexTEmail: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,17 +32,12 @@ class ActivityLogin : AppCompatActivity() {
         /**
          *  Função para declaração de variáveis:
          */
-       inicializarVariaveis()
+        inicializarVariaveis()
 
         /**
          * Criar Funções:
          */
         inicializarFuncoes()
-
-        /**
-         * Função Shared Preferences: Recebimentos dos dados da ActivityCriarConta:
-         */
-        sharedPreferencesActvtLogin()
 
     }
 
@@ -67,7 +59,7 @@ class ActivityLogin : AppCompatActivity() {
 
     private fun autenticarLoginUsuario() {
         val senha = editTextInformeSenha.text.toString()
-        val email = editTexTEmail.text.toString()
+        val email = editTextEmail.text.toString()
 
         FirebaseAuth.getInstance()
             .signInWithEmailAndPassword(email, senha)
@@ -92,43 +84,25 @@ class ActivityLogin : AppCompatActivity() {
         }
         finish()
         startActivity(intent)
-
     }
 
     private fun textViewVoltarActivityLogin() {
         val intent = Intent(this, MainActivity::class.java)
         finish()
         startActivity(intent)
-
     }
 
     private fun inicializarVariaveis() {
-        textViewNomeActivityLogin =
-            findViewById(R.id.txtVw_nomeCliente_componentDados_id)
-        textViewNumeroContaActivityLogin =
-            findViewById(R.id.txtVw_contaCliente_componentDados_id)
         imageViewVoltar01 = findViewById(R.id.imageViewVoltarLoginId)
         textViewVoltar01 = findViewById(R.id.textViewVoltarLoginId)
         botaoContinuarActivityLogin = findViewById(R.id.botaoAContinuarActivityLoginId)
-        textViewEmailActivityLogin = findViewById(R.id.txtVw_emailCliente_componentDados_id)
         editTextInformeSenha = findViewById(R.id.editTextQualSenhaLoginId)
-        editTexTEmail = findViewById(R.id.editTextQualEmailLoginId)
+        editTextEmail = findViewById(R.id.editTextQualEmailLoginId)
     }
 
     private fun inicializarFuncoes() {
         textViewVoltar01.setOnClickListener { textViewVoltarActivityLogin() }
         botaoContinuarActivityLogin.setOnClickListener { botaoContinuar() }
         imageViewVoltar01.setOnClickListener { imageViewVoltarActivityLogin() }
-    }
-
-    private fun sharedPreferencesActvtLogin() {
-        val sharedPreferences = getSharedPreferences("chaveSP_ActvtConta", MODE_PRIVATE)
-        val nomeSharedPreferencs = sharedPreferences.getString("chaveNomeActvtConta", "Nome:")
-        textViewNomeActivityLogin.setText(nomeSharedPreferencs)
-        val emailSharedPreferences = sharedPreferences.getString("chaveEmailActvtConta", "E-Mail:")
-        textViewEmailActivityLogin.setText(emailSharedPreferences)
-        val contaSharedPreferences =
-            sharedPreferences.getString("chaveContaActvtConta", "Nº Conta:")
-        textViewNumeroContaActivityLogin.setText(contaSharedPreferences)
     }
 }
