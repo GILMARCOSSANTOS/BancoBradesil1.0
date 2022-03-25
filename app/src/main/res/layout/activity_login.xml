@@ -49,11 +49,13 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/lnrLyt_informeDados_actvt_login_id"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/botao_redondo01"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view01_activity_login_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -146,7 +148,7 @@
             app:trackColor="@color/black" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtVw_notificacao_LoginActvt_id"
+            android:id="@+id/txtVw_analiseDados_ActvtLogin_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -157,6 +159,5 @@
             tools:text="Análise de dados..." />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,7 +25,7 @@ class ActivityLogin : AppCompatActivity() {
     private lateinit var botaoContinuarActivityLogin: Button
     private lateinit var editTextEmail: EditText
     private lateinit var editTextInformeSenha: EditText
-    private lateinit var progressBar: LinearProgressIndicator
+    private lateinit var indicadorProgresso: LinearProgressIndicator
     private lateinit var notificacao: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +46,6 @@ class ActivityLogin : AppCompatActivity() {
          * Criar Funções:
          */
         inicializarFuncoes()
-
-
     }
 
     private fun botaoContinuar() {
@@ -57,36 +55,25 @@ class ActivityLogin : AppCompatActivity() {
 
             notificacao.setText(R.string.AnalisandoDados)
 
-            progressBar.progress = 0
-            var currentProgress = 50
-            ObjectAnimator.ofInt(progressBar, "progress", currentProgress)
-                .setDuration(1000)
-                .start()
+            indicadorProgresso(50)
 
             Handler().postDelayed({
-
                 notificacao.setText(R.string.ErroDigiteEmail)
 
-            }, 1000)
+            }, 750)
 
         } else if (editTextInformeSenha.text.isEmpty()) {
+
             notificacao.setText(R.string.AnalisandoDados)
 
-            progressBar.progress = 0
-            var currentProgress = 50
-            ObjectAnimator.ofInt(progressBar, "progress", currentProgress)
-                .setDuration(1000)
-                .start()
+            indicadorProgresso(50)
 
             Handler().postDelayed({
                 notificacao.setText(R.string.ErroDigiteSenha)
-
-            }, 1000)
-
+            }, 750)
         } else {
             autenticarLoginUsuario()
         }
-
     }
 
     private fun autenticarLoginUsuario() {
@@ -100,17 +87,14 @@ class ActivityLogin : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
 
-                    progressBar.progress = 100
-                    val currentProgress = 0
-                    ObjectAnimator.ofInt(progressBar, "progress", currentProgress)
-                        .setDuration(5000)
-                        .start()
+                    indicadorProgresso(100)
 
                     val intent = Intent(this, ActivityConta::class.java)
                     finish()
                     startActivity(intent)
+
                 } else {
-                   notificacao.setText(R.string.ErroSenhaConta)
+                    notificacao.setText(R.string.ErroSenhaConta)
                 }
             }
     }
@@ -123,9 +107,7 @@ class ActivityLogin : AppCompatActivity() {
     }
 
     private fun textViewVoltarActivityLogin() {
-        val intent = Intent(this, MainActivity::class.java)
-        finish()
-        startActivity(intent)
+        imageViewVoltarActivityLogin()
     }
 
     private fun inicializarVariaveis() {
@@ -134,8 +116,8 @@ class ActivityLogin : AppCompatActivity() {
         botaoContinuarActivityLogin = findViewById(R.id.botaoAContinuarActivityLoginId)
         editTextInformeSenha = findViewById(R.id.editTextQualSenhaLoginId)
         editTextEmail = findViewById(R.id.editTextQualEmailLoginId)
-        progressBar = findViewById(R.id.prgrssBar_actvtLogin_id)
-        notificacao = findViewById(R.id.txtVw_notificacao_LoginActvt_id)
+        indicadorProgresso = findViewById(R.id.prgrssBar_actvtLogin_id)
+        notificacao = findViewById(R.id.txtVw_analiseDados_ActvtLogin_id)
     }
 
     private fun inicializarFuncoes() {
@@ -143,4 +125,12 @@ class ActivityLogin : AppCompatActivity() {
         botaoContinuarActivityLogin.setOnClickListener { botaoContinuar() }
         imageViewVoltar01.setOnClickListener { imageViewVoltarActivityLogin() }
     }
+
+    private fun indicadorProgresso(nivelProgresso: Int) {
+        indicadorProgresso.progress = 0
+        ObjectAnimator.ofInt(indicadorProgresso, "progress", nivelProgresso)
+            .setDuration(750)
+            .start()
+    }
+
 }

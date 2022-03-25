@@ -87,14 +87,15 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayoutCompat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/botao_redondo06"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view02ActivityCriarConta01Id">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/texViewInformeDadosCriarContaId"
@@ -115,6 +116,7 @@
             android:layout_marginEnd="5dp"
             android:digits="0123456789abcdefghijklmnopqrstuvwxykzABCDEFGHIJKLMNOPQRSTUVWXYK Z"
             android:hint="@string/nomeCompleto"
+            android:imeOptions="actionDone"
             android:inputType="textCapWords|textImeMultiLine"
             android:maxLength="35"
             android:singleLine="true"
@@ -206,12 +208,8 @@
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--            android:text="@string/criarConta"
-         android:id="@+id/botaoCriarContaActivityCriarContaId"
-         android:id="@+id/btn_linkConfirmacao_actvt_criarConta"
-        -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_linkConfirmacao_actvt_criarConta"
+            android:id="@+id/bt_CriarConta_ActvtCriarConta_id"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="5dp"
@@ -226,68 +224,62 @@
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toBottomOf="@+id/linerLayoutContasId" />
 
-        <!--        android:visibility="gone"-->
-        <!--        android:progress="1"-->
-        <!--        android:indeterminate="false"-->
-        <!--        android:indeterminateDuration="15"-->
-        <!--        app:indeterminateAnimationType="disjoint"-->
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progressBarMainActivityId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="15dp">
-
-            <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/progressBarMainActivityId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-
-                app:indicatorColor="@color/black"
-                app:indicatorDirectionLinear="endToStart"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:trackColor="@color/corSecundariaVariante" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <!--        <ProgressBar-->
-        <!--            android:id="@+id/progressBarMainActivityId"-->
-        <!--            style="?android:attr/progressBarStyle"-->
-        <!--            android:layout_width="30dp"-->
-        <!--            android:layout_height="43dp"-->
-        <!--            android:visibility="gone"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"/>-->
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewSituacaoContaActivityCriarContaId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:text="@string/situacaoCadastro"
-            android:textSize="17sp"
-            android:textStyle="bold"
+            app:indicatorColor="@color/corSecundariaVariante"
+            app:indicatorDirectionLinear="startToEnd"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/btn_linkConfirmacao_actvt_criarConta" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:trackColor="@color/black" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewSituacaoContaActivityCriarConta02Id"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtVw_analiseDados_ActvtCriarConta_id"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="79dp"
-            android:layout_marginTop="-23dp"
-            android:textSize="17sp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:textSize="19sp"
             android:textStyle="bold"
+            tools:text="Análise de dados..." />
 
-            tools:text="Progresso do cadastro" />
+        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="5dp"-->
+        <!--            android:layout_marginEnd="5dp"-->
+        <!--            android:layout_marginBottom="15dp">-->
+
+        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+        <!--        <com.google.android.material.textview.MaterialTextView-->
+        <!--            android:id="@+id/textViewSituacaoContaActivityCriarContaId"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="5dp"-->
+        <!--            android:layout_marginEnd="5dp"-->
+        <!--            android:text="@string/situacaoCadastro"-->
+        <!--            android:textSize="17sp"-->
+        <!--            android:textStyle="bold"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/btn_linkConfirmacao_actvt_criarConta" />-->
+
+        <!--        <com.google.android.material.textview.MaterialTextView-->
+        <!--            android:id="@+id/textViewSituacaoContaActivityCriarConta02Id"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="79dp"-->
+        <!--            android:layout_marginTop="-23dp"-->
+        <!--            android:textSize="17sp"-->
+        <!--            android:textStyle="bold"-->
+        <!--            tools:text="Progresso do cadastro" />-->
 
         <View
             android:id="@+id/viewId02"

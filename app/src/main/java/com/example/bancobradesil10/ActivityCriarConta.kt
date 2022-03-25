@@ -11,6 +11,7 @@ import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -22,6 +23,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.NumberFormat
+import java.time.Duration
 import java.util.*
 
 
@@ -43,6 +45,8 @@ class ActivityCriarConta : AppCompatActivity() {
     private lateinit var imageViewLogarActivityCriarConta: ImageView
     private lateinit var textViewLogarActivityCriarConta: TextView
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var analiseDados: TextView
+    private lateinit var botaoCriarConta: Button
 
     @RequiresApi(Build.VERSION_CODES.S)
     @SuppressLint("SetTextI18n", "SourceLockedOrientationActivity")
@@ -62,30 +66,10 @@ class ActivityCriarConta : AppCompatActivity() {
         inicializarFuncoes()
 
 
-
-//        btiniciar = Button open fun findViewById()
-//        btiniciar.setOnClickListener(new View . OnClickListener (){
-//            public void onClick(View v) {
-//
-//                //MOSTRAR PROGRESS
-//                final Handler handler = new Handler ()
-////                handler.postDelayed(new Runnable () {
-//                    @Override
-//                    public void run() {
-//                        //ESCONDER PROGRESS
-//                        Intent it = new Intent(MenuActivity.this, LoadActivity.class)
-//                        startActivity(it)
-//                        finish()
-//                    }
-//                }, 2000)
-//            }
-//        })
-
-
     }
 
     private fun imageViewLogar() {
-        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso) || situacaoConta.text == "" || situacaoConta.text != "") {
+        if (analiseDados.text == getString(R.string.situacaoContaCriadaComSucesso) || analiseDados.text == "" || situacaoConta.text != "") {
             val intent = Intent(this, ActivityLogin::class.java).apply {
             }
             finish()
@@ -99,7 +83,7 @@ class ActivityCriarConta : AppCompatActivity() {
     }
 
     private fun imageViewVoltarParaMainActivity() {
-        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso) || situacaoConta.text == "" || situacaoConta.text != "") {
+        if (analiseDados.text == getString(R.string.situacaoContaCriadaComSucesso) || analiseDados.text == "" || analiseDados.text != "") {
             val intent = Intent(this, MainActivity::class.java).apply {
             }
             finish()
@@ -115,7 +99,6 @@ class ActivityCriarConta : AppCompatActivity() {
     //    @RequiresApi(Build.VERSION_CODES.S)
     private fun cadastrarUsuario() {
 
-
         //Variáveis usadas na função.
         val emailDigitado = digiteEmail.text.toString()
         val informeNome = digiteSeuNome.text.toString()
@@ -123,73 +106,64 @@ class ActivityCriarConta : AppCompatActivity() {
         val suaSenha = digiteSuaSenha.text.toString()
         var contador = 0
 
-
-
         //Condicional
         when {
-            (informeNome.isEmpty()  ) -> {
+            (informeNome.isEmpty()) -> {
 
+                analiseDados.setText(R.string.AnalisandoDados)
 
-              situacaoConta.text = getString(R.string.situacaoErroPreenchaNome)
+                indicadorProgressoErro()
 
-//                val snackBar = Snackbar.make(
-//                    botaoCadastrarUsuario,
-//                    "Erro! Preencha o seu nome.",
-//                    Snackbar.LENGTH_LONG
-//                )
-//                snackBar.show()
-
+                Handler().postDelayed({
+                    analiseDados.setText(R.string.situacaoErroPreenchaNome)
+                }, 750)
             }
 
-            emailDigitado.isEmpty() -> {
-                val snackBar = Snackbar.make(
-                    botaoCadastrarUsuario,
-                    "Situação: Erro! Preencha o seu E - mail.",
-                    Snackbar.LENGTH_LONG
-                )
-                snackBar.show()
-                situacaoConta.text = getString(R.string.situacaoErroPreenchaEmail)
+            (emailDigitado.isEmpty()) -> {
+
+                analiseDados.setText(R.string.AnalisandoDados)
+
+                indicadorProgressoErro()
+
+                Handler().postDelayed({
+                    analiseDados.setText(R.string.situacaoErroPreenchaEmail)
+                }, 750)
             }
-            suaSenha.isEmpty() -> {
-                val snackBar = Snackbar.make(
-                    botaoCadastrarUsuario,
-                    "Situação: Erro! Preencha a senha.",
-                    Snackbar.LENGTH_LONG
-                )
-                snackBar.show()
-                situacaoConta.text = getString(R.string.situacaoErroPreenchaSenha)
+            (suaSenha.isEmpty()) -> {
+
+                analiseDados.setText(R.string.AnalisandoDados)
+
+                indicadorProgressoErro()
+
+                Handler().postDelayed({
+                    analiseDados.setText(R.string.situacaoErroPreenchaSenha)
+                }, 750)
             }
-            repitaSenha.isEmpty() -> {
-                val snackBar = Snackbar.make(
-                    botaoCadastrarUsuario,
-                    "Situação: Erro! Repita a senha.",
-                    Snackbar.LENGTH_LONG
-                )
-                snackBar.show()
-                situacaoConta.text = getString(R.string.situacaoErroRepitaSenhas)
+
+            (repitaSenha.isEmpty()) -> {
+
+                analiseDados.setText(R.string.AnalisandoDados)
+
+                indicadorProgressoErro()
+
+                Handler().postDelayed({
+                    analiseDados.setText(R.string.situacaoErroRepitaSenha)
+                }, 750)
             }
-            repitaSenha != suaSenha -> {
-                val snackBar = Snackbar.make(
-                    botaoCadastrarUsuario,
-                    "Situação: Erro! Senhas incompatíveis.",
-                    Snackbar.LENGTH_LONG
-                )
-                snackBar.show()
-                situacaoConta.text = getString(R.string.situacaoErroSenhasDiferentes)
+
+            (repitaSenha != suaSenha) -> {
+
+                analiseDados.setText(R.string.AnalisandoDados)
+
+                indicadorProgressoErro()
+
+                Handler().postDelayed({
+                    analiseDados.setText(R.string.situacaoErroSenhasDiferentes)
+                }, 750)
             }
-            suaSenha.length < 6 -> {
-                val snackBar = Snackbar.make(
-                    botaoCadastrarUsuario,
-                    "Situação: Erro! A senha tem menos de 6 dígitos.",
-                    Snackbar.LENGTH_LONG
-                )
-                snackBar.show()
-                situacaoConta.text = getString(R.string.situacaoErroSenhaMenos)
-            }
+
             else -> {
-
                 cadastrarUsuarioFirebase()
-
             }
         }
     }
@@ -197,12 +171,12 @@ class ActivityCriarConta : AppCompatActivity() {
     //Firebase Tela 01.01 = Implementar Função de cadastrar usuário no Firebase Authentication:
     private fun cadastrarUsuarioFirebase() {
 
-        while (situacaoConta.text == ""){
-           exibirProgressBar()
-
-        }
-
-
+        analiseDados.setText(R.string.AnalisandoDados)
+        indicadorDeProgresso.progress = 0
+        var nivelProgresso = 50
+        ObjectAnimator.ofInt(indicadorDeProgresso, "progress", nivelProgresso)
+            .setDuration(1000)
+            .start()
 
         //Para Cadastrar, só precisa do e - mail e senha.
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(
@@ -212,38 +186,62 @@ class ActivityCriarConta : AppCompatActivity() {
             .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
                 if (task.isSuccessful) {
 
-                    val contaAbertasRandom = (10000..99999).random()
-                    val ptBr = Locale("pt", "BR")
-                    val formatarValorConta =
-                        NumberFormat.getNumberInstance(ptBr)
-                            .format(contaAbertasRandom.toDouble())
-                    numeroConta.text = formatarValorConta
+                    Handler().postDelayed({
 
-                    situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
+                        indicadorDeProgresso.progress = 0
+                        var nivelProgresso = 50
+                        ObjectAnimator.ofInt(indicadorDeProgresso, "progress", nivelProgresso)
+                            .setDuration(1000)
+                            .start()
 
-                    salvarDadoscloudFirestore()
+                        val contaAbertasRandom = (10000..99999).random()
+                        val ptBr = Locale("pt", "BR")
+                        val formatarValorConta =
+                            NumberFormat.getNumberInstance(ptBr)
+                                .format(contaAbertasRandom.toDouble())
+                        numeroConta.text = formatarValorConta
+
+                        analiseDados.text = getString(R.string.situacaoContaCriadaComSucesso)
+
+                        salvarDadoscloudFirestore()
+
+                    }, 1000)
 
                     //Firebase Tela 01.03 = Invocar Função de cadastrar usuário no Firebase Authentication:
-                    Toast.makeText(this, "Cadastro realizado com sucesso.", Toast.LENGTH_LONG)
-                        .show()
-
-
                 } else {
 
                     try {
                         throw task.exception!!
                     } catch (e: FirebaseAuthWeakPasswordException) {
-                        Toast.makeText(this, "A senha tem menos de 6 dígitos!", Toast.LENGTH_LONG)
-                            .show()
+
+                        Handler().postDelayed({
+                            analiseDados.setText(R.string.situacaoErroSenhaMenos)
+                        }, 1000)
+                        indicadorProgressoErro()
+
+
                     } catch (e: FirebaseAuthUserCollisionException) {
-                        Toast.makeText(this, "O e - mail já está cadastrado.", Toast.LENGTH_LONG)
-                            .show()
+
+                        Handler().postDelayed({
+                            analiseDados.setText(R.string.situacaoErroEmailJaCadastrado)
+                        }, 1000)
+                        indicadorProgressoErro()
+
                     } catch (e: FirebaseAuthInvalidCredentialsException) {
-                        Toast.makeText(this, "O e - mail usado é inválido!", Toast.LENGTH_LONG)
-                            .show()
+
+                        Handler().postDelayed({
+                            analiseDados.setText(R.string.situacaoErroEmailInvalido)
+                        }, 1000)
+                        indicadorProgressoErro()
+
                     } catch (e: Exception) {
-                        Toast.makeText(this, "Erro ao cadastrar usuário.", Toast.LENGTH_SHORT)
-                            .show()
+
+                        Handler().postDelayed({
+                            analiseDados.setText(R.string.situacaoErroCadastrarUsuario)
+                        }, 1000)
+                        indicadorProgressoErro()
+
+
                     }
                 }
             })
@@ -286,15 +284,14 @@ class ActivityCriarConta : AppCompatActivity() {
     }
 
     private fun inicializarVariavies() {
-        digiteSeuNome = findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
+        digiteSeuNome = findViewById(R.id.editTextInformeNomeActivityCriarContaId)
         digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
         repitaSuaSenha =
             findViewById<EditText>(R.id.editTextRepitaSenhaActivityCriarContaId)
         numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarConta02Id)
         digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
-        situacaoConta = findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarConta02Id)
-//        botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
-        botaoCadastrarUsuario = findViewById(R.id.btn_linkConfirmacao_actvt_criarConta)
+        //  situacaoConta = findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarConta02Id)
+        botaoCriarConta = findViewById<Button>(R.id.bt_CriarConta_ActvtCriarConta_id)
         imageViewVoltarParaMainActivity =
             findViewById<ImageView>(R.id.imageViewVoltarActivityCriarContaId)
         texViewVoltarParaTelaPrincipal =
@@ -302,6 +299,7 @@ class ActivityCriarConta : AppCompatActivity() {
         indicadorDeProgresso = findViewById(R.id.progressBarMainActivityId)
         imageViewLogarActivityCriarConta = findViewById(R.id.imgVw_logar_actvt_criarConta)
         textViewLogarActivityCriarConta = findViewById(R.id.texTeViewLoginctivityCriarContaId)
+        analiseDados = findViewById(R.id.txtVw_analiseDados_ActvtCriarConta_id)
         sharedPreferences = getSharedPreferences("chaveGeralActvtCriarConta", MODE_PRIVATE)
     }
 
@@ -310,30 +308,15 @@ class ActivityCriarConta : AppCompatActivity() {
         texViewVoltarParaTelaPrincipal.setOnClickListener { textViewVoltarParaMainActivity() }
         imageViewLogarActivityCriarConta.setOnClickListener { imageViewLogar() }
         textViewLogarActivityCriarConta.setOnClickListener { textViewLogar() }
-        botaoCadastrarUsuario.setOnClickListener { cadastrarUsuario() }
+        botaoCriarConta.setOnClickListener { cadastrarUsuario() }
     }
 
-    private fun exibirProgressBar() {
-        indicadorDeProgresso.progress = 100
-        val currentProgress = 0
-        ObjectAnimator.ofInt(indicadorDeProgresso, "progress", currentProgress)
-            .setDuration(3000)
+    private fun indicadorProgressoErro() {
+        indicadorDeProgresso.progress = 0
+        val nivelProgresso = 50
+        ObjectAnimator.ofInt(indicadorDeProgresso, "progress", nivelProgresso)
+            .setDuration(750)
             .start()
     }
-
-//    private fun exibirProgressBar(loading: Boolean) {
-//        if (loading) {
-//          indicadorDeProgresso.visibility = View.VISIBLE
-//          //  txt_button_loading.visibility = View.INVISIBLE
-//            return
-//        }
-//       indicadorDeProgresso.visibility = View.INVISIBLE
-//       // txt_button_loading.visibility = View.VISIBLE
-//    }
-
-
-
-
-
 }
 
