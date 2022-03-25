@@ -1,13 +1,19 @@
 package com.example.bancobradesil10
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.os.Handler
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import kotlin.time.toDuration
 
 class ActivityLogin : AppCompatActivity() {
 
@@ -19,6 +25,8 @@ class ActivityLogin : AppCompatActivity() {
     private lateinit var botaoContinuarActivityLogin: Button
     private lateinit var editTextEmail: EditText
     private lateinit var editTextInformeSenha: EditText
+    private lateinit var progressBar: LinearProgressIndicator
+    private lateinit var notificacao: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,42 +47,70 @@ class ActivityLogin : AppCompatActivity() {
          */
         inicializarFuncoes()
 
+
     }
 
     private fun botaoContinuar() {
         //Reconhecer usuário atual e fazer LOGIN no Firebase:
 
-        if (editTextInformeSenha.text.toString().isEmpty()) {
-            val snackBar = Snackbar.make(
-                botaoContinuarActivityLogin,
-                "Digite a sua senha.",
-                Snackbar.LENGTH_LONG
-            )
-            snackBar.show()
+        if (editTextEmail.text.isEmpty()) {
+
+            notificacao.setText(R.string.AnalisandoDados)
+
+            progressBar.progress = 0
+            var currentProgress = 50
+            ObjectAnimator.ofInt(progressBar, "progress", currentProgress)
+                .setDuration(1000)
+                .start()
+
+            Handler().postDelayed({
+
+                notificacao.setText(R.string.ErroDigiteEmail)
+
+            }, 1000)
+
+        } else if (editTextInformeSenha.text.isEmpty()) {
+            notificacao.setText(R.string.AnalisandoDados)
+
+            progressBar.progress = 0
+            var currentProgress = 50
+            ObjectAnimator.ofInt(progressBar, "progress", currentProgress)
+                .setDuration(1000)
+                .start()
+
+            Handler().postDelayed({
+                notificacao.setText(R.string.ErroDigiteSenha)
+
+            }, 1000)
+
         } else {
             autenticarLoginUsuario()
-
         }
+
     }
 
     private fun autenticarLoginUsuario() {
         val senha = editTextInformeSenha.text.toString()
         val email = editTextEmail.text.toString()
 
+        notificacao.setText(R.string.AnalisandoDados)
+
         FirebaseAuth.getInstance()
             .signInWithEmailAndPassword(email, senha)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+
+                    progressBar.progress = 100
+                    val currentProgress = 0
+                    ObjectAnimator.ofInt(progressBar, "progress", currentProgress)
+                        .setDuration(5000)
+                        .start()
+
                     val intent = Intent(this, ActivityConta::class.java)
                     finish()
                     startActivity(intent)
                 } else {
-                    val snackbar = Snackbar.make(
-                        botaoContinuarActivityLogin,
-                        "Senha ou e e-mail incorretos.",
-                        Snackbar.LENGTH_LONG
-                    )
-                    snackbar.show()
+                   notificacao.setText(R.string.ErroSenhaConta)
                 }
             }
     }
@@ -98,6 +134,8 @@ class ActivityLogin : AppCompatActivity() {
         botaoContinuarActivityLogin = findViewById(R.id.botaoAContinuarActivityLoginId)
         editTextInformeSenha = findViewById(R.id.editTextQualSenhaLoginId)
         editTextEmail = findViewById(R.id.editTextQualEmailLoginId)
+        progressBar = findViewById(R.id.prgrssBar_actvtLogin_id)
+        notificacao = findViewById(R.id.txtVw_notificacao_LoginActvt_id)
     }
 
     private fun inicializarFuncoes() {

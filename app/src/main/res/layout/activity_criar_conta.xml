@@ -10,9 +10,9 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/lnrLyt_menuPrincipal_actvt_criarConta_id"
         android:layout_width="match_parent"
-        android:layout_marginTop="25dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="5dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,11 +89,11 @@
         android:id="@+id/linearLayoutCompat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:background="@drawable/botao_redondo06"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
@@ -218,7 +218,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/botao_redondo02"
-           android:text="@string/criarConta"
+            android:text="@string/criarConta"
             android:textAllCaps="false"
             android:textColor="@color/white01"
             android:textSize="21sp"
@@ -226,21 +226,45 @@
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toBottomOf="@+id/linerLayoutContasId" />
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/progressBarMainActivityId"
+        <!--        android:visibility="gone"-->
+        <!--        android:progress="1"-->
+        <!--        android:indeterminate="false"-->
+        <!--        android:indeterminateDuration="15"-->
+        <!--        app:indeterminateAnimationType="disjoint"-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:visibility="visible"
-            android:indeterminateDuration="15"
-            android:progress="1"
-            android:indeterminate="true"
-            app:indicatorDirectionLinear="startToEnd"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
-            app:indeterminateAnimationType="disjoint"
-            app:indicatorColor="@color/black"
-            app:trackColor="@color/corSecundariaVariante" />
+            android:layout_marginBottom="15dp">
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progressBarMainActivityId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+
+                app:indicatorColor="@color/black"
+                app:indicatorDirectionLinear="endToStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:trackColor="@color/corSecundariaVariante" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!--        <ProgressBar-->
+        <!--            android:id="@+id/progressBarMainActivityId"-->
+        <!--            style="?android:attr/progressBarStyle"-->
+        <!--            android:layout_width="30dp"-->
+        <!--            android:layout_height="43dp"-->
+        <!--            android:visibility="gone"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"/>-->
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewSituacaoContaActivityCriarContaId"
@@ -258,10 +282,11 @@
             android:id="@+id/textViewSituacaoContaActivityCriarConta02Id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="89dp"
+            android:layout_marginStart="79dp"
             android:layout_marginTop="-23dp"
             android:textSize="17sp"
             android:textStyle="bold"
+
             tools:text="Progresso do cadastro" />
 
         <View
@@ -286,7 +311,7 @@
             android:id="@+id/textViewNumeroContaActivityCriarConta02Id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="67dp"
+            android:layout_marginStart="82dp"
             android:layout_marginTop="-23dp"
             android:textSize="17sp"
             android:textStyle="bold"

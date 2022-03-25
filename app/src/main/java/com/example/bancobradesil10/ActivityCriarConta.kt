@@ -4,14 +4,15 @@
 
 package com.example.bancobradesil10
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +20,6 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.*
-import com.google.firebase.auth.ktx.actionCodeSettings
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.NumberFormat
 import java.util.*
@@ -56,14 +56,32 @@ class ActivityCriarConta : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         /**
-         * Função de declaração de variáveis:
+         * Funções:
          */
-       inicializarVariavies()
-
-        /**
-         * Função para declaração de funções:
-         */
+        inicializarVariavies()
         inicializarFuncoes()
+
+
+
+//        btiniciar = Button open fun findViewById()
+//        btiniciar.setOnClickListener(new View . OnClickListener (){
+//            public void onClick(View v) {
+//
+//                //MOSTRAR PROGRESS
+//                final Handler handler = new Handler ()
+////                handler.postDelayed(new Runnable () {
+//                    @Override
+//                    public void run() {
+//                        //ESCONDER PROGRESS
+//                        Intent it = new Intent(MenuActivity.this, LoadActivity.class)
+//                        startActivity(it)
+//                        finish()
+//                    }
+//                }, 2000)
+//            }
+//        })
+
+
     }
 
     private fun imageViewLogar() {
@@ -97,6 +115,7 @@ class ActivityCriarConta : AppCompatActivity() {
     //    @RequiresApi(Build.VERSION_CODES.S)
     private fun cadastrarUsuario() {
 
+
         //Variáveis usadas na função.
         val emailDigitado = digiteEmail.text.toString()
         val informeNome = digiteSeuNome.text.toString()
@@ -104,16 +123,22 @@ class ActivityCriarConta : AppCompatActivity() {
         val suaSenha = digiteSuaSenha.text.toString()
         var contador = 0
 
+
+
         //Condicional
         when {
-            (informeNome.isEmpty()) -> {
-                val snackBar = Snackbar.make(
-                    botaoCadastrarUsuario,
-                    "Situação: Erro! Preencha o seu nome.",
-                    Snackbar.LENGTH_LONG
-                )
-                snackBar.show()
-                situacaoConta.text = getString(R.string.situacaoErroPreenchaNome)
+            (informeNome.isEmpty()  ) -> {
+
+
+              situacaoConta.text = getString(R.string.situacaoErroPreenchaNome)
+
+//                val snackBar = Snackbar.make(
+//                    botaoCadastrarUsuario,
+//                    "Erro! Preencha o seu nome.",
+//                    Snackbar.LENGTH_LONG
+//                )
+//                snackBar.show()
+
             }
 
             emailDigitado.isEmpty() -> {
@@ -162,6 +187,7 @@ class ActivityCriarConta : AppCompatActivity() {
                 situacaoConta.text = getString(R.string.situacaoErroSenhaMenos)
             }
             else -> {
+
                 cadastrarUsuarioFirebase()
 
             }
@@ -171,6 +197,13 @@ class ActivityCriarConta : AppCompatActivity() {
     //Firebase Tela 01.01 = Implementar Função de cadastrar usuário no Firebase Authentication:
     private fun cadastrarUsuarioFirebase() {
 
+        while (situacaoConta.text == ""){
+           exibirProgressBar()
+
+        }
+
+
+
         //Para Cadastrar, só precisa do e - mail e senha.
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(
             digiteEmail.text.toString(),
@@ -178,8 +211,6 @@ class ActivityCriarConta : AppCompatActivity() {
         )
             .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
                 if (task.isSuccessful) {
-
-                    indicadorDeProgresso.visibility
 
                     val contaAbertasRandom = (10000..99999).random()
                     val ptBr = Locale("pt", "BR")
@@ -190,15 +221,15 @@ class ActivityCriarConta : AppCompatActivity() {
 
                     situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso)
 
-                    indicadorDeProgresso.progress = 100
-                    indicadorDeProgresso.isIndeterminate = false
-
                     salvarDadoscloudFirestore()
 
                     //Firebase Tela 01.03 = Invocar Função de cadastrar usuário no Firebase Authentication:
                     Toast.makeText(this, "Cadastro realizado com sucesso.", Toast.LENGTH_LONG)
                         .show()
+
+
                 } else {
+
                     try {
                         throw task.exception!!
                     } catch (e: FirebaseAuthWeakPasswordException) {
@@ -242,8 +273,14 @@ class ActivityCriarConta : AppCompatActivity() {
 
     private fun sharedePreferences() {
         val sharedPrefActvtCriarConta = sharedPreferences.edit()
-        sharedPrefActvtCriarConta.putString("chaveNomeActvtCriarConta", digiteSeuNome.text.toString())
-        sharedPrefActvtCriarConta.putString("chaveEmailActvtCriarConta", digiteEmail.text.toString())
+        sharedPrefActvtCriarConta.putString(
+            "chaveNomeActvtCriarConta",
+            digiteSeuNome.text.toString()
+        )
+        sharedPrefActvtCriarConta.putString(
+            "chaveEmailActvtCriarConta",
+            digiteEmail.text.toString()
+        )
         sharedPrefActvtCriarConta.putString("contaActvitiCriarConta", numeroConta.text.toString())
         sharedPrefActvtCriarConta.apply()
     }
@@ -275,6 +312,28 @@ class ActivityCriarConta : AppCompatActivity() {
         textViewLogarActivityCriarConta.setOnClickListener { textViewLogar() }
         botaoCadastrarUsuario.setOnClickListener { cadastrarUsuario() }
     }
+
+    private fun exibirProgressBar() {
+        indicadorDeProgresso.progress = 100
+        val currentProgress = 0
+        ObjectAnimator.ofInt(indicadorDeProgresso, "progress", currentProgress)
+            .setDuration(3000)
+            .start()
+    }
+
+//    private fun exibirProgressBar(loading: Boolean) {
+//        if (loading) {
+//          indicadorDeProgresso.visibility = View.VISIBLE
+//          //  txt_button_loading.visibility = View.INVISIBLE
+//            return
+//        }
+//       indicadorDeProgresso.visibility = View.INVISIBLE
+//       // txt_button_loading.visibility = View.VISIBLE
+//    }
+
+
+
+
 
 }
 

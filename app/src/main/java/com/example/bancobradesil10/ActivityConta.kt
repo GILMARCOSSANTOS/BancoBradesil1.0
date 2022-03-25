@@ -4,7 +4,6 @@ package com.example.bancobradesil10
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.ActivityInfo
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.widget.*
@@ -121,11 +120,16 @@ class ActivityConta : AppCompatActivity() {
 
         val documentReference = db.collection("Usuarios Bradesil").document(usuarioId)
         documentReference.addSnapshotListener { documentSnapshot, error ->
-            if (documentSnapshot != null) {
-                nomeCliente.text = documentSnapshot.getString("nomeFirebase")
-                email = documentSnapshot.getString("emailFirebase").toString()
-                numeroConta = documentSnapshot.getString("contaFirebase").toString()
-            }
+
+            nomeCliente.text = documentSnapshot?.getString("nomeFirebase")
+            email = documentSnapshot?.getString("emailFirebase").toString()
+            numeroConta = documentSnapshot?.getString("contaFirebase").toString()
+
+//            if (documentSnapshot != null ) {
+//                nomeCliente.text = documentSnapshot.getString("nomeFirebase")
+//                email = documentSnapshot.getString("emailFirebase").toString()
+//                numeroConta = documentSnapshot.getString("contaFirebase").toString()
+//            }
         }
     }
 
@@ -160,6 +164,7 @@ class ActivityConta : AppCompatActivity() {
         sharedPrefActvtConta.putString("chaveNomeActvtConta", "Nome: ${nomeCliente.text}")
         sharedPrefActvtConta.putString("chaveEmailActvtConta", "E-mail: $email")
         sharedPrefActvtConta.putString("chaveContaActvtConta", "Nº Conta: $numeroConta")
-        sharedPrefActvtConta.apply()
+        //sharedPrefActvtConta.apply()
+        sharedPrefActvtConta.commit()
     }
 }

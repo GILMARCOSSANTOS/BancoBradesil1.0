@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <include
-        android:id="@+id/include_slogan_actvt_main_id"
+        android:id="@+id/incld_slogan_actvt_main_id"
         layout="@layout/component_slogan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,96 +19,151 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
-        android:id="@+id/include_dados_actvt_main_id"
+        android:id="@+id/incld_dados_actvt_main_id"
         layout="@layout/componentes_dados"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        app:layout_constraintTop_toBottomOf="@id/include_slogan_actvt_main_id" />
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/LinearLayoutActivityMainId02"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="5dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/include_dados_actvt_main_id">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewAcessarContasCadastradasMainActivityId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/acessarContas"
-            android:text="@string/acessarContas"
-            android:textColor="@color/white01"
-            android:textColorHint="@color/white01"
-            android:textSize="21sp"
-            android:textStyle="bold" />
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/imageButtonContasCadastradasMainActivityId"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:layout_marginBottom="3dp"
-            android:background="#C00354"
-            android:rotation="270"
-            android:src="@drawable/botao_baixo2"
-            android:tint="@color/white01" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        app:layout_constraintTop_toBottomOf="@id/incld_slogan_actvt_main_id" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkboxLembrarUsuarioId"
+        android:id="@+id/chckBx_lembrarUsuario_actvtMain_id"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginStart="95dp"
-        android:layout_marginTop="30dp"
         android:buttonTint="@color/white01"
         android:text="@string/lembrarUsuario"
         android:textColor="@color/white01"
         android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LinearLayoutActivityMainId02" />
+        app:layout_constraintTop_toBottomOf="@id/incld_dados_actvt_main_id" />
 
+    <!--    <androidx.appcompat.widget.LinearLayoutCompat-->
+    <!--        android:id="@+id/lnrLyt_actvtMain_id"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="5dp"-->
+    <!--        android:layout_marginEnd="5dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/chckBx_lembrarUsuario_actvtMain_id">-->
+
+    <!--        <com.google.android.material.textview.MaterialTextView-->
+    <!--            android:id="@+id/txtVw_acessarContasCadastradas_mainActvt_id"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:hint="@string/acessarContas"-->
+    <!--            android:text="@string/acessarContas"-->
+    <!--            android:textColor="@color/white01"-->
+    <!--            android:textColorHint="@color/white01"-->
+    <!--            android:textSize="21sp"-->
+    <!--            android:textStyle="bold" />-->
+
+    <!--        <androidx.appcompat.widget.AppCompatImageButton-->
+    <!--            android:id="@+id/imageButtonContasCadastradasMainActivityId"-->
+    <!--            android:layout_width="26dp"-->
+    <!--            android:layout_height="26dp"-->
+    <!--            android:layout_marginBottom="3dp"-->
+    <!--            android:background="#C00354"-->
+    <!--            android:rotation="270"-->
+    <!--            android:src="@drawable/botao_baixo2"-->
+    <!--            android:tint="@color/white01" />-->
+
+    <!--    </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lyt_emailsCadastrados_actvtMain_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/back_ground_listview"
+        app:layout_constraintBottom_toTopOf="@id/botao_acessarConta_mainActvt_Id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chckBx_lembrarUsuario_actvtMain_id">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lnrLyt_actvtMain_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtVw_acessarContasCadastradas_mainActvt_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/acessarContas"
+                android:text="@string/acessarContas"
+                android:textColor="@color/corSecundariaVariante"
+                android:textColorHint="@color/white01"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/imageButtonContasCadastradasMainActivityId"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginBottom="3dp"
+                android:background="@color/white01"
+                android:rotation="270"
+                android:src="@drawable/botao_baixo2"
+                android:tint="@color/corSecundariaVariante" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <ListView
+            android:id="@+id/lstVw_acessarContas_actvt_MainActivity_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lnrLyt_actvtMain_id"></ListView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/botaoa_acessarConta_mainActivity_Id"
+        android:id="@+id/botao_acessarConta_mainActvt_Id"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="5dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/botao_redondo02"
         android:text="@string/acessarConta"
         android:textAllCaps="false"
         android:textColor="@color/corSecundariaVariante"
         android:textSize="21sp"
         app:backgroundTint="@color/white01"
+        app:layout_constraintBottom_toTopOf="@id/botao_criarConta_mainActvt_Id"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxLembrarUsuarioId" />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/botaoCriarContaMainActivityId"
+        android:id="@+id/botao_criarConta_mainActvt_Id"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="5dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/botao_redondo02"
         android:text="@string/criarCOntaBotaoMain"
         android:textAllCaps="false"
         android:textColor="@color/corSecundariaVariante"
         android:textSize="21sp"
         app:backgroundTint="@color/white01"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/botaoa_acessarConta_mainActivity_Id" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

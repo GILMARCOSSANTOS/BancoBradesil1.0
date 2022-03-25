@@ -9,11 +9,11 @@
     tools:context=".ActivityContasCadastradas">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_marginTop="25dp"
         android:id="@+id/lnrLyt_menuPrincipal_actvt_contasCadastradas_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="5dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,44 +47,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lnrLyt_menuPrincipal_actvt_contasCadastradas_id" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/lnrLyt_nomeCliente_actvt_conta_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lnrLyt_menuPrincipal_actvt_contasCadastradas_id">
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imgVw_pessoa_contasCadastradas_id"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="5dp"
-            android:src="@drawable/pessoa"
-            android:tint="@color/white01" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtVw_nome_contasCadastradas_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/white01"
-            android:textSize="17sp"
-            tools:text="Nome do Cliente" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <View
-        android:id="@+id/view02_contasCadastradas_id"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtVw_emailsCadastrados_actvt_contasCadastradas_id"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginEnd="5dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/white01"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center"
+        android:text="Escolha seu E-mail para Entrar"
+        android:textColor="@color/white01"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lnrLyt_nomeCliente_actvt_conta_id" />
+        app:layout_constraintTop_toBottomOf="@id/view01_contasCadastradas_id" />
+
+    <ListView
+        android:id="@+id/lstVw_emails_actct_contasCadastradas_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtVw_emailsCadastrados_actvt_contasCadastradas_id">
+
+    </ListView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

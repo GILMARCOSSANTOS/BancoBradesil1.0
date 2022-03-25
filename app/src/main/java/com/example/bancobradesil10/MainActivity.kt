@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imageButtonContasCadastradas: ImageButton
     private lateinit var checkBoxLembrar: CheckBox
     private lateinit var textViewAContasCadastradas: TextView
-    private lateinit var sharedPreferences01: SharedPreferences
 
     @SuppressLint("SourceLockedOrientationActivity", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle1?) {
@@ -38,19 +37,13 @@ class MainActivity : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         /**
-         * Função de declaração de variáveis:
+         * Inicializações de Funções:
          */
         inicializarVariaveis()
-
-        /**
-         * Criar Funções:
-         */
         inicializarFuncoes()
-
-        /**
-         * Shared Preferences: Recebimentos dos dados:
-         */
         sharedPreferencesReceberDados()
+
+
     }
 
     private fun imageButtonEntrarContasCadastradas() {
@@ -78,14 +71,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun inicializarVariaveis() {
-        botaoAcessarConta = findViewById(R.id.botaoa_acessarConta_mainActivity_Id)
+        botaoAcessarConta = findViewById(R.id.botao_acessarConta_mainActvt_Id)
         textViewNomeConta = findViewById(R.id.txtVw_nomeCliente_componentDados_id)
         textViewNumeroConta = findViewById(R.id.txtVw_contaCliente_componentDados_id)
         texViewEmail = findViewById(R.id.txtVw_emailCliente_componentDados_id)
-        botaoCriarconta = findViewById(R.id.botaoCriarContaMainActivityId)
-        checkBoxLembrar = findViewById(R.id.checkboxLembrarUsuarioId)
+        botaoCriarconta = findViewById(R.id.botao_criarConta_mainActvt_Id)
+        checkBoxLembrar = findViewById(R.id.chckBx_lembrarUsuario_actvtMain_id)
         textViewAContasCadastradas =
-            findViewById(R.id.textViewAcessarContasCadastradasMainActivityId)
+            findViewById(R.id.txtVw_acessarContasCadastradas_mainActvt_id)
         imageButtonContasCadastradas = findViewById(R.id.imageButtonContasCadastradasMainActivityId)
     }
 
@@ -98,8 +91,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun lembrarUsuario() {
-        if (checkBoxLembrar.isChecked){
-            sharedPreferencesReceberDados()
+        if (checkBoxLembrar.isClickable && textViewNomeConta.text != "Nome:" && textViewNomeConta.text != "E-Mail:" && textViewNumeroConta.text != "Nº Conta:"  ) {
+
+
+//            val sharedPreference = getSharedPreferences("chaveSP_ActvtConta", Context.MODE_PRIVATE)
+//            val emailSP = sharedPreference.getString("chaveEmailActvtConta", "E-Mail: ")
+//            texViewEmail.setText(emailSP)
+
+            val listViewEmail: ArrayList<String> = java.util.ArrayList()
+            listViewEmail.add("${texViewEmail.text}")
+            val listaView: ListView = findViewById(R.id.lstVw_acessarContas_actvt_MainActivity_id)
+            val meuAdapterView: ArrayAdapter<String> =
+                ArrayAdapter(this, android.R.layout.simple_list_item_1, listViewEmail)
+            listaView.setAdapter(meuAdapterView)
+
+
+
+
         }
     }
 

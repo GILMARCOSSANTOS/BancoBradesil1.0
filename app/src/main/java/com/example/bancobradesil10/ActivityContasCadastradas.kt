@@ -5,9 +5,7 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 
 
 class ActivityContasCadastradas : AppCompatActivity() {
@@ -23,7 +21,7 @@ class ActivityContasCadastradas : AppCompatActivity() {
      */
     private lateinit var imageViewVoltar: ImageView
     private lateinit var textViewVoltar: TextView
-    private lateinit var nomeCliente: TextView
+    private lateinit var listViewEmailsClientes: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +35,7 @@ class ActivityContasCadastradas : AppCompatActivity() {
         /**
          * Inicializar Variáveis:
          */
-       inicializarVarias()
+       inicializarVariaveis()
 
         /**
          * Criar Funçõoes:
@@ -45,9 +43,10 @@ class ActivityContasCadastradas : AppCompatActivity() {
        inicializarFuncoes()
 
         /**
-         * Shared Preferences Receber Dados:
+         * Função de listar E-Mails:
          */
-       sharedPreferencesReceberDados()
+        listarEmail()
+
     }
 
     private fun textViewVoltarContasCadastradas() {
@@ -61,10 +60,10 @@ class ActivityContasCadastradas : AppCompatActivity() {
        textViewVoltarContasCadastradas()
     }
 
-    private fun inicializarVarias(){
+    private fun inicializarVariaveis(){
         textViewVoltar = findViewById(R.id.txtVw_voltar_contasCadastradas_id)
         imageViewVoltar = findViewById(R.id.imgVw_voltar_contasCadastradas_id)
-        nomeCliente = findViewById(R.id.txtVw_nome_contasCadastradas_id)
+        listViewEmailsClientes = findViewById(R.id.lstVw_emails_actct_contasCadastradas_id)
     }
 
     private fun inicializarFuncoes(){
@@ -72,13 +71,15 @@ class ActivityContasCadastradas : AppCompatActivity() {
         imageViewVoltar.setOnClickListener { imageViewVoltarContasCadastradas() }
     }
 
-    private fun sharedPreferencesReceberDados() {
-        val sharedPreference = getSharedPreferences("chaveSP_ActvtConta", Context.MODE_PRIVATE)
-        val nomeSP = sharedPreference.getString("chaveEmailActvtConta", "E-Mail:")
-        nomeCliente.setText(nomeSP)
-//        val emailSP = sharedPreference.getString("chaveEmailActvtConta", "E-Mail: ")
-//        texViewEmail.setText(emailSP)
-//        val contaSP = sharedPreference.getString("chaveContaActvtConta", "Nº Conta: ")
-//        textViewNumeroConta.setText(contaSP)
+    private fun listarEmail(){
+        val listViewEmail: ArrayList<String> = java.util.ArrayList()
+        listViewEmail.add("")
+
+        val listaView: ListView = findViewById(R.id.lstVw_emails_actct_contasCadastradas_id)
+
+        val meuAdapterView: ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_list_item_1,listViewEmail )
+        listaView.setAdapter(meuAdapterView)
+
+
     }
 }
