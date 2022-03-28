@@ -231,7 +231,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
-            app:indicatorColor="@color/corSecundariaVariante"
+            app:indicatorColor="@color/corSecundaria"
             app:indicatorDirectionLinear="startToEnd"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -249,37 +249,6 @@
             android:textSize="19sp"
             android:textStyle="bold"
             tools:text="Análise de dados..." />
-
-        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginStart="5dp"-->
-        <!--            android:layout_marginEnd="5dp"-->
-        <!--            android:layout_marginBottom="15dp">-->
-
-        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-        <!--        <com.google.android.material.textview.MaterialTextView-->
-        <!--            android:id="@+id/textViewSituacaoContaActivityCriarContaId"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginStart="5dp"-->
-        <!--            android:layout_marginEnd="5dp"-->
-        <!--            android:text="@string/situacaoCadastro"-->
-        <!--            android:textSize="17sp"-->
-        <!--            android:textStyle="bold"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="@id/btn_linkConfirmacao_actvt_criarConta" />-->
-
-        <!--        <com.google.android.material.textview.MaterialTextView-->
-        <!--            android:id="@+id/textViewSituacaoContaActivityCriarConta02Id"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginStart="79dp"-->
-        <!--            android:layout_marginTop="-23dp"-->
-        <!--            android:textSize="17sp"-->
-        <!--            android:textStyle="bold"-->
-        <!--            tools:text="Progresso do cadastro" />-->
 
         <View
             android:id="@+id/viewId02"

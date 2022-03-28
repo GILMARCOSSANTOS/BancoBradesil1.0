@@ -123,7 +123,7 @@
             android:textSize="21sp" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/botaoAContinuarActivityLoginId"
+            android:id="@+id/bt_continuar_ActvtLogin_id"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="5dp"
@@ -143,7 +143,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
-            app:indicatorColor="@color/corSecundariaVariante"
+            app:indicatorColor="@color/corSecundaria"
             app:indicatorDirectionLinear="startToEnd"
             app:trackColor="@color/black" />
 

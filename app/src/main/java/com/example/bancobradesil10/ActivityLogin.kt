@@ -1,13 +1,17 @@
 package com.example.bancobradesil10
 
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.getSystemService
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.google.android.material.progressindicator.LinearProgressIndicator
@@ -46,10 +50,15 @@ class ActivityLogin : AppCompatActivity() {
          * Criar Funções:
          */
         inicializarFuncoes()
+
     }
 
     private fun botaoContinuar() {
         //Reconhecer usuário atual e fazer LOGIN no Firebase:
+
+        if (botaoContinuarActivityLogin.isClickable) {
+            esconderTeclado()
+        }
 
         if (editTextEmail.text.isEmpty()) {
 
@@ -89,9 +98,19 @@ class ActivityLogin : AppCompatActivity() {
 
                     indicadorProgresso(100)
 
-                    val intent = Intent(this, ActivityConta::class.java)
-                    finish()
-                    startActivity(intent)
+                    Handler().postDelayed({
+
+                        notificacao.setText("Login Realizado com sucesso!")
+
+                    }, 750)
+
+                    Handler().postDelayed({
+
+                        val intent = Intent(this, ActivityConta::class.java)
+                        finish()
+                        startActivity(intent)
+
+                    }, 1000)
 
                 } else {
                     notificacao.setText(R.string.ErroSenhaConta)
@@ -113,7 +132,7 @@ class ActivityLogin : AppCompatActivity() {
     private fun inicializarVariaveis() {
         imageViewVoltar01 = findViewById(R.id.imageViewVoltarLoginId)
         textViewVoltar01 = findViewById(R.id.textViewVoltarLoginId)
-        botaoContinuarActivityLogin = findViewById(R.id.botaoAContinuarActivityLoginId)
+        botaoContinuarActivityLogin = findViewById(R.id.bt_continuar_ActvtLogin_id)
         editTextInformeSenha = findViewById(R.id.editTextQualSenhaLoginId)
         editTextEmail = findViewById(R.id.editTextQualEmailLoginId)
         indicadorProgresso = findViewById(R.id.prgrssBar_actvtLogin_id)
@@ -131,6 +150,15 @@ class ActivityLogin : AppCompatActivity() {
         ObjectAnimator.ofInt(indicadorProgresso, "progress", nivelProgresso)
             .setDuration(750)
             .start()
+    }
+
+    private fun esconderTeclado() {
+        val View: View? = currentFocus
+        View?.let {
+            val imm: InputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
+        }
     }
 
 }

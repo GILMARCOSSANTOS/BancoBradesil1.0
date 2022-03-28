@@ -6,6 +6,7 @@ package com.example.bancobradesil10
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
@@ -14,6 +15,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -98,6 +100,10 @@ class ActivityCriarConta : AppCompatActivity() {
 
     //    @RequiresApi(Build.VERSION_CODES.S)
     private fun cadastrarUsuario() {
+
+        if(botaoCriarConta.isClickable){
+            esconderTeclado()
+        }
 
         //Variáveis usadas na função.
         val emailDigitado = digiteEmail.text.toString()
@@ -317,6 +323,14 @@ class ActivityCriarConta : AppCompatActivity() {
         ObjectAnimator.ofInt(indicadorDeProgresso, "progress", nivelProgresso)
             .setDuration(750)
             .start()
+    }
+
+    private fun esconderTeclado(){
+        val View: View? = currentFocus
+        View?.let {
+            val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
+        }
     }
 }
 
