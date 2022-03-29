@@ -252,6 +252,8 @@
             android:hint="@string/faleBia"
             android:inputType="text"
             android:paddingRight="35dp"
+            android:cursorVisible="false"
+            android:focusable="false"
             android:textAlignment="center"
             android:textSize="17sp"
             android:textStyle="italic" />

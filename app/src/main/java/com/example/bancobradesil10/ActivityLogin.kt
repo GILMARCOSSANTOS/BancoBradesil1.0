@@ -17,6 +17,7 @@ import androidx.core.view.isVisible
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import org.intellij.lang.annotations.PrintFormat
 import kotlin.time.toDuration
 
 class ActivityLogin : AppCompatActivity() {
@@ -153,6 +154,9 @@ class ActivityLogin : AppCompatActivity() {
     }
 
     private fun esconderTeclado() {
+
+        @PrintFormat
+
         val View: View? = currentFocus
         View?.let {
             val imm: InputMethodManager =

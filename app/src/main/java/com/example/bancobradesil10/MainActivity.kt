@@ -117,5 +117,6 @@ class MainActivity : AppCompatActivity() {
         val contaSP = sharedPreference.getString("chaveContaActvtConta", "Nº Conta: ")
         textViewNumeroConta.setText(contaSP)
     }
+
 }
 
