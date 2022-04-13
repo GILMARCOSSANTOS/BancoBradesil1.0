@@ -17,6 +17,8 @@ import androidx.core.view.isVisible
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import org.intellij.lang.annotations.PrintFormat
 import kotlin.time.toDuration
 
@@ -32,6 +34,7 @@ class ActivityLogin : AppCompatActivity() {
     private lateinit var editTextInformeSenha: EditText
     private lateinit var indicadorProgresso: LinearProgressIndicator
     private lateinit var notificacao: TextView
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +54,6 @@ class ActivityLogin : AppCompatActivity() {
          * Criar Funções:
          */
         inicializarFuncoes()
-
     }
 
     private fun botaoContinuar() {
@@ -114,7 +116,13 @@ class ActivityLogin : AppCompatActivity() {
                     }, 1000)
 
                 } else {
-                    notificacao.setText(R.string.ErroSenhaConta)
+
+                    indicadorProgresso(50)
+                    notificacao.setText(R.string.AnalisandoDados)
+
+                    Handler().postDelayed({
+                        notificacao.setText(R.string.ErroFalhaAutenticacao)
+                    },750)
                 }
             }
     }
@@ -138,6 +146,7 @@ class ActivityLogin : AppCompatActivity() {
         editTextEmail = findViewById(R.id.editTextQualEmailLoginId)
         indicadorProgresso = findViewById(R.id.prgrssBar_actvtLogin_id)
         notificacao = findViewById(R.id.txtVw_analiseDados_ActvtLogin_id)
+        auth = Firebase.auth
     }
 
     private fun inicializarFuncoes() {
@@ -164,5 +173,4 @@ class ActivityLogin : AppCompatActivity() {
             imm.hideSoftInputFromWindow(it.windowToken, 0)
         }
     }
-
 }

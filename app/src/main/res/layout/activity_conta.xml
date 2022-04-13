@@ -257,7 +257,6 @@
             android:textAlignment="center"
             android:textSize="17sp"
             android:textStyle="italic" />
-
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <!--    Botão fale Bia com microfone -->

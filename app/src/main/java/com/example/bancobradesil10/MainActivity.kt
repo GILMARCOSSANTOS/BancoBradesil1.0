@@ -9,6 +9,8 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.okhttp.*
+import java.io.IOException
 import android.content.Intent as Intent1
 import android.os.Bundle as Bundle1
 
@@ -26,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var checkBoxLembrar: CheckBox
     private lateinit var textViewAContasCadastradas: TextView
 
+    private val client = OkHttpClient()
+
     @SuppressLint("SourceLockedOrientationActivity", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle1?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         inicializarVariaveis()
         inicializarFuncoes()
         sharedPreferencesReceberDados()
-
+        getBradesco()
 
     }
 
@@ -93,18 +97,12 @@ class MainActivity : AppCompatActivity() {
     private fun lembrarUsuario() {
         if (checkBoxLembrar.isClickable && textViewNomeConta.text != "Nome:" && textViewNomeConta.text != "E-Mail:" && textViewNumeroConta.text != "Nº Conta:"  ) {
 
-
-//            val sharedPreference = getSharedPreferences("chaveSP_ActvtConta", Context.MODE_PRIVATE)
-//            val emailSP = sharedPreference.getString("chaveEmailActvtConta", "E-Mail: ")
-//            texViewEmail.setText(emailSP)
-
             val listViewEmail: ArrayList<String> = java.util.ArrayList()
             listViewEmail.add("${texViewEmail.text}")
             val listaView: ListView = findViewById(R.id.lstVw_acessarContas_actvt_MainActivity_id)
             val meuAdapterView: ArrayAdapter<String> =
                 ArrayAdapter(this, android.R.layout.simple_list_item_1, listViewEmail)
             listaView.setAdapter(meuAdapterView)
-
         }
     }
 
@@ -117,6 +115,29 @@ class MainActivity : AppCompatActivity() {
         val contaSP = sharedPreference.getString("chaveContaActvtConta", "Nº Conta: ")
         textViewNumeroConta.setText(contaSP)
     }
+
+    fun getBradesco() {
+//        val bradescoUrl = "https://api.github.com/users/GILMARCOSSANTOS/repos"
+
+        val bradescoUrl = "https://api.github.com/users/GILMARCOSSANTOS"
+        val request = Request.Builder()
+            .url(bradescoUrl)
+            .build()
+        println(request)
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(request: Request?, e: IOException?) {
+                println(request)
+            }
+
+            override fun onResponse(response: Response?) {
+                val jsonString = response?.body()?.string()
+                print(jsonString)
+            }
+        })
+    }
+
+    // Gilmarcos
 
 }
 

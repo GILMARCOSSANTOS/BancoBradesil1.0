@@ -55,7 +55,6 @@
     <string name="situacaoErroEmailInvalido"> <font color="#F1F60404">ERRO!</font> O e-mail é inválido</string>
     <string name="situacaoErroCadastrarUsuario"> <font color="#F1F60404">ERRO!</font> Erro ao casdastrar ususário</string>
     <string name="situacaoErroEmailJaCadastrado"> <font color="#F1F60404">ERRO!</font> E-mail já cadastrado ou inválido</string>
-
-
+    <string name="ErroFalhaAutenticacao"> <font color="#F1F60404">ERRO!</font> Verifique seu e-mail e/ou senha e sua conexão com a internet</string>
 
 </resources>
