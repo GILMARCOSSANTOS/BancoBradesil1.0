@@ -225,7 +225,6 @@ class ActivityCriarConta : AppCompatActivity() {
                         }, 1000)
                         indicadorProgressoErro()
 
-
                     } catch (e: FirebaseAuthUserCollisionException) {
 
                         Handler().postDelayed({
@@ -246,8 +245,6 @@ class ActivityCriarConta : AppCompatActivity() {
                             analiseDados.setText(R.string.situacaoErroCadastrarUsuario)
                         }, 1000)
                         indicadorProgressoErro()
-
-
                     }
                 }
             })

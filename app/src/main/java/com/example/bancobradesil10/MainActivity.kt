@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         inicializarVariaveis()
         inicializarFuncoes()
         sharedPreferencesReceberDados()
-        getBradesco()
 
     }
 
@@ -115,29 +114,6 @@ class MainActivity : AppCompatActivity() {
         val contaSP = sharedPreference.getString("chaveContaActvtConta", "Nº Conta: ")
         textViewNumeroConta.setText(contaSP)
     }
-
-    fun getBradesco() {
-//        val bradescoUrl = "https://api.github.com/users/GILMARCOSSANTOS/repos"
-
-        val bradescoUrl = "https://api.github.com/users/GILMARCOSSANTOS"
-        val request = Request.Builder()
-            .url(bradescoUrl)
-            .build()
-        println(request)
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(request: Request?, e: IOException?) {
-                println(request)
-            }
-
-            override fun onResponse(response: Response?) {
-                val jsonString = response?.body()?.string()
-                print(jsonString)
-            }
-        })
-    }
-
-    // Gilmarcos
 
 }
 
