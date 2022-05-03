@@ -27,6 +27,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imageButtonContasCadastradas: ImageButton
     private lateinit var checkBoxLembrar: CheckBox
     private lateinit var textViewAContasCadastradas: TextView
+    private lateinit var listViewEmail: ListView
+    private var listViewEmailArrayList: ArrayList<String>? = null
+    private var adapter: ArrayAdapter<String>? = null
+
+
 
     private val client = OkHttpClient()
 
@@ -83,6 +88,7 @@ class MainActivity : AppCompatActivity() {
         textViewAContasCadastradas =
             findViewById(R.id.txtVw_acessarContasCadastradas_mainActvt_id)
         imageButtonContasCadastradas = findViewById(R.id.imageButtonContasCadastradasMainActivityId)
+        listViewEmail = findViewById(R.id.lstVw_listaEmails_actvt_Main_id)
     }
 
     private fun inicializarFuncoes() {
@@ -96,12 +102,14 @@ class MainActivity : AppCompatActivity() {
     private fun lembrarUsuario() {
         if (checkBoxLembrar.isClickable && textViewNomeConta.text != "Nome:" && textViewNomeConta.text != "E-Mail:" && textViewNumeroConta.text != "Nº Conta:"  ) {
 
-            val listViewEmail: ArrayList<String> = java.util.ArrayList()
-            listViewEmail.add("${texViewEmail.text}")
-            val listaView: ListView = findViewById(R.id.lstVw_acessarContas_actvt_MainActivity_id)
-            val meuAdapterView: ArrayAdapter<String> =
-                ArrayAdapter(this, android.R.layout.simple_list_item_1, listViewEmail)
-            listaView.setAdapter(meuAdapterView)
+//           listViewEmailArrayList = ArrayList<String>()
+//            listViewEmail.add("${texViewEmail.text}")
+        val meuAdapterView: ArrayAdapter<String> =
+//                ArrayAdapter(this, android.R.layout.simple_list_item_1, listViewEmail)
+//            listViewEmail.setAdapter(meuAdapterView)
+
+            listViewEmailArrayList = ArrayList()
+
 
 
         }
