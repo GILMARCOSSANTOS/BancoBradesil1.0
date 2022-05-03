@@ -102,6 +102,8 @@ class MainActivity : AppCompatActivity() {
             val meuAdapterView: ArrayAdapter<String> =
                 ArrayAdapter(this, android.R.layout.simple_list_item_1, listViewEmail)
             listaView.setAdapter(meuAdapterView)
+
+
         }
     }
 

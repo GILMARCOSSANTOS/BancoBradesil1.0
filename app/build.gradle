@@ -56,12 +56,10 @@ dependencies {
     /**
      * ROOM Persistência de Dados:
      */
-//    def roomVersion = "2.4.1"
-//
-//    implementation("androidx.room:room-runtime:$roomVersion")
-//    annotationProcessor("androidx.room:room-compiler:$roomVersion")v
+    def roomVersion = "2.4.2"
 
-
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
 
     /*
     API BARDESCO
