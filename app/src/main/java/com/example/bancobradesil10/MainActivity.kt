@@ -48,7 +48,8 @@ class MainActivity : AppCompatActivity() {
          */
         inicializarVariaveis()
         inicializarFuncoes()
-        sharedPreferencesReceberDados()
+        sharedPreferencesReceberDadosActvtConta()
+        sharedPreferencesReceberDadosActvtCriarConta()
 
     }
 
@@ -113,14 +114,31 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun sharedPreferencesReceberDados() {
+     private fun sharedPreferencesReceberDadosActvtConta() {
         val sharedPreference = getSharedPreferences("chaveSP_ActvtConta", Context.MODE_PRIVATE)
-        val nomeSP = sharedPreference.getString("chaveNomeActvtConta", "Nome:")
+
+         val nomeSP = sharedPreference.getString("chaveNomeActvtConta", "Nome: ")
         textViewNomeConta.setText(nomeSP)
+
         val emailSP = sharedPreference.getString("chaveEmailActvtConta", "E-Mail: ")
         texViewEmail.setText(emailSP)
+
         val contaSP = sharedPreference.getString("chaveContaActvtConta", "Nº Conta: ")
         textViewNumeroConta.setText(contaSP)
+    }
+
+    private fun sharedPreferencesReceberDadosActvtCriarConta() {
+        val sharedPreferences = getSharedPreferences("chaveGeralActvtCriarConta", MODE_PRIVATE)
+
+        val nomeSP = sharedPreferences.getString("chaveNomeActvtCriarConta", "Nome: ")
+        textViewNomeConta.setText(nomeSP)
+
+        val emailSP = sharedPreferences.getString( "chaveEmailActvtCriarConta", "E-Mail: ")
+        texViewEmail.setText(emailSP)
+
+        val contaSP = sharedPreferences.getString("contaActvitiCriarConta", "Nº Conta: ")
+        textViewNumeroConta.setText(contaSP)
+
     }
 }
 
