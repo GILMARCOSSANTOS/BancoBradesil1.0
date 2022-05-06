@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     /**
      * Declaração de variáveis em Escopo Global:
      */
+
+    private val client = OkHttpClient()
     private lateinit var textViewNomeConta: TextView
     private lateinit var textViewNumeroConta: TextView
     private lateinit var texViewEmail: TextView
@@ -29,11 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textViewAContasCadastradas: TextView
     private lateinit var listViewEmail: ListView
     private var listViewEmailArrayList: ArrayList<String>? = null
-    private var adapter: ArrayAdapter<String>? = null
-
-
-
-    private val client = OkHttpClient()
+    private var adapterListEmail: ArrayAdapter<String>? = null
 
     @SuppressLint("SourceLockedOrientationActivity", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle1?) {
@@ -100,18 +98,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun lembrarUsuario() {
-        if (checkBoxLembrar.isClickable && textViewNomeConta.text != "Nome:" && textViewNomeConta.text != "E-Mail:" && textViewNumeroConta.text != "Nº Conta:"  ) {
-
-//           listViewEmailArrayList = ArrayList<String>()
-//            listViewEmail.add("${texViewEmail.text}")
-        val meuAdapterView: ArrayAdapter<String> =
-//                ArrayAdapter(this, android.R.layout.simple_list_item_1, listViewEmail)
-//            listViewEmail.setAdapter(meuAdapterView)
+        if (checkBoxLembrar.isClickable && textViewNomeConta.text != "Nome:" &&
+            texViewEmail.text != "E-Mail:" && textViewNumeroConta.text != "Nº Conta:"
+        ) {
 
             listViewEmailArrayList = ArrayList()
-
-
-
+            adapterListEmail = ArrayAdapter(
+                this, android.R.layout.simple_list_item_1,
+                listViewEmailArrayList!!
+            )
+            listViewEmail.adapter = adapterListEmail
+            listViewEmailArrayList!!.add(texViewEmail.text.toString())
+            adapterListEmail!!.notifyDataSetChanged()
         }
     }
 
@@ -124,6 +122,5 @@ class MainActivity : AppCompatActivity() {
         val contaSP = sharedPreference.getString("chaveContaActvtConta", "Nº Conta: ")
         textViewNumeroConta.setText(contaSP)
     }
-
 }
 

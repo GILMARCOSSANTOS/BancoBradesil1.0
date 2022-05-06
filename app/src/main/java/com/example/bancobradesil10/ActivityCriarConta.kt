@@ -66,8 +66,6 @@ class ActivityCriarConta : AppCompatActivity() {
          */
         inicializarVariavies()
         inicializarFuncoes()
-
-
     }
 
     private fun imageViewLogar() {
@@ -195,7 +193,7 @@ class ActivityCriarConta : AppCompatActivity() {
                     Handler().postDelayed({
 
                         indicadorDeProgresso.progress = 0
-                        var nivelProgresso = 50
+                        var nivelProgresso = 100
                         ObjectAnimator.ofInt(indicadorDeProgresso, "progress", nivelProgresso)
                             .setDuration(1000)
                             .start()
