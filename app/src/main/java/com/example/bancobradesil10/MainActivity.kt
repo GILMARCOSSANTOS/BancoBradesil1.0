@@ -44,12 +44,12 @@ class MainActivity : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         /**
-         * Inicializações de Funções:
+         * Inicialização de Funções:
          */
         inicializarVariaveis()
         inicializarFuncoes()
         sharedPreferencesReceberDadosActvtConta()
-        sharedPreferencesReceberDadosActvtCriarConta()
+        //sharedPreferencesReceberDadosActvtCriarConta()
 
     }
 
@@ -127,6 +127,7 @@ class MainActivity : AppCompatActivity() {
         textViewNumeroConta.setText(contaSP)
     }
 
+
     private fun sharedPreferencesReceberDadosActvtCriarConta() {
         val sharedPreferences = getSharedPreferences("chaveGeralActvtCriarConta", MODE_PRIVATE)
 
@@ -138,6 +139,8 @@ class MainActivity : AppCompatActivity() {
 
         val contaSP = sharedPreferences.getString("contaActvitiCriarConta", "Nº Conta: ")
         textViewNumeroConta.setText(contaSP)
+
+
 
     }
 }
