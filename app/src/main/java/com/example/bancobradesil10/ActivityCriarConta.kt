@@ -73,7 +73,6 @@ class ActivityCriarConta : AppCompatActivity() {
             val intent = Intent(this, ActivityLogin::class.java).apply {
             }
             finish()
-            sharedePreferences()
             startActivity(intent)
         }
     }
@@ -87,7 +86,6 @@ class ActivityCriarConta : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java).apply {
             }
             finish()
-            sharedePreferences()
             startActivity(intent)
         }
     }
@@ -99,7 +97,7 @@ class ActivityCriarConta : AppCompatActivity() {
     //    @RequiresApi(Build.VERSION_CODES.S)
     private fun cadastrarUsuario() {
 
-        if(botaoCriarConta.isClickable){
+        if (botaoCriarConta.isClickable) {
             esconderTeclado()
         }
 
@@ -270,20 +268,6 @@ class ActivityCriarConta : AppCompatActivity() {
             })
     }
 
-    private fun sharedePreferences() {
-        val sharedPrefActvtCriarConta = sharedPreferences.edit()
-        sharedPrefActvtCriarConta.putString(
-            "chaveNomeActvtCriarConta",
-            digiteSeuNome.text.toString()
-        )
-        sharedPrefActvtCriarConta.putString(
-            "chaveEmailActvtCriarConta",
-            digiteEmail.text.toString()
-        )
-        sharedPrefActvtCriarConta.putString("contaActvitiCriarConta", numeroConta.text.toString())
-        sharedPrefActvtCriarConta.apply()
-    }
-
     private fun inicializarVariavies() {
         digiteSeuNome = findViewById(R.id.editTextInformeNomeActivityCriarContaId)
         digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
@@ -301,7 +285,6 @@ class ActivityCriarConta : AppCompatActivity() {
         imageViewLogarActivityCriarConta = findViewById(R.id.imgVw_logar_actvt_criarConta)
         textViewLogarActivityCriarConta = findViewById(R.id.texTeViewLoginctivityCriarContaId)
         analiseDados = findViewById(R.id.txtVw_analiseDados_ActvtCriarConta_id)
-        sharedPreferences = getSharedPreferences("chaveGeralActvtCriarConta", MODE_PRIVATE)
     }
 
     private fun inicializarFuncoes() {
@@ -320,10 +303,11 @@ class ActivityCriarConta : AppCompatActivity() {
             .start()
     }
 
-    private fun esconderTeclado(){
+    private fun esconderTeclado() {
         val View: View? = currentFocus
         View?.let {
-            val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val imm: InputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(it.windowToken, 0)
         }
     }

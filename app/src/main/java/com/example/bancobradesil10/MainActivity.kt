@@ -4,21 +4,16 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
-import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.okhttp.*
-import java.io.IOException
+import java.util.*
 import android.content.Intent as Intent1
 import android.os.Bundle as Bundle1
 
 class MainActivity : AppCompatActivity() {
 
-    /**
-     * Declaração de variáveis em Escopo Global:
-     */
+    /* Declaração de variáveis em Escopo Global:  */
 
     private val client = OkHttpClient()
     private lateinit var textViewNomeConta: TextView
@@ -30,8 +25,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var checkBoxLembrar: CheckBox
     private lateinit var textViewAContasCadastradas: TextView
     private lateinit var listViewEmail: ListView
-    private var listViewEmailArrayList: ArrayList<String>? = null
+    private var emailArrayList: ArrayList<String>? = null
     private var adapterListEmail: ArrayAdapter<String>? = null
+    private lateinit var sharedPreferences: SharedPreferences
 
     @SuppressLint("SourceLockedOrientationActivity", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle1?) {
@@ -49,8 +45,8 @@ class MainActivity : AppCompatActivity() {
         inicializarVariaveis()
         inicializarFuncoes()
         sharedPreferencesReceberDadosActvtConta()
-        //sharedPreferencesReceberDadosActvtCriarConta()
-
+        deletarUsuario()
+        // selecionarItemListView()
     }
 
     private fun imageButtonEntrarContasCadastradas() {
@@ -88,6 +84,10 @@ class MainActivity : AppCompatActivity() {
             findViewById(R.id.txtVw_acessarContasCadastradas_mainActvt_id)
         imageButtonContasCadastradas = findViewById(R.id.imageButtonContasCadastradasMainActivityId)
         listViewEmail = findViewById(R.id.lstVw_listaEmails_actvt_Main_id)
+        emailArrayList = java.util.ArrayList()
+        adapterListEmail = ArrayAdapter(this, android.R.layout.simple_list_item_1, emailArrayList!!)
+        listViewEmail.adapter = adapterListEmail
+        sharedPreferences = getSharedPreferences("chaveSpListView", MODE_PRIVATE)
     }
 
     private fun inicializarFuncoes() {
@@ -96,29 +96,50 @@ class MainActivity : AppCompatActivity() {
         textViewAContasCadastradas.setOnClickListener { textViewEntrarContasCadastradas() }
         imageButtonContasCadastradas.setOnClickListener { imageButtonEntrarContasCadastradas() }
         checkBoxLembrar.setOnClickListener { lembrarUsuario() }
+        lerSharedPreferences()
     }
 
     private fun lembrarUsuario() {
-        if (checkBoxLembrar.isClickable && textViewNomeConta.text != "Nome:" &&
-            texViewEmail.text != "E-Mail:" && textViewNumeroConta.text != "Nº Conta:"
+        if (textViewNomeConta.text != "Nome: " &&
+            texViewEmail.text != "E-Mail: " && textViewNumeroConta.text != "Nº Conta: "
         ) {
-
-            listViewEmailArrayList = ArrayList()
-            adapterListEmail = ArrayAdapter(
-                this, android.R.layout.simple_list_item_1,
-                listViewEmailArrayList!!
-            )
-            listViewEmail.adapter = adapterListEmail
-            listViewEmailArrayList!!.add(texViewEmail.text.toString())
+            emailArrayList!!.add(texViewEmail.text.toString())
             adapterListEmail!!.notifyDataSetChanged()
+            val addSharedPreferences = sharedPreferences.edit()
+            addSharedPreferences.putString(texViewEmail.text.toString(), "")
+            addSharedPreferences.apply()
         }
     }
 
-     private fun sharedPreferencesReceberDadosActvtConta() {
+    private fun deletarUsuario() {
+
+        listViewEmail.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+
+                val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                editor.remove("datostelefonos")
+                editor.commit()
+
+                emailArrayList?.removeAt(position)
+                adapterListEmail?.notifyDataSetChanged()
+
+            }
+    }
+
+    private fun selecionarItemListView() {
+
+        listViewEmail.setOnItemClickListener { adapterView, view, i, l ->
+            val intent = Intent1(this, ActivityLogin::class.java).apply {
+            }
+            startActivity(intent)
+        }
+    }
+
+    private fun sharedPreferencesReceberDadosActvtConta() {
         val sharedPreference = getSharedPreferences("chaveSP_ActvtConta", Context.MODE_PRIVATE)
 
-         val nomeSP = sharedPreference.getString("chaveNomeActvtConta", "Nome: ")
-        textViewNomeConta.setText(nomeSP)
+        val nomeSP = sharedPreference.getString("chaveNomeActvtConta", "Nome: ")
+        textViewNomeConta.text = nomeSP
 
         val emailSP = sharedPreference.getString("chaveEmailActvtConta", "E-Mail: ")
         texViewEmail.setText(emailSP)
@@ -127,21 +148,18 @@ class MainActivity : AppCompatActivity() {
         textViewNumeroConta.setText(contaSP)
     }
 
-
-    private fun sharedPreferencesReceberDadosActvtCriarConta() {
-        val sharedPreferences = getSharedPreferences("chaveGeralActvtCriarConta", MODE_PRIVATE)
-
-        val nomeSP = sharedPreferences.getString("chaveNomeActvtCriarConta", "Nome: ")
-        textViewNomeConta.setText(nomeSP)
-
-        val emailSP = sharedPreferences.getString( "chaveEmailActvtCriarConta", "E-Mail: ")
-        texViewEmail.setText(emailSP)
-
-        val contaSP = sharedPreferences.getString("contaActvitiCriarConta", "Nº Conta: ")
-        textViewNumeroConta.setText(contaSP)
-
-
-
+    private fun lerSharedPreferences() {
+        // sharedPreferences = getSharedPreferences("datostelefonos", MODE_PRIVATE)
+        val claves = sharedPreferences.all
+        for ((key, value) in claves) {
+            emailArrayList!!.add(key + value.toString())
+        }
     }
 }
+
+
+
+
+
+
 

@@ -27,9 +27,8 @@
     <string name="QueroPagarConta">Quero pagar uma conta</string>
     <string name="precisTransferir">Preciso transferir dinheiro</string>
     <string name="lembrarUsuario">Lembrar usuário</string>
-    <string name="eMail">E-mail: </string>
+    <string name="eMail">E-Mail: </string>
     <string name="acessarContas">Acessar outras contas</string>
-
     <string name="situacaoEmailErroPreenchaOsDados">Preencha os seus dados</string>
     <string name="digiteSuaSenha">Digite a sua senha:</string>
     <string name="digiteSeuEmail">Digite o seu E-mail:</string>

@@ -28,6 +28,7 @@
                 android:layout_gravity="center"
                 android:hint="@string/nome"
                 android:text="@string/nome"
+
                 android:textColor="@color/white01"
                 android:textColorHint="@color/white01"
                 android:textSize="17sp"
@@ -51,6 +52,7 @@
                 android:layout_height="30dp"
                 android:src="@drawable/email"
                 android:tint="@color/white01" />
+
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtVw_emailCliente_componentDados_id"

@@ -111,22 +111,12 @@
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/checkboxLembrarUsuarioId"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:buttonTint="@color/corSecundariaVariante"
-            android:text="@string/lembrarUsuario"
-            android:textColor="@color/corSecundariaVariante"
-            android:textSize="21sp" />
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_continuar_ActvtLogin_id"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/botao_redondo02"
             android:text="@string/continuar"
