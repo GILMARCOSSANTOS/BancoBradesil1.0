@@ -127,11 +127,11 @@ class ActivityConta : AppCompatActivity() {
             email = documentSnapshot?.getString("emailFirebase").toString()
             numeroConta = documentSnapshot?.getString("contaFirebase").toString()
 
-//            if (documentSnapshot != null ) {
-//                nomeCliente.text = documentSnapshot.getString("nomeFirebase")
-//                email = documentSnapshot.getString("emailFirebase").toString()
-//                numeroConta = documentSnapshot.getString("contaFirebase").toString()
-//            }
+          if (documentSnapshot != null ) {
+                nomeCliente.text = documentSnapshot.getString("nomeFirebase")
+                email = documentSnapshot.getString("emailFirebase").toString()
+                numeroConta = documentSnapshot.getString("contaFirebase").toString()
+            }
         }
     }
 
