@@ -190,6 +190,7 @@ class ActivityCriarConta : AppCompatActivity() {
 
                     Handler().postDelayed({
 
+
                         indicadorDeProgresso.progress = 0
                         var nivelProgresso = 100
                         ObjectAnimator.ofInt(indicadorDeProgresso, "progress", nivelProgresso)
