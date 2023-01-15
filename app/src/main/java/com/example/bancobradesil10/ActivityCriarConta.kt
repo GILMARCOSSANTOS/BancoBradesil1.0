@@ -8,7 +8,6 @@ import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
@@ -82,10 +81,34 @@ class ActivityCriarConta : AppCompatActivity() {
     }
 
     private fun imageViewVoltarParaMainActivity() {
+<<<<<<< HEAD
         if (analiseDados.text == getString(R.string.situacaoContaCriadaComSucesso) || analiseDados.text == "" || analiseDados.text != "") {
             val intent = Intent(this, MainActivity::class.java).apply {
             }
             finish()
+=======
+        //VARIÁVEIS USADAS NA FUNÇÃO:
+        val informeSeuNome =
+            findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
+        val informeNome = informeSeuNome.text.toString()
+        val situacaoConta =
+            findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarContaId)
+        val numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
+        val suaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
+        val digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
+
+        val intent = Intent(this, MainActivity::class.java).apply {
+
+        // Intent para envio de todos os dados para a MainActivity:
+//        if (situacaoConta.text == getString(R.string.situacaoContaCriadaComSucesso)) {
+//            val intent = Intent(this, MainActivity::class.java).apply {
+//                putExtra("chaveNomeConta", informeNome)
+//                putExtra("chaveNumeroConta", numeroConta.text.toString())
+//                putExtra("chaveSenha", suaSenha.text.toString())
+//                putExtra("chaveEmail", digiteEmail.text.toString())
+//
+//            }
+>>>>>>> 9c2ff6869ba69996ec893bc8959fc6339e09dcb2
             startActivity(intent)
         }
     }
@@ -94,8 +117,32 @@ class ActivityCriarConta : AppCompatActivity() {
         imageViewVoltarParaMainActivity()
     }
 
+<<<<<<< HEAD
     //    @RequiresApi(Build.VERSION_CODES.S)
     private fun cadastrarUsuario() {
+=======
+    //
+
+    /*
+    Função criarConta():
+     */
+    @RequiresApi(Build.VERSION_CODES.S)
+    private fun criarConta() {
+        //Variáveis usadas na função.
+        val digiteEmail = findViewById<EditText>(R.id.editTextInformeEmailActivityCriarContaId)
+        val email = digiteEmail.text.toString()
+        val botaoCriarConta = findViewById<Button>(R.id.botaoCriarContaActivityCriarContaId)
+        val informeSeuNome =
+            findViewById<EditText>(R.id.editTextInformeNomeActivityCriarContaId)
+        val informeNome = informeSeuNome.text.toString()
+        val repitaSuaSenha =
+            findViewById<EditText>(R.id.editTextRepitaSenhaActivityCriarContaId)
+        val repitaSenha = repitaSuaSenha.text.toString()
+        val digiteSuaSenha = findViewById<EditText>(R.id.editTextCriarSenhaActivityCriarContaId)
+        val suaSenha = digiteSuaSenha.text.toString()
+        val situacaoConta =
+            findViewById<TextView>(R.id.textViewSituacaoContaActivityCriarContaId)
+>>>>>>> 9c2ff6869ba69996ec893bc8959fc6339e09dcb2
 
         if (botaoCriarConta.isClickable) {
             esconderTeclado()
@@ -106,7 +153,85 @@ class ActivityCriarConta : AppCompatActivity() {
         val informeNome = digiteSeuNome.text.toString()
         val repitaSenha = repitaSuaSenha.text.toString()
         val suaSenha = digiteSuaSenha.text.toString()
+<<<<<<< HEAD
         var contador = 0
+=======
+        val numeroConta = findViewById<TextView>(R.id.textViewNumeroContaActivityCriarContaId)
+        val contaAbertasRandom = (10000..99999).random()
+        val ptBr = Locale("pt", "BR")
+        val formatarValorConta =
+            "Conta: " + NumberFormat.getNumberInstance(ptBr)
+                .format(contaAbertasRandom.toDouble())
+
+        //Condicional If():
+        if (informeSeuNome.length() > 0 &&
+            email.isNotEmpty() &&
+            repitaSenha == suaSenha &&
+            suaSenha.length >= 6
+        ) {
+            authFireBase.createUserWithEmailAndPassword(email, suaSenha)
+                .addOnCompleteListener(OnCompleteListener<AuthResult> { task ->
+                    if (task.isSuccessful) {
+                        //Salva usuário E-mail do usuário no Firebase Authentication:
+                        // val firebaseUser: FirebaseUser = task.result!!.user!!
+
+                        val hashMap = hashMapOf<String, Any>(
+                            "Nome do usuário" to informeNome,
+                            "Conta do usuário" to formatarValorConta,
+                            "E - mail do usuário" to email
+                        )
+                        FirebaseUtils().fireStoreDatabase.collection("Usuários Banco Bradesil 1.0")
+                          //?.document("Informações Gerais")
+                            //.set(hashMap)
+                            .add(hashMap)
+
+                            .addOnSuccessListener {
+                                 Log.d(TAG, "Added document with ID ${it.id}")
+                            }
+                            .addOnFailureListener {
+                                val a = Log.w(TAG, "Erro ao fazer cadastro de e - mail.")
+                                Toast.makeText(this, "$a", Toast.LENGTH_SHORT).show()
+                            }
+
+                        situacaoConta.text = getString(R.string.situacaoContaCriadaComSucesso )
+                        numeroConta.text = formatarValorConta
+                        botaoCriarConta.isEnabled = false
+
+                        //03: SharedPreferences:
+                       // val salvarDadosSharedPreferences = sharedPreferences.edit()
+                       // salvarDadosSharedPreferences.putString("chaveNome", informeNome)
+                       // salvarDadosSharedPreferences.apply()
+
+                        Toast.makeText(
+                            this,
+                            "Cadastro realizado com sucesso!",
+                            Toast.LENGTH_LONG
+                        ).show()
+
+                    } else {
+                        Toast.makeText(
+                            this,
+                            "Erro! E-mail já está cadastrado ou inválido.",
+                            Toast.LENGTH_LONG
+                        )
+                            .show()
+                        situacaoConta.text = getString(R.string.situacaoErroEmailJaCadastrado)
+                    }
+                })
+
+        } else {
+            Toast.makeText(this, "erro", Toast.LENGTH_SHORT).show()
+        }
+        }
+
+    class FirebaseUtils {
+        val fireStoreDatabase = FirebaseFirestore.getInstance()
+    }
+
+}
+
+
+>>>>>>> 9c2ff6869ba69996ec893bc8959fc6339e09dcb2
 
         //Condicional
         when {
