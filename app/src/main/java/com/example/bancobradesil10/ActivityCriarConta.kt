@@ -312,4 +312,6 @@ class ActivityCriarConta : AppCompatActivity() {
             imm.hideSoftInputFromWindow(it.windowToken, 0)
         }
     }
+
+
 }
