@@ -4,7 +4,6 @@
     android:layout_height="wrap_content">
 
     <!--    Sem backGround para não interferir no backGround da View Destino -->
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,7 +33,6 @@
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
-
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <View
@@ -52,7 +50,6 @@
                 android:layout_height="30dp"
                 android:src="@drawable/email"
                 android:tint="@color/white01" />
-
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtVw_emailCliente_componentDados_id"
@@ -106,8 +103,6 @@
             android:background="@color/white01" />
 
         <!--    Sem backGround para não interferir no backGround da View Destino -->
-
     </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

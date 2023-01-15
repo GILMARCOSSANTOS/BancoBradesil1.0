@@ -95,7 +95,6 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-
     <View
         android:id="@+id/linhaDivisoria01Id"
         android:layout_width="match_parent"
@@ -198,7 +197,6 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-
     <View
         android:id="@+id/linhaDivisoria02Id"
         android:layout_width="112dp"
@@ -209,7 +207,6 @@
         android:backgroundTint="@color/white01"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lnrLyt_extrato_actcvt_conta_id" />
-
 
     <!-- Esta ImageView Está em sobrescrevento a outra ImageView -->
     <!-- LinearLayout 01: -->
@@ -240,7 +237,6 @@
 
         <!--    android:drawablePadding="205dp"-->
         <!--        android:drawableEnd="@drawable/lupa"-->
-
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/autoCompleteFaleBiaContaActivityId"
             android:layout_width="match_parent"
@@ -248,12 +244,12 @@
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/botaofalebia"
+            android:cursorVisible="false"
             android:drawableRight="@drawable/lupa"
+            android:focusable="false"
             android:hint="@string/faleBia"
             android:inputType="text"
             android:paddingRight="35dp"
-            android:cursorVisible="false"
-            android:focusable="false"
             android:textAlignment="center"
             android:textSize="17sp"
             android:textStyle="italic" />

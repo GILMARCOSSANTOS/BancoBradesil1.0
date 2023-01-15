@@ -55,9 +55,9 @@
         android:background="@drawable/botao_redondo01"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view01_activity_login_id"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view01_activity_login_id">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/texViewInformeDadosActivityLoginId"
