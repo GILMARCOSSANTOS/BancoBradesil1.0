@@ -37,12 +37,12 @@ class ActivityConta : AppCompatActivity() {
         /**
          * Declaração de variáveis:
          */
-       inicializarVariaveis()
+        inicializarVariaveis()
 
         /**
          * Instância de funções:
          */
-       inicializarFuncoes()
+        inicializarFuncoes()
 
         /**
          * Função para Saldo não visível:
@@ -127,7 +127,7 @@ class ActivityConta : AppCompatActivity() {
             email = documentSnapshot?.getString("emailFirebase").toString()
             numeroConta = documentSnapshot?.getString("contaFirebase").toString()
 
-          if (documentSnapshot != null ) {
+            if (documentSnapshot != null ) {
                 nomeCliente.text = documentSnapshot.getString("nomeFirebase")
                 email = documentSnapshot.getString("emailFirebase").toString()
                 numeroConta = documentSnapshot.getString("contaFirebase").toString()
