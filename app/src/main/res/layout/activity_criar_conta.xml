@@ -132,6 +132,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextInformeNomeActivityCriarContaId"
                 android:layout_width="match_parent"
+                android:maxLines="1"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,6 +156,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextInformeEmailActivityCriarContaId"
                 android:layout_width="match_parent"
+                android:maxLines="1"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:singleLine="true" />
@@ -181,6 +183,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextCriarSenhaActivityCriarContaId"
                 android:layout_width="match_parent"
+                android:maxLines="1"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -205,6 +208,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextRepitaSenhaActivityCriarContaId"
                 android:layout_width="match_parent"
+                android:maxLines="1"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
