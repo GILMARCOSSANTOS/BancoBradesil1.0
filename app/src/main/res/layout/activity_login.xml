@@ -82,7 +82,7 @@
             android:textColorHint="@color/black"
             android:textSize="20sp"
             app:colorControlActivated="?attr/colorOnPrimary"
-            app:hintTextColor="#0363D8">
+            app:hintTextColor="@color/corSecundaria">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextQualEmailLoginId"
