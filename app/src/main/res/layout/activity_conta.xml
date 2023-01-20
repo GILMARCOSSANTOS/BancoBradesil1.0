@@ -237,6 +237,7 @@
 
         <!--    android:drawablePadding="205dp"-->
         <!--        android:drawableEnd="@drawable/lupa"-->
+<!--        android:focusable="false"-->
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/autoCompleteFaleBiaContaActivityId"
             android:layout_width="match_parent"
@@ -246,9 +247,9 @@
             android:background="@drawable/botaofalebia"
             android:cursorVisible="false"
             android:drawableRight="@drawable/lupa"
-            android:focusable="false"
             android:hint="@string/faleBia"
             android:inputType="text"
+            android:focusableInTouchMode="false"
             android:paddingRight="35dp"
             android:textAlignment="center"
             android:textSize="17sp"
